@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>小林的个人网页</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10/font/bootstrap-icons.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    :root {
+      --theme: #0066ff;
+      --theme-dark: #0053d9;
+      --theme-light: #32cd32;
+      --text: #333;
+      --text-light: #666;
+      --bg: #f0fff0;
+      --card-bg: #ffffff;
+      --radius: 12px;
+      --max-width: 1200px;
+      --shadow: 0 4px 20px rgba(0,0,0,.08);
+      --transition: all .3s cubic-bezier(.4,0,.2,1);
+      font-family: 'Noto Sans SC',-apple-system,BlinkMacSystemFont,sans-serif;
+    }
+    html { scroll-behavior: smooth; }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+
+    /* 加载动画 */
+    .loader { position: fixed; inset: 0; background: var(--bg); display: flex; align-items: center; justify-content: center; z-index: 9999; transition: opacity .5s; }
+    .loader.hidden { opacity: 0; pointer-events: none; }
+    .loader-spinner { width: 50px; height: 50px; border: 4px solid #e1e8ed; border-top-color: var(--theme); border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* 头部 */
+    header { background: linear-gradient(135deg,var(--theme) 0%,var(--theme-light) 100%); color: #fff; text-align: center; padding: 60px 20px; position: relative; overflow: hidden; }
+    header h1 { font-size: 2.5rem; margin-bottom: 10px; animation: fadeInUp 1s; }
+    header p { font-size: 1.1rem; opacity: .9; animation: fadeInUp 1s .2s both; }
+    @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* 首页内嵌音乐控制条 */
+    .home-music-bar {
+        display: inline-flex; align-items: center; gap: 12px; margin-top: 20px; padding: 10px 18px;
+        background: rgba(255,255,255,.25); border-radius: 30px; backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,.35);
+    }
+    .home-music-bar button { width: 40px; height: 40px; border-radius: 50%; border: none; background: #fff; color: var(--theme); font-size: 20px; cursor: pointer; transition: background .3s, color .3s; }
+    .home-music-bar button:hover { background: var(--theme); color: #fff; }
+
+    /* 天气小部件 */
+    .weather-widget { position: fixed; top: 100px; right: 20px; width: 280px; background: rgba(255,255,255,.95); border-radius: var(--radius); box-shadow: var(--shadow); backdrop-filter: blur(10px); z-index: 999; transition: var(--transition); }
+    .weather-header { background: linear-gradient(135deg,var(--theme) 0%,var(--theme-light) 100%); color: white; padding: 15px; border-radius: var(--radius) var(--radius) 0 0; display: flex; justify-content: space-between; align-items: center; }
+    .weather-search { display: flex; gap: 8px; margin-top: 10px; }
+    .weather-search input { flex: 1; padding: 8px 12px; border: none; border-radius: 20px; background: rgba(255,255,255,.2); color: white; font-size: 14px; }
+    .weather-search input::placeholder { color: rgba(255,255,255,.7); }
+    .weather-search button { padding: 8px 12px; border: none; border-radius: 20px; background: rgba(255,255,255,.2); color: white; cursor: pointer; transition: background .3s; }
+    .weather-search button:hover { background: rgba(255,255,255,.3); }
+    .weather-body { padding: 20px; }
+    .weather-main { text-align: center; margin-bottom: 20px; }
+    .weather-temp { font-size: 3rem; font-weight: 700; color: var(--theme); cursor: pointer; transition: color .3s; }
+    .weather-temp:hover { color: var(--theme-dark); }
+    .weather-desc { font-size: 1.2rem; color: var(--text-light); margin: 10px 0; }
+    .weather-info { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+    .weather-info-item { text-align: center; padding: 10px; background: var(--bg); border-radius: 8px; }
+    .weather-info-item i { color: var(--theme); font-size: 1.5rem; margin-bottom: 5px; }
+    .weather-info-item div { font-size: 0.9rem; color: var(--text-light); }
+    .weather-forecast { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .weather-forecast h4 { color: var(--theme); margin-bottom: 15px; text-align: center; }
+    .forecast-item { display: flex; justify-content: space-between; align-items: center; padding: 8px 0; border-bottom: 1px solid #f0f0f0; }
+    .forecast-item:last-child { border-bottom: none; }
+    .weather-lifestyle { margin-top: 20px; padding-top: 20px; border-top: 1px solid #eee; }
+    .weather-lifestyle h4 { color: var(--theme); margin-bottom: 15px; text-align: center; }
+    .lifestyle-item { display: flex; align-items: center; gap: 10px; padding: 8px 0; }
+    .lifestyle-item i { color: var(--theme-light); width: 20px; }
+    .weather-toggle { position: fixed; top: 20px; right: 20px; width: 50px; height: 50px; background: var(--theme); color: white; border: none; border-radius: 50%; cursor: pointer; box-shadow: var(--shadow); z-index: 1000; transition: var(--transition); display: flex; align-items: center; justify-content: center; font-size: 1.2rem; }
+    .weather-toggle:hover { background: var(--theme-dark); transform: scale(1.1); }
+    @media (max-width: 768px) { .weather-widget { width: 90%; right: 5%; left: 5%; top: 80px; } .weather-toggle { top: 10px; right: 10px; width: 40px; height: 40px; font-size: 1rem; } }
+
+    /* 导航 */
+    nav { background: rgba(255,255,255,.95); backdrop-filter: blur(10px); box-shadow: var(--shadow); position: sticky; top: 0; z-index: 1000; }
+    .nav-container { max-width: var(--max-width); margin: 0 auto; display: flex; justify-content: space-between; align-items: center; padding: 0 20px; }
+    .logo { font-size: 1.5rem; font-weight: 700; color: var(--theme); text-decoration: none; }
+    .nav-links { display: flex; gap: 30px; list-style: none; }
+    .nav-links a { color: var(--text); text-decoration: none; padding: 20px 0; position: relative; font-weight: 500; }
+    .nav-links a::after { content: ''; position: absolute; bottom: 15px; left: 0; width: 0; height: 2px; background: var(--theme); transition: width .3s; }
+    .nav-links a:hover::after, .nav-links a.active::after { width: 100%; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; padding: 10px; }
+    .hamburger span { width: 25px; height: 3px; background: var(--text); margin: 3px 0; transition: var(--transition); }
+
+    /* 主内容 */
+    .container { max-width: var(--max-width); margin: 0 auto; padding: 60px 20px; }
+    .card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 40px; margin-bottom: 40px; transition: var(--transition); }
+    .card h2 { color: var(--theme); margin-bottom: 20px; }
+    .btn { display: inline-flex; align-items: center; gap: 8px; background: var(--theme); color: #fff; padding: 12px 24px; border-radius: var(--radius); text-decoration: none; transition: var(--transition); font-weight: 500; border: none; cursor: pointer; }
+    .btn:hover { background: var(--theme-dark); transform: translateY(-2px); box-shadow: 0 5px 15px rgba(0,102,255,.3); }
+    .btn-secondary { background: transparent; color: var(--theme); border: 2px solid var(--theme); }
+    .btn-secondary:hover { background: var(--theme); color: #fff; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit,minmax(250px,1fr)); gap: 30px; margin-top: 30px; }
+    .service-item { background: var(--card-bg); padding: 30px; border-radius: var(--radius); text-align: center; box-shadow: var(--shadow); transition: var(--transition); }
+    .service-item:hover { transform: translateY(-5px); box-shadow: 0 8px 30px rgba(0,0,0,.15); }
+    footer { background: linear-gradient(135deg,#1a1a1a 0%,#2d2d2d 100%); color: #fff; text-align: center; padding: 60px 20px 30px; }
+    .social-links { display: flex; justify-content: center; gap: 20px; margin-bottom: 30px; }
+    .social-links a { display: flex; align-items: center; justify-content: center; width: 50px; height: 50px; background: rgba(255,255,255,.1); border-radius: 50%; color: #fff; text-decoration: none; transition: var(--transition); font-size: 1.2rem; }
+    .social-links a:hover { background: var(--theme); transform: translateY(-3px); }
+    .back-to-top { position: fixed; bottom: 30px; right: 30px; width: 46px; height: 46px; background: var(--theme); color: #fff; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; opacity: 0; visibility: hidden; transition: var(--transition); box-shadow: 0 4px 15px rgba(0,102,255,.3); z-index: 999; }
+    .back-to-top.visible { opacity: 1; visibility: visible; }
+    @media (max-width: 768px) { .nav-links { display: none; position: absolute; top: 100%; left: 0; right: 0; background: var(--card-bg); flex-direction: column; padding: 20px; box-shadow: var(--shadow); gap: 15px; } .nav-links.active { display: flex; } .hamburger { display: flex; } }
+
+    /* 浮动音乐小窗 */
+    .music-win { position: fixed; bottom: 90px; right: 30px; width: 200px; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,.15); z-index: 1001; user-select: none; overflow: hidden; }
+    .music-head { display: flex; justify-content: space-between; align-items: center; background: var(--theme); color: #fff; padding: 8px 12px; font-size: 14px; cursor: move; }
+    .music-head button { background: none; border: none; color: #fff; font-size: 16px; cursor: pointer; }
+    .music-body { display: flex; justify-content: space-around; padding: 12px; }
+    .btn-circle { width: 40px; height: 40px; border-radius: 50%; border: none; background: var(--theme); color: #fff; font-size: 20px; cursor: pointer; transition: background .3s; }
+    .btn-circle:hover { background: var(--theme-dark); }
+    @media (max-width: 600px) { .music-win { bottom: 80px; right: 10px; width: 180px; } }
+  </style>
+</head>
+
+<body>
+<!-- 加载动画 -->
+<div class="loader" id="loader"><div class="loader-spinner"></div></div>
+
+<!-- 天气切换按钮 -->
+<button class="weather-toggle" id="weatherToggle" title="显示/隐藏天气"><i class="bi bi-cloud-sun"></i></button>
+
+<!-- 天气小部件 -->
+<div class="weather-widget" id="weatherWidget" style="display: none;">
+  <div class="weather-header">
+    <div>
+      <div id="weatherCity">获取位置中...</div>
+      <div class="weather-search">
+        <input type="text" id="cityInput" placeholder="搜索城市">
+        <button id="searchBtn"><i class="bi bi-search"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="weather-body">
+    <div class="weather-main">
+      <div class="weather-temp" id="weatherTemp">--°C</div>
+      <div class="weather-desc" id="weatherDesc">--</div>
+      <div id="weatherUpdate">更新中...</div>
+    </div>
+    <div class="weather-info">
+      <div class="weather-info-item"><i class="bi bi-droplet"></i><div id="weatherHumidity">湿度 --%</div></div>
+      <div class="weather-info-item"><i class="bi bi-wind"></i><div id="weatherWind">风力 --级</div></div>
+      <div class="weather-info-item"><i class="bi bi-eye"></i><div id="weatherVisibility">能见度 --km</div></div>
+      <div class="weather-info-item"><i class="bi bi-thermometer-half"></i><div id="weatherFeels">体感 --°C</div></div>
+    </div>
+    <div class="weather-forecast"><h4>未来3天预报</h4><div id="weatherForecast"></div></div>
+    <div class="weather-lifestyle"><h4>生活指数</h4><div id="weatherLifestyle"></div></div>
+  </div>
+</div>
+
+<!-- 头部 -->
+<header>
+  <h1>欢迎来到小林的个人网页</h1>
+  <p>探索无限可能，创造美好未来</p>
+  <div class="home-music-bar">
+    <button id="homePlay" title="播放"><i class="bi bi-play-fill"></i></button>
+    <button id="homePause" title="暂停"><i class="bi bi-pause-fill"></i></button>
+    <span style="color:#fff;font-size:14px;">背景音乐</span>
+  </div>
+</header>
+
+<!-- 导航 -->
+<nav id="navbar">
+  <div class="nav-container">
+    <a href="#home" class="logo">相遇不一定有结局 但一定有意义</a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home" class="active">首页</a></li>
+      <li><a href="#about">关于我们</a></li>
+      <li><a href="#services">服务</a></li>
+      <li><a href="#portfolio">作品集</a></li>
+      <li><a href="#contact">联系我们</a></li>
+    </ul>
+    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+  </div>
+</nav>
+
+<!-- 主内容 -->
+<div class="container">
+  <section id="home" class="card" data-aos="fade-up">
+    <h2>首页</h2>
+    <img src="https://source.unsplash.com/1600x600/?nature,water" alt="欢迎图" loading="lazy">
+    <p>欢迎来到我的个人网站！这里是一个充满创意和激情的地方，我致力于为您提供最优质的服务和解决方案。让我们一起探索无限可能，创造美好未来。</p>
+    <div style="margin-top: 30px;">
+      <a class="btn" href="#contact">立即联系</a>
+      <a class="btn btn-secondary" href="#about" style="margin-left: 15px;">了解更多</a>
+    </div>
+  </section>
+
+  <section id="about" class="card" data-aos="fade-up">
+    <h2>关于我们</h2>
+    <p>我们是一个充满激情和创造力的团队，专注于提供高质量的服务和解决方案。我们的使命是帮助客户实现他们的目标和梦想。</p>
+    <div class="services-grid">
+      <div class="service-item"><i class="bi bi-lightbulb"></i><h3>创新思维</h3><p>我们始终保持创新思维，为客户提供独特的解决方案</p></div>
+      <div class="service-item"><i class="bi bi-people"></i><h3>专业团队</h3><p>拥有经验丰富的专业团队，确保项目高质量完成</p></div>
+      <div class="service-item"><i class="bi bi-award"></i><h3>卓越品质</h3><p>追求卓越品质，让每一个项目都成为精品</p></div>
+    </div>
+  </section>
+
+  <section id="services" class="card" data-aos="fade-up">
+    <h2>服务</h2>
+    <p>我们提供全方位的专业服务，满足您的各种需求。</p>
+    <div class="services-grid">
+      <div class="service-item"><i class="bi bi-code-slash"></i><h3>网站开发</h3><p>专业的网站开发服务，打造独特的线上形象</p><a href="#contact" class="btn" style="margin-top:15px;">咨询详情</a></div>
+      <div class="service-item"><i class="bi bi-palette"></i><h3>UI设计</h3><p>创意十足的UI设计，提升用户体验</p><a href="#contact" class="btn" style="margin-top:15px;">咨询详情</a></div>
+      <div class="service-item"><i class="bi bi-phone"></i><h3>移动应用</h3><p>跨平台移动应用开发，覆盖更多用户</p><a href="#contact" class="btn" style="margin-top:15px;">咨询详情</a></div>
+      <div class="service-item"><i class="bi bi-graph-up"></i><h3>数字营销</h3><p>全方位的数字营销策略，提升品牌影响力</p><a href="#contact" class="btn" style="margin-top:15px;">咨询详情</a></div>
+    </div>
+  </section>
+
+  <section id="portfolio" class="card" data-aos="fade-up">
+    <h2>作品集</h2>
+    <p>查看我们的最新作品，了解我们的创作实力。</p>
+    <div class="services-grid">
+      <div class="service-item"><img src="https://source.unsplash.com/400x300/?technology,website" alt="作品1" style="width:100%;border-radius:8px;margin-bottom:15px;"><h3>企业官网</h3><p>为知名企业打造的现代化官方网站</p></div>
+      <div class="service-item"><img src="https://source.unsplash.com/400x300/?app,mobile" alt="作品2" style="width:100%;border-radius:8px;margin-bottom:15px;"><h3>移动应用</h3><p>用户友好的移动应用界面设计</p></div>
+      <div class="service-item"><img src="https://source.unsplash.com/400x300/?design,creative" alt="作品3" style="width:100%;border-radius:8px;margin-bottom:15px;"><h3>品牌设计</h3><p>独特的品牌视觉识别系统设计</p></div>
+    </div>
+  </section>
+
+  <section id="contact" class="card" data-aos="fade-up">
+    <h2>联系我们</h2>
+    <p>如果您有任何问题或需要帮助，请随时联系我们。我们很乐意为您提供服务。</p>
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 30px;">
+      <div>
+        <h3 style="color:var(--theme);margin-bottom:20px;">联系方式</h3>
+        <div style="margin-bottom:15px"><i class="bi bi-envelope" style="color:var(--theme);margin-right:10px;"></i><strong>邮箱：</strong>wlin3692@163.com</div>
+        <div style="margin-bottom:15px"><i class="bi bi-telephone" style="color:var(--theme);margin-right:10px;"></i><strong>电话：</strong>18244733692</div>
+        <div style="margin-bottom:15px"><i class="bi bi-geo-alt" style="color:var(--theme);margin-right:10px;"></i><strong>地址：</strong>中国·湖南</div>
+        <div><i class="bi bi-clock" style="color:var(--theme);margin-right:10px;"></i><strong>工作时间：</strong>周一至周五 9:00-18:00</div>
+      </div>
+      <div class="contact-form">
+        <h3 style="color:var(--theme);margin-bottom:20px;">发送消息</h3>
+        <form id="contactForm">
+          <div class="form-group"><label>姓名</label><input type="text" name="name" required></div>
+          <div class="form-group"><label>邮箱</label><input type="email" name="email" required></div>
+          <div class="form-group"><label>留言</label><textarea name="message" required></textarea></div>
+          <button type="submit" class="btn" style="width:100%;"><i class="bi bi-send"></i> 发送消息</button>
+        </form>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- 页脚 -->
+<footer>
+  <div class="footer-content">
+    <div class="social-links">
+      <a href="mailto:wlin3692@163.com" title="邮箱"><i class="bi bi-envelope"></i></a>
+      <a href="tel:18244733692" title="电话"><i class="bi bi-telephone"></i></a>
+      <a href="#" title="微信"><i class="bi bi-wechat"></i></a>
+      <a href="#" title="QQ"><i class="bi bi-qq"></i></a>
+      <a href="#" title="微博"><i class="bi bi-sina-weibo"></i></a>
+    </div>
+    <div class="footer-info"><p><strong>小林工作室</strong></p><p>专业 · 创新 · 品质</p></div>
+    <p>&copy; 2025 小林的个人网页. 版权所有.</p>
+  </div>
+</footer>
+
+<!-- 返回顶部 -->
+<a href="#home" class="back-to-top" id="backToTop"><i class="bi bi-arrow-up"></i></a>
+
+<!-- 背景音乐 -->
+<audio id="bgMusic" preload="metadata" loop>
+  <source src="linlin.mp3" type="audio/mpeg">
+  您的浏览器不支持音频播放。
+</audio>
+
+<!-- 浮动音乐小窗 -->
+<div id="musicWin" class="music-win">
+  <div class="music-head">
+    <span>🎵 音乐播放器</span>
+    <button id="closeMusic">✖</button>
+  </div>
+  <div class="music-body">
+    <button id="playBtn" class="btn-circle" title="播放"><i class="bi bi-play-fill"></i></button>
+    <button id="pauseBtn" class="btn-circle" title="暂停"><i class="bi bi-pause-fill"></i></button>
+    <button id="stopBtn" class="btn-circle" title="停止"><i class="bi bi-stop-fill"></i></button>
+  </div>
+</div>
+
+<!-- AOS动画 -->
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  /* ========== 通用交互 ========== */
+  AOS.init({ duration: 1000, once: true, offset: 100 });
+
+  // 加载动画
+  window.addEventListener('load', () => {
+    setTimeout(() => document.getElementById('loader').classList.add('hidden'), 500);
+  });
+
+  // 导航滚动 & 返回顶部
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    window.scrollY > 50 ? navbar.classList.add('scrolled') : navbar.classList.remove('scrolled');
+    const topBtn = document.getElementById('backToTop');
+    window.scrollY > 300 ? topBtn.classList.add('visible') : topBtn.classList.remove('visible');
+  });
+  document.getElementById('backToTop').addEventListener('click', e => {
+    e.preventDefault(); window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  // 移动端菜单 & 平滑滚动
+  const hamburger = document.getElementById('hamburger');
+  const navLinks = document.getElementById('navLinks');
+  hamburger.addEventListener('click', () => navLinks.classList.toggle('active'));
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+      e.preventDefault();
+      const target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        if (window.innerWidth <= 768) navLinks.classList.remove('active');
+      }
+    });
+  });
+
+  // 导航高亮
+  const sections = document.querySelectorAll('section');
+  const navLinksItems = document.querySelectorAll('.nav-links a');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(section => { if (scrollY >= section.offsetTop - 200) current = section.getAttribute('id'); });
+    navLinksItems.forEach(link => { link.classList.remove('active'); if (link.getAttribute('href').slice(1) === current) link.classList.add('active'); });
+  });
+
+  /* ========== 高德地图天气（替换易客云）========== */
+  class WeatherWidget {
+    constructor() {
+      this.isCelsius = true;
+      this.currentWeather = null;
+      this.init();
+    }
+
+    init() {
+      this.bindEvents();
+      this.loadWeather();
+      this.startAutoUpdate();
+    }
+
+    bindEvents() {
+      document.getElementById('weatherToggle').addEventListener('click', () => {
+        const widget = document.getElementById('weatherWidget');
+        widget.style.display = widget.style.display === 'none' ? 'block' : 'none';
+      });
+      document.getElementById('searchBtn').addEventListener('click', () => this.searchWeather());
+      document.getElementById('cityInput').addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') this.searchWeather();
+      });
+      document.getElementById('weatherTemp').addEventListener('click', () => this.toggleTempUnit());
+    }
+
+    async loadWeather() {
+      try {
+        const position = await this.getCurrentPosition();
+        const { latitude, longitude } = position.coords;
+        await this.getWeatherByCoords(latitude, longitude);
+      } catch (error) {
+        console.log('无法获取位置，使用默认城市');
+        await this.getWeatherByCity('北京');
+      }
+    }
+
+    getCurrentPosition() {
+      return new Promise((resolve, reject) => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(resolve, reject);
+        } else {
+          reject(new Error('浏览器不支持地理定位'));
+        }
+      });
+    }
+
+    async getWeatherByCoords(lat, lon) {
+      try {
+        const geo = await fetch(`https://restapi.amap.com/v3/geocode/regeo?location=${lon},${lat}&key=5589bbc658c50ae4a102d39819e892ea`);
+        const geoJson = await geo.json();
+        if (geoJson.status !== '1') throw new Error(geoJson.info);
+        const adcode = geoJson.regeocode.addressComponent.adcode;
+        await this.getWeatherByCity(adcode);
+      } catch (err) {
+        console.error('定位天气失败:', err);
+        this.showError('获取天气信息失败');
+      }
+    }
+
+    async getWeatherByCity(city) {
+      try {
+        const res = await fetch(`https://restapi.amap.com/v3/weather/weatherInfo?city=${encodeURIComponent(city)}&key=5589bbc658c50ae4a102d39819e892ea&extensions=all`);
+        const json = await res.json();
+        if (json.status !== '1' || !json.lives?.[0]) throw new Error(json.info);
+        const now = json.lives[0];
+        const data = {
+          city: now.city,
+          data: [{
+            tem: now.temperature,
+            wea: now.weather,
+            humidity: now.humidity,
+            win: [now.winddirection],
+            win_speed: now.windpower,
+            visibility: '10',
+            tem1: now.temperature,
+            index: {
+              uv: { level: now.uv_index || '-' },
+              clothes: { level: '-' },
+              sport: { level: '-' }
+            }
+          }]
+        };
+        this.updateWeatherUI(data);
+      } catch (err) {
+        console.error('城市天气失败:', err);
+        this.showError('未找到该城市的天气信息');
+      }
+    }
+
+    async searchWeather() {
+      const cityInput = document.getElementById('cityInput');
+      const city = cityInput.value.trim();
+      if (!city) return;
+      cityInput.disabled = true;
+      document.getElementById('searchBtn').disabled = true;
+      try {
+        await this.getWeatherByCity(city);
+        cityInput.value = '';
+      } finally {
+        cityInput.disabled = false;
+        document.getElementById('searchBtn').disabled = false;
+      }
+    }
+
+    updateWeatherUI(data) {
+      if (!data || !data.data || !data.data[0]) return;
+      this.currentWeather = data;
+      const today = data.data[0];
+      document.getElementById('weatherCity').textContent = data.city;
+      document.getElementById('weatherTemp').textContent = `${today.tem}°${this.isCelsius ? 'C' : 'F'}`;
+      document.getElementById('weatherDesc').textContent = today.wea;
+      document.getElementById('weatherUpdate').textContent = `更新: ${new Date().toLocaleTimeString()}`;
+      document.getElementById('weatherHumidity').textContent = `湿度 ${today.humidity}%`;
+      document.getElementById('weatherWind').textContent = `${today.win[0]} ${today.win_speed}`;
+      document.getElementById('weatherVisibility').textContent = `能见度 ${today.visibility}km`;
+      document.getElementById('weatherFeels').textContent = `体感 ${today.tem1}°C`;
+      this.updateForecast(data.data.slice(1, 4));
+      if (today.index) this.updateLifestyle(today.index);
+      localStorage.setItem('lastWeatherCity', data.city);
+    }
+
+    updateForecast(forecast) {
+      const forecastEl = document.getElementById('weatherForecast');
+      forecastEl.innerHTML = '';
+      forecast.forEach(day => {
+        const item = document.createElement('div');
+        item.className = 'forecast-item';
+        item.innerHTML = `<span>${day.day}</span><span>${day.tem2}°/${day.tem1}°</span><span>${day.wea}</span>`;
+        forecastEl.appendChild(item);
+      });
+    }
+
+    updateLifestyle(index) {
+      const lifestyleEl = document.getElementById('weatherLifestyle');
+      lifestyleEl.innerHTML = '';
+      const lifestyleMap = {
+        uv: { icon: 'bi-brightness-high', text: '紫外线' },
+        clothes: { icon: 'bi-basket', text: '穿衣' },
+        sport: { icon: 'bi-bicycle', text: '运动' }
+      };
+      Object.keys(lifestyleMap).forEach(key => {
+        if (index[key]) {
+          const item = document.createElement('div');
+          item.className = 'lifestyle-item';
+          item.innerHTML = `<i class="bi ${lifestyleMap[key].icon}"></i><span>${lifestyleMap[key].text}: ${index[key].level}</span>`;
+          lifestyleEl.appendChild(item);
+        }
+      });
+    }
+
+    toggleTempUnit() {
+      this.isCelsius = !this.isCelsius;
+      if (this.currentWeather) this.updateWeatherUI(this.currentWeather);
+    }
+
+    showError(message) {
+      document.getElementById('weatherCity').textContent = '获取失败';
+      document.getElementById('weatherDesc').textContent = message;
+    }
+
+    startAutoUpdate() {
+      setInterval(() => {
+        if (this.currentWeather) {
+          const city = this.currentWeather.city;
+          this.getWeatherByCity(city);
+        }
+      }, 30 * 60 * 1000);
+    }
+  }
+
+  /* ========== 音乐控制 ========== */
+  const audio = document.getElementById('bgMusic');
+  document.getElementById('homePlay').addEventListener('click', () => audio.play());
+  document.getElementById('homePause').addEventListener('click', () => audio.pause());
+  document.getElementById('playBtn').addEventListener('click', () => audio.play());
+  document.getElementById('pauseBtn').addEventListener('click', () => audio.pause());
+  document.getElementById('stopBtn').addEventListener('click', () => { audio.pause(); audio.currentTime = 0; });
+  document.getElementById('closeMusic').addEventListener('click', () => { document.getElementById('musicWin').style.display = 'none'; });
+
+  // 拖动音乐小窗
+  const musicWin = document.getElementById('musicWin');
+  const head = musicWin.querySelector('.music-head');
+  let offsetX = 0, offsetY = 0, isDown = false;
+  head.addEventListener('mousedown', e => { isDown = true; offsetX = e.clientX - musicWin.offsetLeft; offsetY = e.clientY - musicWin.offsetTop; });
+  window.addEventListener('mousemove', e => { if (!isDown) return; musicWin.style.left = (e.clientX - offsetX) + 'px'; musicWin.style.top = (e.clientY - offsetY) + 'px'; });
+  window.addEventListener('mouseup', () => isDown = false);
+
+  // 音乐加载失败提示
+  audio.addEventListener('error', () => alert('⚠️ 无法加载 linlin.mp3，请确认文件是否存在！'));
+
+  /* ========== 联系表单 ========== */
+  document.getElementById('contactForm').addEventListener('submit', e => {
+    e.preventDefault();
+    const fd = new FormData(e.target);
+    alert(`感谢您的留言，${fd.get('name')}！\n我们会尽快通过 ${fd.get('email')} 与您联系。`);
+    e.target.reset();
+  });
+
+  // 初始化天气小部件
+  new WeatherWidget();
+</script>
+</body>
+</html>
