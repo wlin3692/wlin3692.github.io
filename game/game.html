@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <title>Minesweeper Game</title>
+  <link rel="shortcut icon" href="assets/mine.png" type="image/x-icon">
+  <link rel="stylesheet" href="./index.css">
+  <!-- 双指缩放库 -->
+  <script type="module" src="https://unpkg.com/pinch-zoom-element@1.1.0/dist/pinch-zoom.js"></script>
+</head>
+<body>
+  <div id="app" class="app">
+    <h1>小林的扫雷小游戏</h1>
+    <div class="settings">
+      <select class="levels" v-model="selectedLevel" @change="handleSelection">
+        <option disabled selected value="">Levels</option>
+        <option value="level1">Very Eazy</option>
+        <option value="level2">Eazy</option>
+        <option value="level3">No Eazy</option>
+      </select>
+      <button class="btn" @click="startGame">Start Game</button>
+      <div class="mode-switch" v-if="isMobile">
+        <button :class="{active:mode==='dig'}" @click="mode='dig'">🗡 挖掘</button>
+        <button :class="{active:mode==='flag'}" @click="mode='flag'">🚩 插旗</button>
+        <button :class="{active:mode==='unflag'}" @click="mode='unflag'">🏳️ 拔旗</button>
+      </div>
+    </div>
+
+    <!-- 手机端：可缩放画布 -->
+    <pinch-zoom class="viewport" v-if="isMobile">
+      <div class="canvas">
+        <div class="main">
+          <game-board></game-board>
+        </div>
+      </div>
+    </pinch-zoom>
+
+    <!-- 电脑端：原样 -->
+    <div class="main" v-else>
+      <game-board></game-board>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
