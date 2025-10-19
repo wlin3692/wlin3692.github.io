@@ -1,0 +1,141 @@
+.app {
+    text-align:center;
+}
+.settings {
+    margin-bottom: 20px;
+}
+.btn {
+    font-size: medium;
+    width: 100px;
+    height: 40px;
+}
+.levels {
+    font-size: medium;
+    width: 100px;
+    height: 40px;
+}
+.cell {
+    width: 36px;
+    height: 36px;
+    border: 2px solid #808080;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+}
+.cell-cover {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 30px;
+    font-size: 16px;
+    cursor: pointer;
+    /* border: none; */
+    border-left: 6px solid #fff;
+    border-top: 6px solid #fff;
+    border-right: 4px solid #808080;
+    border-bottom: 4px solid #808080;
+}
+.icon {
+    width: 100%;
+    height: 100%;
+}
+.main {
+    display: inline-block;
+    background-color: #c0c0c0;
+    padding: 25px;
+}
+.title {
+    display: flex;
+    justify-content: space-between;
+    border: 5px solid #808080;
+    height: 80px;
+}
+.mine-remain {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-start;
+}
+.time {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+}
+.face {
+    margin: 10px;
+    width: 50px;
+    border-left: 6px solid #fff;
+    border-top: 6px solid #fff;
+    border-right: 4px solid #808080;
+    border-bottom: 4px solid #808080;
+}
+.number {
+    height: 100%;
+}
+.board {
+    display: inline-block;
+    border: 5px solid #808080;
+}
+@media (max-width: 1200px) {
+    /* 适应手机 */
+    .btn {
+        font-size: medium;
+        width: 30%  !important;
+        height: 40px;
+    }
+    .levels {
+        font-size: medium;
+        width: 30%  !important;
+        height: 40px;
+    }
+    .main {
+        display: inline-block;
+        background-color: #c0c0c0;
+        padding: 25px;
+        overflow: auto  !important;
+    }
+    .board-simple {
+        display: inline-block;
+        border: 5px solid #808080;
+        width: 380px;
+    }
+    .board-medium {
+        display: inline-block;
+        border: 5px solid #808080;
+        width: 650px;
+    }
+    .board-hard {
+        display: inline-block;
+        border: 5px solid #808080;
+        width: 1200px;
+    }
+}
+/* ===== 原有样式全部保留 ===== */
+.app { text-align:center }
+.settings { margin-bottom:20px }
+.btn { font-size:medium; width:100px; height:40px }
+.levels { font-size:medium; width:100px; height:40px }
+.cell { width:36px; height:36px; border:2px solid #808080; display:inline-block; text-align:center; line-height:30px; font-size:16px; cursor:pointer }
+.cell-cover { width:30px; height:30px; display:inline-block; text-align:center; line-height:30px; font-size:16px; cursor:pointer;
+              border-left:6px solid #fff; border-top:6px solid #fff; border-right:4px solid #808080; border-bottom:4px solid #808080 }
+.icon { width:100%; height:100% }
+.main { display:inline-block; background:#c0c0c0; padding:25px }
+.title { display:flex; justify-content:space-between; border:5px solid #808080; height:80px }
+.mine-remain { padding:10px; display:flex; justify-content:flex-start }
+.time { padding:10px; display:flex; justify-content:flex-end }
+.face { margin:10px; width:50px; border-left:6px solid #fff; border-top:6px solid #fff; border-right:4px solid #808080; border-bottom:4px solid #808080 }
+.number { height:100% }
+.board { display:inline-block; border:5px solid #808080 }
+
+/* 移动端原媒体查询保留 */
+@media (max-width:1200px){ ... }
+
+/* ===== 新增按钮样式 ===== */
+.action-buttons { margin:10px 0; text-align:center }
+.action-btn { width:70px; height:32px; margin:0 4px; border:3px outset #ccc; background:#ddd; cursor:pointer; font-size:14px }
+.action-btn:active,
+.action-btn.active { border:inset 2px #ccc; background:#bbb }

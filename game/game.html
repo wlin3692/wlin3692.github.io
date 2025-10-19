@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Minesweeper Game</title>
+  <link rel="shortcut icon" href="assets/mine.png" type="image/x-icon">
+  <link rel="stylesheet" href="./index.css">
+</head>
+<body>
+  <div id="app" class="app">
+    <h1>小林的休闲扫雷</h1>
+
+    <div class="settings">
+      <select class="levels" v-model="selectedLevel" @change="handleSelection">
+        <option disabled selected value="">Levels</option>
+        <option value="level1">Very Eazy</option>
+        <option value="level2">Eazy</option>
+        <option value="level3">No Eazy</option>
+      </select>
+      <button class="btn" @click="startGame">Start Game</button>
+    </div>
+
+    <!-- 新增：功能按钮 -->
+    <div class="action-buttons">
+      <button class="action-btn" :class="{active:currentAction==='dig'}"   @click="currentAction='dig'">🗡挖掘</button>
+      <button class="action-btn" :class="{active:currentAction==='flag'}"  @click="currentAction='flag'">🚩插旗</button>
+      <button class="action-btn" :class="{active:currentAction==='unflag'}"@click="currentAction='unflag'">🏳拔旗</button>
+    </div>
+
+    <div class="main">
+      <div class="title">
+        <div class="mine-remain">
+          <img class="number" v-for="num in markedStr" :src="'assets/digit'+num+'.png'">
+        </div>
+        <div class="face" @click="startGame">
+          <img class="icon" src="assets/smile.png" alt="笑脸" v-show="gameOn">
+          <img class="icon" src="assets/win.png" alt="胜利" v-show="!gameOn && safeRemain==0">
+          <img class="icon" src="assets/dead.png" alt="失败" v-show="!gameOn && safeRemain!=0">
+        </div>
+        <div class="time">
+          <img class="number" v-for="num in timeStr" :src="'assets/digit'+num+'.png'">
+        </div>
+      </div>
+
+      <div :class="suitMobile()">
+        <div v-for="(row, rowIndex) in board" :key="rowIndex">
+          <div v-for="(cell, colIndex) in row" :key="colIndex"
+               :class="cell.revealed?'cell':'cell-cover'"
+               @click="handleCellClick(rowIndex,colIndex)">
+            <img src="assets/flag.png"  class="icon" alt="标记" v-show="!cell.revealed && cell.marked">
+            <img :src="'assets/open'+cell.adjacentMines+'.png'" class="icon" :alt="cell.adjacentMines"
+                 v-show="cell.revealed && !cell.isMine && cell.adjacentMines!=0">
+            <img src="assets/mine-ceil.png" class="icon" alt="雷"
+                 v-show="cell.revealed && cell.isMine && !(rowIndex===wrongIndex[0] && colIndex===wrongIndex[1])">
+            <img src="assets/misflagged.png" class="icon" alt="错"
+                 v-show="cell.revealed && !cell.isMine && cell.marked">
+            <img src="assets/mine-death.png"  class="icon" alt="踩雷"
+                 v-show="cell.revealed && rowIndex===wrongIndex[0] && colIndex===wrongIndex[1]">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  <script src="./main.js"></script>
+</body>
+</html>
