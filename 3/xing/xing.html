@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>流星雨</title>
+    <style>
+        @keyframes star-opacity {
+            0%   { opacity: 0; }
+            40%  { opacity: 1; }
+            60%  { opacity: 1; }
+            100% { opacity: 0; }
+        }
+
+        @keyframes star-pos {
+            0%   { transform: scale(0) rotate(0) translate3d(0, 0, 0); }
+            100% { transform: scale(1) rotate(0) translate3d(-450px, 450px, 0); }
+        }
+
+        body {
+            padding: 0;
+            margin: 0;
+            overflow: hidden;
+        }
+
+        /* 星空黑背景 */
+        .index-bg {
+            width: 100vw;
+            height: 100vh;
+            background: radial-gradient(ellipse at bottom, #0d1d31 0%, #0c0d13 100%);
+            position: relative;
+        }
+
+        /* 星星容器 */
+        .index-bg .stars {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 流星样式 */
+        .index-bg .star {
+            display: block;
+            width: 5px;
+            height: 5px;
+            border-radius: 50%;
+            background: #fff;
+            top: 100px;
+            left: 400px;
+            position: absolute;
+            transform-origin: 100% 0;
+            animation: star-opacity 5s infinite ease-in, star-pos 5s infinite ease-in;
+            box-shadow: 0 0 5px 5px rgba(255, 255, 255, .3);
+            opacity: 0;
+            z-index: 2;
+        }
+
+        /* 流星尾巴 */
+        .index-bg .star:after {
+            content: '';
+            display: block;
+            top: 0;
+            left: 4px;
+            border: 0 solid #fff;
+            border-width: 0 90px 2px;
+            border-color: transparent transparent transparent rgba(255, 255, 255, .3);
+            transform: rotate(-45deg) translate3d(1px, 3px, 0);
+            box-shadow: 0 0 1px 0 rgba(255, 255, 255, .1);
+            transform-origin: 0% 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="index-bg">
+        <div class="stars">
+            <div class="star"></div>
+            <div class="star" style="top: 80px; left: 800px; animation-delay: 3s;"></div>
+            <div class="star" style="top: 40px; left: 646px; animation-delay: 2s;"></div>
+            <div class="star" style="top: 120px; left: 395px; animation-delay: 4s;"></div>
+            <div class="star" style="top: 160px; left: 765px; animation-delay: 1s;"></div>
+            <div class="star" style="top: 170px; left: 1200px; animation-delay: 2s;"></div>
+            <div class="star" style="top: 200px; left: 1000px; animation-delay: 1s;"></div>
+        </div>
+    </div>
+</body>
+</html>
