@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="用 Web Audio API 生成的离线专注播放台。">
+  <title>专注播放台 | 小林作品集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a href="../../../index.html" aria-label="返回作品集">← <span>返回作品集</span></a><span class="brand">FOCUS PLAYER / 016</span><span class="badge">WEB AUDIO / OFFLINE</span></header>
+  <main class="shell">
+    <section class="intro"><p class="eyebrow">GENERATIVE SOUND · NO REMOTE ASSETS</p><h1>给思绪<br><em>留一段空白。</em></h1><p class="intro-copy">三种由浏览器即时生成的轻量氛围音。无需下载音频，按下播放，让节奏替你保持专注。</p></section>
+    <section class="player" aria-labelledby="player-title">
+      <div class="player__top"><span class="label">CURRENT SESSION / 25 MIN</span><span id="engineStatus">引擎待启动</span></div>
+      <div class="visualizer" id="visualizer" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+      <div class="now-playing"><div class="cover" id="cover"><span>01</span><b>∿</b></div><div><p class="track-kicker">NOW GENERATING</p><h2 id="player-title">晨光漫游</h2><p id="trackDescription">柔和的脉冲，适合打开一天的第一个窗口。</p></div></div>
+      <div class="progress-wrap"><span id="elapsed">00:00</span><input id="progress" type="range" min="0" max="1500" value="0" aria-label="播放进度"><span id="duration">25:00</span></div>
+      <div class="transport"><button id="prev" type="button" aria-label="上一首">◀◀</button><button class="play" id="play" type="button" aria-label="播放">▶</button><button id="next" type="button" aria-label="下一首">▶▶</button><label class="volume" for="volume">音量 <input id="volume" type="range" min="0" max="1" step=".01" value=".55"></label></div>
+      <div class="track-list" id="trackList" aria-label="音轨列表"></div>
+    </section>
+    <section class="notes"><article><span>01</span><h3>即时生成</h3><p>声音由浏览器振荡器现场合成，页面无需远程音频文件。</p></article><article><span>02</span><h3>轻量节奏</h3><p>脉冲和弦保持低存在感，适合阅读、写作和整理思路。</p></article><article><span>03</span><h3>你的控制台</h3><p>支持音轨切换、进度跳转、音量调节和键盘空格播放。</p></article></section>
+  </main>
+  <footer><span>基于 Music Player · MIT License</span><span>Web Audio API / 本地运行</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>
