@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 480">
+  <rect width="960" height="480" fill="#0b1224"/>
+  <circle cx="150" cy="110" r="2" fill="#fff"/><circle cx="730" cy="90" r="3" fill="#b6ddff"/><circle cx="850" cy="300" r="2" fill="#fff"/><circle cx="520" cy="52" r="2" fill="#fff"/>
+  <circle cx="820" cy="150" r="56" fill="#24436c"/><circle cx="820" cy="150" r="43" fill="#326a8c"/>
+  <path d="M95 270l55-22 45 22-45 22z" fill="#77d9ff"/><path d="M110 270l-17 29 39-21 36 21-13-29z" fill="#e8fbff"/>
+  <path d="M215 268h42l22 8-22 8h-42l-22-8z" fill="#ffb347"/><path d="M285 140h38l20 9-20 9h-38l-20-9z" fill="#bd6c68"/>
+  <text x="48" y="65" fill="#dff4ff" font-family="sans-serif" font-size="26" font-weight="700">星际守卫</text>
+  <text x="50" y="100" fill="#8fb6d5" font-family="sans-serif" font-size="14">小林 · Canvas 互动游戏</text>
+  <rect x="50" y="405" width="860" height="1" fill="#2b4767"/><text x="52" y="438" fill="#8fb6d5" font-family="sans-serif" font-size="14">移动飞船 · 收集燃料 · 击落陨石</text>
+</svg>
