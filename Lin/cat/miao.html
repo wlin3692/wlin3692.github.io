@@ -1,0 +1,1313 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#dfe9e5">
+  <title>小猫看这里</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+      --wall: #dfe9e5;
+      --floor: #eee7dc;
+      --baseboard: #f7f4ee;
+      --ink: #1d2925;
+      --accent: #b85d43;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+      margin: 0;
+      overflow: hidden;
+      overscroll-behavior: none;
+    }
+
+    body {
+      min-height: 100svh;
+      min-height: 100dvh;
+      background: var(--floor);
+      cursor: url("fish-cursor.png") 16 30, crosshair;
+      touch-action: none;
+    }
+
+    body[data-scene-theme="dawn"] {
+      --wall: #dce6e0;
+      --floor: #ede2da;
+      --baseboard: #faf2ea;
+      --accent: #ba7058;
+    }
+
+    body[data-scene-theme="dusk"] {
+      --wall: #c6d0c7;
+      --floor: #d9ccc3;
+      --baseboard: #f0e5dc;
+      --accent: #a95743;
+    }
+
+    body[data-scene-theme="night"] {
+      --wall: #31413b;
+      --floor: #3d383b;
+      --baseboard: #aaa29b;
+      --accent: #dd876d;
+    }
+
+    .back-to-portfolio {
+      position: fixed;
+      top: max(14px, env(safe-area-inset-top));
+      left: max(14px, env(safe-area-inset-left));
+      z-index: 40;
+      display: grid;
+      width: 44px;
+      height: 44px;
+      border: 1px solid rgb(29 41 37 / 18%);
+      border-radius: 50%;
+      background: rgb(255 255 255 / 84%);
+      color: var(--ink);
+      box-shadow: 0 5px 18px rgb(38 47 43 / 13%);
+      font-size: 24px;
+      line-height: 1;
+      place-items: center;
+      text-decoration: none;
+      touch-action: manipulation;
+      transition: background-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      backdrop-filter: blur(8px);
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    .back-to-portfolio:hover {
+      background: #fff;
+      box-shadow: 0 7px 22px rgb(38 47 43 / 18%);
+      transform: translateX(-2px);
+    }
+
+    .back-to-portfolio:focus-visible {
+      outline: 3px solid rgb(184 93 67 / 42%);
+      outline-offset: 3px;
+    }
+
+    .scene {
+      --floor-line: 68%;
+      position: fixed;
+      inset: 0;
+      isolation: isolate;
+      overflow: hidden;
+      background: var(--floor);
+      transition: background-color 900ms ease;
+    }
+
+    .scene::before,
+    .scene::after {
+      position: absolute;
+      right: 0;
+      left: 0;
+      z-index: 0;
+      content: "";
+      pointer-events: none;
+    }
+
+    .scene::before {
+      top: 0;
+      height: var(--floor-line);
+      background: var(--wall);
+      transition: background-color 900ms ease;
+    }
+
+    .scene::after {
+      top: calc(var(--floor-line) - 7px);
+      height: 11px;
+      border-top: 1px solid rgb(45 61 55 / 12%);
+      border-bottom: 1px solid rgb(45 61 55 / 16%);
+      background: var(--baseboard);
+      box-shadow: 0 2px 5px rgb(61 52 43 / 7%);
+      transition: background-color 900ms ease, border-color 900ms ease;
+    }
+
+    .scene-light {
+      position: absolute;
+      inset: 0;
+      z-index: 2;
+      background: transparent;
+      pointer-events: none;
+      transition: background-color 900ms ease;
+    }
+
+    body[data-scene-theme="dawn"] .scene-light {
+      background: rgb(226 151 111 / 4%);
+    }
+
+    body[data-scene-theme="dusk"] .scene-light {
+      background: rgb(112 65 52 / 9%);
+    }
+
+    body[data-scene-theme="night"] .scene-light {
+      background: rgb(14 28 26 / 18%);
+    }
+
+    .cat-stage {
+      position: absolute;
+      top: var(--floor-line);
+      left: 50%;
+      z-index: 1;
+      width: min(82vw, 60vh, 540px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -80%);
+    }
+
+    .cat-stage::after {
+      position: absolute;
+      right: 19%;
+      bottom: 6.5%;
+      left: 19%;
+      z-index: 0;
+      height: 4.5%;
+      border-radius: 50%;
+      background: rgb(42 49 46 / 19%);
+      filter: blur(11px);
+      content: "";
+      pointer-events: none;
+    }
+
+    #cat {
+      position: relative;
+      z-index: 1;
+      display: block;
+      width: 100%;
+      height: 100%;
+      filter: drop-shadow(0 1px 1px rgb(42 49 46 / 9%));
+      transition: filter 900ms ease;
+    }
+
+    body[data-scene-theme="dusk"] #cat {
+      filter: saturate(0.94) brightness(0.94) drop-shadow(0 1px 1px rgb(42 49 46 / 12%));
+    }
+
+    body[data-scene-theme="night"] #cat {
+      filter: saturate(0.88) brightness(0.88) drop-shadow(0 2px 2px rgb(10 19 17 / 22%));
+    }
+
+    #touch-fish {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: 20;
+      width: 64px;
+      height: 64px;
+      opacity: 0;
+      filter: drop-shadow(0 3px 3px rgb(33 30 45 / 20%));
+      image-rendering: pixelated;
+      pointer-events: none;
+      transform: translate3d(-100px, -100px, 0);
+      transform-origin: center;
+      transition: opacity 180ms ease;
+      user-select: none;
+      -webkit-user-drag: none;
+      will-change: transform;
+    }
+
+    body[data-touch-fish="visible"] #touch-fish {
+      opacity: 1;
+    }
+
+    body[data-scene-theme="night"] #touch-fish {
+      filter: brightness(1.08) drop-shadow(0 3px 4px rgb(7 13 12 / 32%));
+    }
+
+    #touch-effects {
+      position: fixed;
+      inset: 0;
+      z-index: 18;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .touch-ripple,
+    .fish-trail {
+      position: absolute;
+      top: 0;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+      will-change: opacity, transform;
+    }
+
+    .touch-ripple {
+      width: 20px;
+      height: 20px;
+      border: 2px solid rgb(79 142 164 / 65%);
+      animation: touch-ripple 650ms ease-out forwards;
+    }
+
+    .fish-trail {
+      width: 11px;
+      height: 5px;
+      border: 1px solid rgb(79 142 164 / 48%);
+      animation: fish-trail 620ms ease-out forwards;
+    }
+
+    #load-status {
+      position: fixed;
+      right: max(14px, env(safe-area-inset-right));
+      bottom: max(14px, env(safe-area-inset-bottom));
+      left: max(14px, env(safe-area-inset-left));
+      z-index: 30;
+      width: min(360px, calc(100vw - 28px));
+      margin-inline: auto;
+      padding: 10px 12px;
+      border: 1px solid rgb(23 28 26 / 18%);
+      border-radius: 8px;
+      background: rgb(255 255 255 / 88%);
+      color: var(--ink);
+      font: 12px/1.4 Arial, "Microsoft YaHei", sans-serif;
+      box-shadow: 0 8px 28px rgb(38 47 43 / 13%);
+      transition: opacity 180ms ease, transform 180ms ease;
+      backdrop-filter: blur(10px);
+    }
+
+    #load-status[hidden] {
+      display: none;
+    }
+
+    .load-status__top {
+      display: grid;
+      grid-template-columns: 18px minmax(0, 1fr) auto auto;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 8px;
+    }
+
+    .load-spinner {
+      width: 16px;
+      height: 16px;
+      border: 2px solid rgb(44 56 51 / 18%);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    #load-status[data-state="error"] .load-spinner {
+      border-color: rgb(184 93 67 / 24%);
+      border-top-color: #b83f32;
+      animation: none;
+    }
+
+    #load-label {
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    #load-percent {
+      color: rgb(29 41 37 / 68%);
+      font-variant-numeric: tabular-nums;
+    }
+
+    .load-retry {
+      display: grid;
+      width: 28px;
+      height: 28px;
+      padding: 0;
+      border: 1px solid rgb(184 93 67 / 32%);
+      border-radius: 50%;
+      background: #fff;
+      color: #9d3f31;
+      cursor: pointer;
+      font: 19px/1 Arial, sans-serif;
+      place-items: center;
+      touch-action: manipulation;
+    }
+
+    .load-retry[hidden] {
+      display: none;
+    }
+
+    .load-retry:focus-visible {
+      outline: 3px solid rgb(184 93 67 / 38%);
+      outline-offset: 2px;
+    }
+
+    .load-progress {
+      height: 4px;
+      overflow: hidden;
+      border-radius: 2px;
+      background: rgb(44 56 51 / 12%);
+    }
+
+    #load-progress-bar {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--accent);
+      transition: width 160ms ease;
+    }
+
+    .load-progress.is-indeterminate #load-progress-bar {
+      width: 38%;
+      animation: progress-scan 1.1s ease-in-out infinite;
+    }
+
+    #load-status[data-state="error"] #load-progress-bar {
+      background: #b83f32;
+    }
+
+    #verification-result {
+      position: fixed;
+      z-index: 30;
+      max-width: calc(100vw - 28px);
+      padding: 8px 10px;
+      border: 1px solid rgb(23 28 26 / 18%);
+      border-radius: 4px;
+      background: #fff;
+      color: var(--ink);
+      font: 12px/1.4 Consolas, monospace;
+      overflow-wrap: anywhere;
+    }
+
+    #verification-result {
+      bottom: max(14px, env(safe-area-inset-bottom));
+      left: 14px;
+    }
+
+    #verification-result[hidden] {
+      display: none;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes progress-scan {
+      from { transform: translateX(-110%); }
+      to { transform: translateX(275%); }
+    }
+
+    @keyframes touch-ripple {
+      from { opacity: 0.85; transform: translate(-50%, -50%) scale(0.4); }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(3.6); }
+    }
+
+    @keyframes fish-trail {
+      from { opacity: 0.72; transform: translate(-50%, -50%) scale(1); }
+      to { opacity: 0; transform: translate(-50%, -50%) scale(0.35); }
+    }
+
+    @media (max-width: 520px) {
+      .scene {
+        --floor-line: 65%;
+      }
+
+      .cat-stage {
+        width: min(88vw, 54vh);
+        transform: translate(-50%, -80%);
+      }
+    }
+
+    @media (orientation: landscape) and (max-height: 520px) {
+      .scene {
+        --floor-line: 73%;
+      }
+
+      .cat-stage {
+        width: min(58vw, 82vh, 460px);
+      }
+    }
+
+    @media (hover: none), (pointer: coarse) {
+      body {
+        cursor: default;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .load-spinner {
+        animation: none;
+      }
+
+      .load-progress.is-indeterminate #load-progress-bar {
+        animation: none;
+        transform: none;
+      }
+
+      .touch-ripple,
+      .fish-trail {
+        display: none;
+      }
+
+      #load-status,
+      #load-progress-bar {
+        transition: none;
+      }
+
+      #touch-fish {
+        transition: none;
+      }
+
+      .back-to-portfolio {
+        transition: none;
+      }
+
+      .scene,
+      .scene::before,
+      .scene::after,
+      .scene-light,
+      #cat {
+        transition: none;
+      }
+    }
+  </style>
+</head>
+<body data-ready="false" data-front-ready="false" data-direction="center" data-frame="0" data-touch-fish="hidden" data-scene-theme="day">
+  <a class="back-to-portfolio" href="../../index.html#portfolio" aria-label="返回作品集" title="返回作品集">
+    <span aria-hidden="true">&#8592;</span>
+  </a>
+  <main class="scene">
+    <div class="cat-stage">
+      <canvas id="cat" width="640" height="640" role="img" aria-label="会跟随指针方向转头的小猫"></canvas>
+    </div>
+    <span class="scene-light" aria-hidden="true"></span>
+  </main>
+  <div id="touch-effects" aria-hidden="true"></div>
+  <img id="touch-fish" src="fish-cursor.png" alt="" aria-hidden="true">
+  <div id="load-status" data-state="loading" aria-live="polite">
+    <div class="load-status__top">
+      <span class="load-spinner" aria-hidden="true"></span>
+      <span id="load-label">正在准备小猫</span>
+      <span id="load-percent">0%</span>
+      <button id="load-retry" class="load-retry" type="button" aria-label="重新加载" title="重新加载" hidden>&#8635;</button>
+    </div>
+    <div id="load-progress" class="load-progress" role="progressbar" aria-label="资源加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+      <span id="load-progress-bar"></span>
+    </div>
+  </div>
+  <output id="verification-result" hidden></output>
+
+  <script>
+    "use strict";
+
+    const SPRITE_COLUMNS = 16;
+    const SPRITE_CELL = 320;
+    const FRAME_COUNT = 193;
+    const SPRITE_ROWS = Math.ceil(FRAME_COUNT / SPRITE_COLUMNS);
+    const FRONT_FRAME = 0;
+    const SKIP_FRAMES = new Set([
+      11, 12, 13, 14, 15,
+      59, 60, 61, 62, 63,
+      161, 162, 163, 164, 165, 166, 167
+    ]);
+
+    // Screen angles are 0=right, 90=down, 180=left and 270=up.
+    // Unequal source-frame gaps and the 180 -> 24 wrap are intentional.
+    const ANGLE_KEYS = Object.freeze([
+      { angle: 0, frame: 69, label: "right" },
+      { angle: 22.5, frame: 78, label: "right-down-half" },
+      { angle: 45, frame: 84, label: "down-right" },
+      { angle: 67.5, frame: 96, label: "down-right-half" },
+      { angle: 90, frame: 105, label: "down" },
+      { angle: 112.5, frame: 117, label: "down-left-half" },
+      { angle: 135, frame: 126, label: "down-left" },
+      { angle: 157.5, frame: 132, label: "left-down-half" },
+      { angle: 180, frame: 138, label: "left" },
+      { angle: 202.5, frame: 147, label: "left-up-half" },
+      { angle: 225, frame: 153, label: "up-left" },
+      { angle: 247.5, frame: 159, label: "up-left-half" },
+      { angle: 270, frame: 180, label: "up" },
+      { angle: 292.5, frame: 24, label: "up-right-half" },
+      { angle: 315, frame: 42, label: "up-right" },
+      { angle: 337.5, frame: 54, label: "right-up-half" }
+    ]);
+
+    const DIRECTION_NAMES = [
+      "right", "down-right", "down", "down-left",
+      "left", "up-left", "up", "up-right"
+    ];
+
+    const canvas = document.querySelector("#cat");
+    const context = canvas.getContext("2d", { alpha: true, desynchronized: true });
+    const themeColorMeta = document.querySelector('meta[name="theme-color"]');
+    const touchFish = document.querySelector("#touch-fish");
+    const touchEffects = document.querySelector("#touch-effects");
+    const loadStatus = document.querySelector("#load-status");
+    const loadLabel = document.querySelector("#load-label");
+    const loadPercent = document.querySelector("#load-percent");
+    const loadProgress = document.querySelector("#load-progress");
+    const loadProgressBar = document.querySelector("#load-progress-bar");
+    const loadRetry = document.querySelector("#load-retry");
+    const motionQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const touchHintQuery = window.matchMedia("(hover: none), (pointer: coarse)");
+    const touchHintStorageKey = "cat-touch-guidance-complete";
+    const pageParams = new URL(window.location.href).searchParams;
+    const sceneThemes = new Set(["dawn", "day", "dusk", "night"]);
+    const sprite = new Image();
+    const front = new Image();
+    sprite.decoding = "async";
+    front.decoding = "async";
+    front.fetchPriority = "high";
+
+    const state = {
+      frontReady: false,
+      ready: false,
+      centered: true,
+      angle: null,
+      frame: FRONT_FRAME,
+      nextFrame: FRONT_FRAME,
+      mix: 0,
+      direction: "center"
+    };
+    const touchState = {
+      pointerId: null,
+      active: false,
+      drifting: false,
+      x: 0,
+      y: 0,
+      targetX: 0,
+      targetY: 0,
+      facing: 1,
+      tilt: 0
+    };
+    const touchHintState = {
+      running: false,
+      frame: 0,
+      timer: 0
+    };
+    const trailState = {
+      x: null,
+      y: null,
+      time: 0
+    };
+    let targetCentered = true;
+    let targetAngle = 0;
+    let renderedAngle = null;
+    let animationFrame = 0;
+    let lastAnimationTime = 0;
+    let loadAttempt = 0;
+    let loadHideTimer = 0;
+
+    function loadImage(image, source) {
+      return new Promise((resolve, reject) => {
+        image.onload = () => {
+          const decoded = typeof image.decode === "function"
+            ? image.decode().catch(() => undefined)
+            : Promise.resolve();
+          decoded.then(() => resolve(image));
+        };
+        image.onerror = () => reject(new Error(`Failed to load ${source}`));
+        image.src = source;
+      });
+    }
+
+    function setLoadProgress(value, label, { indeterminate = false } = {}) {
+      const progress = Math.max(0, Math.min(100, Math.round(value)));
+      clearTimeout(loadHideTimer);
+      loadStatus.hidden = false;
+      loadStatus.dataset.state = "loading";
+      loadLabel.textContent = label;
+      loadRetry.hidden = true;
+      loadProgress.classList.toggle("is-indeterminate", indeterminate);
+      loadProgressBar.style.width = indeterminate ? "" : `${progress}%`;
+      if (indeterminate) {
+        loadPercent.textContent = "";
+        loadProgress.removeAttribute("aria-valuenow");
+      } else {
+        loadPercent.textContent = `${progress}%`;
+        loadProgress.setAttribute("aria-valuenow", String(progress));
+      }
+    }
+
+    function showLoadError() {
+      clearTimeout(loadHideTimer);
+      loadStatus.hidden = false;
+      loadStatus.dataset.state = "error";
+      loadLabel.textContent = state.frontReady ? "动作加载失败" : "图片加载失败";
+      loadPercent.textContent = "";
+      loadProgress.classList.remove("is-indeterminate");
+      loadProgress.removeAttribute("aria-valuenow");
+      loadProgressBar.style.width = "100%";
+      loadRetry.hidden = false;
+    }
+
+    async function loadSpriteImage(image, source, attempt) {
+      const resourceUrl = new URL(source, window.location.href);
+      const canStream = ["http:", "https:"].includes(resourceUrl.protocol)
+        && typeof ReadableStream === "function";
+
+      if (!canStream) {
+        setLoadProgress(22, "正在加载动作", { indeterminate: true });
+        await loadImage(image, source);
+        setLoadProgress(92, "正在解码动作");
+        return;
+      }
+
+      const response = await fetch(resourceUrl.href, {
+        cache: attempt > 1 ? "reload" : "default"
+      });
+      if (!response.ok) throw new Error(`Failed to load ${source}: ${response.status}`);
+
+      const total = Number(response.headers.get("content-length")) || 0;
+      let blob;
+      if (!response.body || !total) {
+        setLoadProgress(22, "正在加载动作", { indeterminate: true });
+        blob = await response.blob();
+      } else {
+        const reader = response.body.getReader();
+        const chunks = [];
+        let received = 0;
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          received += value.byteLength;
+          setLoadProgress(22 + received / total * 68, "正在加载动作");
+        }
+        blob = new Blob(chunks, {
+          type: response.headers.get("content-type") || "image/webp"
+        });
+      }
+
+      setLoadProgress(92, "正在解码动作");
+      const blobUrl = URL.createObjectURL(blob);
+      try {
+        await loadImage(image, blobUrl);
+      } finally {
+        URL.revokeObjectURL(blobUrl);
+      }
+    }
+
+    function sceneThemeForHour(hour) {
+      if (hour >= 5 && hour < 8) return "dawn";
+      if (hour >= 8 && hour < 17) return "day";
+      if (hour >= 17 && hour < 20) return "dusk";
+      return "night";
+    }
+
+    function applySceneTheme(date = new Date()) {
+      const override = pageParams.get("scene");
+      const theme = sceneThemes.has(override) ? override : sceneThemeForHour(date.getHours());
+      document.body.dataset.sceneTheme = theme;
+      requestAnimationFrame(() => {
+        const wallColor = getComputedStyle(document.body).getPropertyValue("--wall").trim();
+        if (wallColor) themeColorMeta.setAttribute("content", wallColor);
+      });
+    }
+
+    function calibratedPose(angle) {
+      const normalized = ((angle % 360) + 360) % 360;
+      for (let index = 0; index < ANGLE_KEYS.length; index += 1) {
+        const start = ANGLE_KEYS[index];
+        const end = ANGLE_KEYS[(index + 1) % ANGLE_KEYS.length];
+        const endAngle = index === ANGLE_KEYS.length - 1 ? 360 : end.angle;
+        if (normalized >= start.angle && normalized <= endAngle) {
+          const raw = (normalized - start.angle) / (endAngle - start.angle);
+          const eased = raw * raw * (3 - 2 * raw);
+          let frameDelta = end.frame - start.frame;
+          if (frameDelta < -FRAME_COUNT / 2) frameDelta += FRAME_COUNT;
+          if (frameDelta > FRAME_COUNT / 2) frameDelta -= FRAME_COUNT;
+          let frame = ((Math.round(start.frame + frameDelta * eased) % FRAME_COUNT) + FRAME_COUNT) % FRAME_COUNT;
+          const direction = Math.sign(frameDelta) || 1;
+          while (SKIP_FRAMES.has(frame)) {
+            frame = (frame + direction + FRAME_COUNT) % FRAME_COUNT;
+          }
+          return { frame, nextFrame: frame, mix: 0 };
+        }
+      }
+      return { frame: ANGLE_KEYS[0].frame, nextFrame: ANGLE_KEYS[0].frame, mix: 0 };
+    }
+
+    function calibratedFrame(angle) {
+      const pose = calibratedPose(angle);
+      return pose.mix < 0.5 ? pose.frame : pose.nextFrame;
+    }
+
+    function resizeCanvas() {
+      const rect = canvas.getBoundingClientRect();
+      const density = Math.min(window.devicePixelRatio || 1, 2);
+      const width = Math.max(1, Math.round(rect.width * density));
+      const height = Math.max(1, Math.round(rect.height * density));
+      if (canvas.width !== width || canvas.height !== height) {
+        canvas.width = width;
+        canvas.height = height;
+      }
+      render();
+    }
+
+    function render() {
+      if (!state.frontReady || !context) return;
+      context.clearRect(0, 0, canvas.width, canvas.height);
+      context.imageSmoothingEnabled = true;
+      context.imageSmoothingQuality = "high";
+      context.globalAlpha = 1;
+
+      if (state.centered || !state.ready) {
+        context.drawImage(front, 0, 0, front.width, front.height, 0, 0, canvas.width, canvas.height);
+        return;
+      }
+
+      drawSpriteFrame(state.frame, 1);
+      context.globalAlpha = 1;
+    }
+
+    function drawSpriteFrame(frame, opacity) {
+      const sourceX = (frame % SPRITE_COLUMNS) * SPRITE_CELL;
+      const sourceY = Math.floor(frame / SPRITE_COLUMNS) * SPRITE_CELL;
+      context.globalAlpha = opacity;
+      context.drawImage(
+        sprite,
+        sourceX, sourceY, SPRITE_CELL, SPRITE_CELL,
+        0, 0, canvas.width, canvas.height
+      );
+    }
+
+    function applyPose(centered, angle = null) {
+      const normalizedAngle = centered ? null : ((angle % 360) + 360) % 360;
+      const pose = centered
+        ? { frame: FRONT_FRAME, nextFrame: FRONT_FRAME, mix: 0 }
+        : calibratedPose(normalizedAngle);
+      const direction = centered
+        ? "center"
+        : DIRECTION_NAMES[Math.round(normalizedAngle / 45) % DIRECTION_NAMES.length];
+      const poseChanged = state.centered !== centered
+        || state.frame !== pose.frame
+        || state.nextFrame !== pose.nextFrame
+        || state.mix !== pose.mix;
+
+      state.centered = centered;
+      state.angle = normalizedAngle;
+      state.frame = pose.frame;
+      state.nextFrame = pose.nextFrame;
+      state.mix = pose.mix;
+      state.direction = direction;
+      document.body.dataset.direction = direction;
+      document.body.dataset.frame = String(centered ? FRONT_FRAME : calibratedFrame(normalizedAngle));
+      document.body.dataset.blend = `${state.frame}:${state.nextFrame}:${state.mix.toFixed(3)}`;
+
+      if (poseChanged) render();
+    }
+
+    function scheduleAnimation() {
+      if (!animationFrame && document.visibilityState !== "hidden") {
+        animationFrame = requestAnimationFrame(animate);
+      }
+    }
+
+    function stopAnimation() {
+      if (animationFrame) cancelAnimationFrame(animationFrame);
+      animationFrame = 0;
+      lastAnimationTime = 0;
+    }
+
+    function setTarget(centered, angle = null) {
+      targetCentered = centered;
+      if (centered) {
+        if (renderedAngle !== null || !state.centered) {
+          renderedAngle = null;
+          applyPose(true);
+        }
+        return;
+      }
+
+      const numericAngle = Number(angle);
+      if (!Number.isFinite(numericAngle)) {
+        setTarget(true);
+        return;
+      }
+      targetAngle = ((numericAngle % 360) + 360) % 360;
+      if (motionQuery.matches || renderedAngle === null) {
+        renderedAngle = targetAngle;
+        applyPose(false, renderedAngle);
+        return;
+      }
+      scheduleAnimation();
+    }
+
+    function animate(timestamp) {
+      animationFrame = 0;
+      const elapsed = lastAnimationTime
+        ? Math.min((timestamp - lastAnimationTime) / 1000, 0.05)
+        : 1 / 60;
+      lastAnimationTime = timestamp;
+      let keepRunning = false;
+
+      if (touchState.drifting) {
+        const deltaX = touchState.targetX - touchState.x;
+        const deltaY = touchState.targetY - touchState.y;
+        const distance = Math.hypot(deltaX, deltaY);
+        if (motionQuery.matches || distance < 0.75) {
+          touchState.x = touchState.targetX;
+          touchState.y = touchState.targetY;
+          touchState.drifting = false;
+          positionTouchFish();
+          showTouchFish(false);
+          setTarget(true);
+        } else {
+          const driftFactor = 1 - Math.exp(-7 * elapsed);
+          updateFishDirection(deltaX, deltaY);
+          touchState.x += deltaX * driftFactor;
+          touchState.y += deltaY * driftFactor;
+          positionTouchFish();
+          emitFishTrail(touchState.x, touchState.y);
+          follow(touchState.x, touchState.y);
+          keepRunning = true;
+        }
+      }
+
+      if (!targetCentered && renderedAngle !== null) {
+        const delta = ((targetAngle - renderedAngle + 540) % 360) - 180;
+        if (motionQuery.matches || Math.abs(delta) < 0.05) {
+          renderedAngle = targetAngle;
+          applyPose(false, renderedAngle);
+        } else {
+          const followFactor = 1 - Math.exp(-13 * elapsed);
+          renderedAngle = (renderedAngle + delta * followFactor + 360) % 360;
+          applyPose(false, renderedAngle);
+          keepRunning = true;
+        }
+      }
+
+      if (keepRunning) {
+        scheduleAnimation();
+      } else {
+        lastAnimationTime = 0;
+      }
+    }
+
+    function showTouchFish(visible) {
+      document.body.dataset.touchFish = visible ? "visible" : "hidden";
+    }
+
+    function updateFishDirection(deltaX, deltaY) {
+      if (Math.abs(deltaX) > 0.8) {
+        touchState.facing = deltaX > 0 ? -1 : 1;
+      }
+      touchState.tilt = Math.max(-12, Math.min(12, deltaY * 0.14));
+    }
+
+    function positionTouchFish() {
+      touchFish.style.transform = `translate3d(${touchState.x - 16}px, ${touchState.y - 30}px, 0) rotate(${touchState.tilt.toFixed(1)}deg) scaleX(${touchState.facing})`;
+    }
+
+    function addTouchEffect(className, x, y) {
+      if (motionQuery.matches) return;
+      const effect = document.createElement("span");
+      effect.className = className;
+      effect.style.left = `${x}px`;
+      effect.style.top = `${y}px`;
+      touchEffects.appendChild(effect);
+      const remove = () => effect.remove();
+      effect.addEventListener("animationend", remove, { once: true });
+      window.setTimeout(remove, 800);
+    }
+
+    function createTouchRipple(x, y) {
+      addTouchEffect("touch-ripple", x, y);
+    }
+
+    function resetTouchTrail() {
+      trailState.x = null;
+      trailState.y = null;
+      trailState.time = 0;
+    }
+
+    function emitFishTrail(x, y, force = false) {
+      if (motionQuery.matches) return;
+      const now = performance.now();
+      const distance = trailState.x === null ? Infinity : Math.hypot(x - trailState.x, y - trailState.y);
+      if (!force && distance < 15 && now - trailState.time < 55) return;
+      trailState.x = x;
+      trailState.y = y;
+      trailState.time = now;
+      addTouchEffect("fish-trail", x, y);
+    }
+
+    function hasCompletedTouchGuidance() {
+      try {
+        return localStorage.getItem(touchHintStorageKey) === "true";
+      } catch {
+        return false;
+      }
+    }
+
+    function hasTouchInput() {
+      return touchHintQuery.matches || navigator.maxTouchPoints > 0;
+    }
+
+    function completeTouchGuidance() {
+      try {
+        localStorage.setItem(touchHintStorageKey, "true");
+      } catch {
+        // The animation can still be dismissed when storage is unavailable.
+      }
+    }
+
+    function stopTouchHint({ keepFish = false, center = true } = {}) {
+      if (touchHintState.timer) clearTimeout(touchHintState.timer);
+      if (touchHintState.frame) cancelAnimationFrame(touchHintState.frame);
+      touchHintState.timer = 0;
+      touchHintState.frame = 0;
+      touchHintState.running = false;
+      if (!keepFish) showTouchFish(false);
+      if (center) setTarget(true);
+    }
+
+    function renderTouchHintFrame(progress, previousX = null, previousY = null) {
+      const eased = 0.5 - Math.cos(progress * Math.PI) / 2;
+      const rect = canvas.getBoundingClientRect();
+      const travelX = Math.min(rect.width * 0.7, window.innerWidth * 0.36);
+      const waveY = Math.min(rect.height * 0.2, window.innerHeight * 0.1);
+      const point = clampTouchPoint(
+        rect.left + rect.width / 2 + (eased * 2 - 1) * travelX,
+        rect.top + rect.height / 2 - rect.height * 0.1 + Math.sin(progress * Math.PI * 2) * waveY
+      );
+
+      updateFishDirection(point.x - (previousX ?? point.x - 1), point.y - (previousY ?? point.y));
+      touchState.x = point.x;
+      touchState.y = point.y;
+      positionTouchFish();
+      emitFishTrail(point.x, point.y);
+      follow(point.x, point.y);
+      return point;
+    }
+
+    function runTouchHint(force = false) {
+      touchHintState.timer = 0;
+      if (!state.ready || motionQuery.matches || touchState.active
+          || (!force && (!hasTouchInput() || hasCompletedTouchGuidance()))) return;
+
+      touchHintState.running = true;
+      resetTouchTrail();
+      showTouchFish(true);
+      let startTime = 0;
+      let previousX = 0;
+      let previousY = 0;
+      const duration = 2600;
+
+      function guideStep(timestamp) {
+        if (!touchHintState.running) return;
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const point = renderTouchHintFrame(progress, previousX || null, previousY || null);
+        previousX = point.x;
+        previousY = point.y;
+
+        if (progress < 1) {
+          touchHintState.frame = requestAnimationFrame(guideStep);
+        } else {
+          stopTouchHint();
+        }
+      }
+
+      touchHintState.frame = requestAnimationFrame(guideStep);
+    }
+
+    function scheduleTouchHint() {
+      if (motionQuery.matches || !hasTouchInput() || hasCompletedTouchGuidance()) return;
+      touchHintState.timer = window.setTimeout(runTouchHint, 650);
+    }
+
+    function viewportSize() {
+      return {
+        width: Math.max(1, window.innerWidth),
+        height: Math.max(1, window.innerHeight)
+      };
+    }
+
+    function clampTouchPoint(clientX, clientY) {
+      const viewport = viewportSize();
+      return {
+        x: Math.min(Math.max(clientX, 16), Math.max(16, viewport.width - 48)),
+        y: Math.min(Math.max(clientY, 30), Math.max(30, viewport.height - 34))
+      };
+    }
+
+    function isDirectPointer(event) {
+      return event.pointerType === "touch" || event.pointerType === "pen";
+    }
+
+    function beginDirectPointer(event) {
+      if (!isDirectPointer(event)) return;
+      const point = clampTouchPoint(event.clientX, event.clientY);
+      touchState.pointerId = event.pointerId;
+      touchState.active = true;
+      touchState.drifting = false;
+      touchState.x = point.x;
+      touchState.y = point.y;
+      touchState.tilt = 0;
+      resetTouchTrail();
+      createTouchRipple(point.x, point.y);
+      showTouchFish(true);
+      positionTouchFish();
+      emitFishTrail(point.x, point.y, true);
+      if (event.target.setPointerCapture) {
+        try {
+          event.target.setPointerCapture(event.pointerId);
+        } catch {
+          // The pointer may already have been cancelled by the browser.
+        }
+      }
+    }
+
+    function moveDirectPointer(event) {
+      if (!isDirectPointer(event) || !touchState.active || event.pointerId !== touchState.pointerId) return;
+      const point = clampTouchPoint(event.clientX, event.clientY);
+      updateFishDirection(point.x - touchState.x, point.y - touchState.y);
+      touchState.x = point.x;
+      touchState.y = point.y;
+      positionTouchFish();
+      emitFishTrail(point.x, point.y);
+    }
+
+    function releaseDirectPointer(event) {
+      if (!isDirectPointer(event) || event.pointerId !== touchState.pointerId) return;
+      touchState.active = false;
+      touchState.pointerId = null;
+
+      if (motionQuery.matches) {
+        touchState.drifting = false;
+        showTouchFish(false);
+        setTarget(true);
+        return;
+      }
+
+      const viewport = viewportSize();
+      const right = Math.max(16, viewport.width - 48);
+      const bottom = Math.max(30, viewport.height - 34);
+      const edges = [
+        { distance: touchState.x - 16, x: 16, y: touchState.y },
+        { distance: right - touchState.x, x: right, y: touchState.y },
+        { distance: touchState.y - 30, x: touchState.x, y: 30 },
+        { distance: bottom - touchState.y, x: touchState.x, y: bottom }
+      ];
+      const nearest = edges.reduce((best, edge) => edge.distance < best.distance ? edge : best);
+      touchState.targetX = nearest.x;
+      touchState.targetY = nearest.y;
+      touchState.drifting = true;
+      scheduleAnimation();
+    }
+
+    function follow(clientX, clientY) {
+      const rect = canvas.getBoundingClientRect();
+      const deltaX = clientX - (rect.left + rect.width / 2);
+      const deltaY = clientY - (rect.top + rect.height / 2);
+      const deadZone = Math.max(36, rect.width * 0.12);
+      if (Math.hypot(deltaX, deltaY) <= deadZone) {
+        setTarget(true);
+        return;
+      }
+      setTarget(false, Math.atan2(deltaY, deltaX) * 180 / Math.PI);
+    }
+
+    function resetInteraction() {
+      stopTouchHint({ center: false });
+      touchState.pointerId = null;
+      touchState.active = false;
+      touchState.drifting = false;
+      resetTouchTrail();
+      showTouchFish(false);
+      stopAnimation();
+      setTarget(true);
+    }
+
+    function runVerificationCase(name) {
+      if (name === "touch-hint") {
+        touchHintState.running = true;
+        showTouchFish(true);
+        renderTouchHintFrame(0.25);
+        document.documentElement.dataset.verification = "touch-hint:visible";
+        return;
+      }
+
+      const vectors = {
+        center: [0, 0],
+        up: [0, -1],
+        right: [1, 0],
+        down: [0, 1],
+        left: [-1, 0],
+        "up-left": [-1, -1],
+        "up-right": [1, -1],
+        "down-left": [-1, 1],
+        "down-right": [1, 1]
+      };
+      if (!Object.hasOwn(vectors, name)) return;
+
+      const rect = canvas.getBoundingClientRect();
+      const [vectorX, vectorY] = vectors[name];
+      if (name === "center") {
+        targetCentered = true;
+        renderedAngle = null;
+        applyPose(true);
+      } else {
+        targetCentered = false;
+        targetAngle = ((Math.atan2(vectorY, vectorX) * 180 / Math.PI) + 360) % 360;
+        renderedAngle = targetAngle;
+        applyPose(false, renderedAngle);
+      }
+      const verifiedFrame = state.centered ? FRONT_FRAME : calibratedFrame(state.angle);
+      const result = {
+        requested: name,
+        direction: state.direction,
+        frame: verifiedFrame,
+        blend: [state.frame, state.nextFrame, Number(state.mix.toFixed(3))],
+        ready: state.ready,
+        canvas: [Math.round(rect.width), Math.round(rect.height)]
+      };
+      const output = document.querySelector("#verification-result");
+      output.textContent = JSON.stringify(result);
+      output.hidden = false;
+      document.documentElement.dataset.verification = `${name}:${state.direction}:${verifiedFrame}`;
+    }
+
+    document.addEventListener("pointermove", (event) => {
+      moveDirectPointer(event);
+      follow(event.clientX, event.clientY);
+    }, { passive: true });
+    document.addEventListener("pointerdown", (event) => {
+      const control = event.target.closest?.(".back-to-portfolio, #load-status");
+      if (control) {
+        stopTouchHint();
+        return;
+      }
+      const directPointer = isDirectPointer(event);
+      stopTouchHint({ keepFish: directPointer, center: false });
+      if (directPointer) completeTouchGuidance();
+      beginDirectPointer(event);
+      follow(event.clientX, event.clientY);
+    }, { passive: true });
+    document.addEventListener("pointerup", releaseDirectPointer, { passive: true });
+    document.addEventListener("pointercancel", releaseDirectPointer, { passive: true });
+    document.addEventListener("pointerout", (event) => {
+      if (event.pointerType === "mouse" && event.relatedTarget === null) {
+        setTarget(true);
+      }
+    }, { passive: true });
+
+    const keyboardAngles = { ArrowRight: 0, ArrowDown: 90, ArrowLeft: 180, ArrowUp: 270 };
+    document.addEventListener("keydown", (event) => {
+      if (Object.hasOwn(keyboardAngles, event.key)) {
+        event.preventDefault();
+        setTarget(false, keyboardAngles[event.key]);
+      } else if (event.key === "Escape" || event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        setTarget(true);
+      }
+    });
+    document.addEventListener("keyup", (event) => {
+      if (Object.hasOwn(keyboardAngles, event.key)) {
+        event.preventDefault();
+        setTarget(true);
+      }
+    });
+
+    window.addEventListener("resize", () => {
+      resizeCanvas();
+      if (document.body.dataset.touchFish === "visible") {
+        const point = clampTouchPoint(touchState.x, touchState.y);
+        touchState.x = point.x;
+        touchState.y = point.y;
+        positionTouchFish();
+      }
+    }, { passive: true });
+    window.addEventListener("blur", resetInteraction);
+    document.addEventListener("visibilitychange", () => {
+      if (document.visibilityState === "hidden") {
+        resetInteraction();
+      } else {
+        applySceneTheme();
+        resizeCanvas();
+      }
+    });
+
+    const handleMotionPreference = () => {
+      if (motionQuery.matches) stopTouchHint();
+      if (motionQuery.matches) touchEffects.replaceChildren();
+      if (motionQuery.matches && touchState.drifting) {
+        touchState.drifting = false;
+        showTouchFish(false);
+      }
+      if (!targetCentered) {
+        renderedAngle = targetAngle;
+        applyPose(false, renderedAngle);
+      }
+    };
+    if (typeof motionQuery.addEventListener === "function") {
+      motionQuery.addEventListener("change", handleMotionPreference);
+    } else {
+      motionQuery.addListener(handleMotionPreference);
+    }
+
+    window.catTracker = Object.freeze({
+      ANGLE_KEYS,
+      calibratedPose,
+      calibratedFrame,
+      center: () => setTarget(true),
+      setAngle: (angle) => setTarget(false, angle),
+      getState: () => ({ ...state })
+    });
+
+    async function loadAssets() {
+      const attempt = ++loadAttempt;
+      state.ready = false;
+      document.body.dataset.ready = "false";
+      setLoadProgress(state.frontReady ? 18 : 4, state.frontReady ? "正在准备动作" : "正在加载小猫");
+
+      try {
+        if (!state.frontReady) {
+          await loadImage(front, "frame_front.webp");
+          if (front.naturalWidth !== SPRITE_CELL || front.naturalHeight !== SPRITE_CELL) {
+            throw new Error("Front image dimensions do not match the frame size");
+          }
+          if (attempt !== loadAttempt) return;
+          state.frontReady = true;
+          document.body.dataset.frontReady = "true";
+          resizeCanvas();
+          applyPose(true);
+        }
+
+        setLoadProgress(18, "正在准备动作");
+        await loadSpriteImage(sprite, "sprite.webp", attempt);
+        if (attempt !== loadAttempt) return;
+        if (sprite.naturalWidth !== SPRITE_COLUMNS * SPRITE_CELL
+            || sprite.naturalHeight !== SPRITE_ROWS * SPRITE_CELL) {
+          throw new Error("Sprite dimensions do not match the calibrated frame grid");
+        }
+
+        state.ready = true;
+        document.body.dataset.ready = "true";
+        setLoadProgress(100, "加载完成");
+        loadHideTimer = window.setTimeout(() => {
+          if (attempt === loadAttempt) loadStatus.hidden = true;
+        }, motionQuery.matches ? 0 : 320);
+        render();
+
+        const verificationCase = pageParams.get("verify");
+        if (verificationCase) {
+          requestAnimationFrame(() => requestAnimationFrame(() => runVerificationCase(verificationCase)));
+        } else {
+          scheduleTouchHint();
+        }
+      } catch (error) {
+        if (attempt !== loadAttempt) return;
+        console.error(error);
+        document.body.dataset.ready = "error";
+        showLoadError();
+        render();
+      }
+    }
+
+    loadRetry.addEventListener("click", (event) => {
+      event.stopPropagation();
+      loadAssets();
+    });
+
+    applySceneTheme();
+    window.setInterval(applySceneTheme, 60000);
+    loadAssets();
+  </script>
+</body>
+</html>

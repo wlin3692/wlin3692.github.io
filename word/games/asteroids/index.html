@@ -1,0 +1,47 @@
+<html lang="zh-CN">
+  <head>
+    <script src="jquery-1.4.1.min.js"></script>
+    <script src="vector_battle_regular.typeface.js"></script>
+    <script src="ipad.js"></script>
+    <script src="game.js"></script>
+    <title>小林 · 像素星海</title>
+    <style>
+      :root { color-scheme: dark; }
+      * { box-sizing: border-box; }
+      body { margin:0; min-height:100vh; display:grid; place-items:center; background:#08111f; color:#d9efff; font-family:system-ui,sans-serif; }
+      #game-container { position:relative; width:min(780px, calc(100vw - 24px)); aspect-ratio:780/540; }
+      #canvas { width:100%; height:100%; border:1px solid #2c6385; background:#020812; box-shadow:0 18px 50px rgba(0,0,0,.45); }
+      .title { position:absolute; z-index:2; top:12px; left:18px; font-weight:700; letter-spacing:1px; }
+      .back { position:absolute; z-index:2; right:16px; top:12px; color:#9ed8ff; text-decoration:none; font-size:13px; }
+      .button { position:absolute; border:1px solid black; }
+      #left-controls { position:absolute; left:1px; bottom:0px; display:none; }
+      #right-controls { position:absolute; right:1px; bottom:0px; display:none; }
+      #up { width:200px; height:100px; bottom:100px;}
+      #left { width:100px; height:100px; bottom:0px;}
+      #right { width:100px; height:100px; bottom:0px; left:100px; }
+      #space { width:200px; height:200px; bottom:0px; right:0px; }
+      @media (max-width:700px), (pointer:coarse) {
+        #left-controls,#right-controls { display:block; }
+        .button { border-color:#5c9dc2; background:rgba(7,31,52,.72); color:#d9efff; border-radius:8px; display:grid; place-items:center; font-size:13px; user-select:none; }
+        #up { width:90px; height:52px; bottom:110px; left:8px; }
+        #left,#right { width:62px; height:52px; bottom:52px; }
+        #left { left:8px; } #right { left:76px; }
+        #space { width:92px; height:92px; right:8px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="game-container">
+      <canvas id="canvas" width="780" height="540"></canvas>
+      <div id="left-controls">
+        <div id="up" class='button'>加速</div>
+        <div id="left" class='button'>左转</div>
+        <div id="right" class='button'>右转</div>
+      </div>
+      <div id="right-controls">
+        <div id="space" class='button'>发射</div>
+      </div>
+      <div class="title">像素星海 · 小林互动作品</div><a class="back" href="../../../index.html#portfolio">返回作品集</a>
+    </div>
+  </body>
+</html>

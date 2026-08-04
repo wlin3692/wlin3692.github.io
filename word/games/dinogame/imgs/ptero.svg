@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="96" height="48" viewBox="0 0 96 48" role="img" aria-label="像素翼龙">
+  <g fill="#4e5550" shape-rendering="crispEdges">
+    <path d="M8 8h16v4h8v4h8v8h-8v-4H20v-4H8z"/>
+    <path d="M28 24h40v12H36v-4H24v-4H12v-4z"/>
+    <path d="M52 16h12v4h8v4h12v8H68v4H52z"/>
+    <path d="M28 36h8v4h8v4H32v-4h-4z"/>
+    <path d="M52 36h8v8H48v-4h4z"/>
+    <path d="M84 24h12v4H84z"/>
+  </g>
+  <rect x="72" y="24" width="4" height="4" fill="#f4f7f4" shape-rendering="crispEdges"/>
+</svg>

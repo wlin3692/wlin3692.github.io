@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="description" content="小林的响应式像素恐龙跑酷游戏">
+  <meta name="theme-color" content="#f4f7f4">
+  <title>小恐龙快跑 | 小林的个人网页</title>
+  <link rel="icon" type="image/png" href="imgs/dino-stationary.png">
+  <link rel="stylesheet" href="styles.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <a class="back-link" href="../../../index.html#portfolio" aria-label="返回作品集" title="返回作品集">&#8592;</a>
+
+  <main class="game-shell">
+    <header class="game-header">
+      <div class="game-title">
+        <span class="game-kicker">DINO RUN</span>
+        <h1>小恐龙快跑</h1>
+      </div>
+      <div class="scoreboard" aria-label="游戏分数">
+        <div>
+          <span>得分</span>
+          <strong data-score>00000</strong>
+        </div>
+        <div>
+          <span>最高</span>
+          <strong data-high-score>00000</strong>
+        </div>
+      </div>
+    </header>
+
+    <section class="world" data-world tabindex="0" aria-label="小恐龙快跑游戏区域">
+      <div class="sky-layer" aria-hidden="true">
+        <span class="celestial"></span>
+        <span class="stars"></span>
+        <span class="pixel-cloud pixel-cloud--one"></span>
+        <span class="pixel-cloud pixel-cloud--two"></span>
+        <span class="horizon"></span>
+      </div>
+
+      <div class="game-tools">
+        <button class="tool-button" type="button" data-pause-button aria-label="暂停游戏" title="暂停游戏" disabled>
+          <span data-pause-icon aria-hidden="true">Ⅱ</span>
+        </button>
+        <button class="tool-button sound-button" type="button" data-sound-button aria-label="关闭音效" title="关闭音效">
+          <span aria-hidden="true">♪</span>
+        </button>
+      </div>
+
+      <div class="milestone" data-milestone aria-live="polite"></div>
+
+      <div class="game-message" data-game-message role="status" aria-live="polite">
+        <span class="message-kicker">像素冲刺</span>
+        <h2 data-message-title>准备好了吗？</h2>
+        <p class="final-score" data-final-score hidden></p>
+        <button class="start-button" type="button" data-start-button>开始游戏</button>
+      </div>
+
+      <img src="imgs/ground.png" class="ground" data-ground alt="" draggable="false">
+      <img src="imgs/ground.png" class="ground" data-ground alt="" draggable="false">
+      <img src="imgs/dino-stationary.png" class="dino" data-dino alt="奔跑的小恐龙" draggable="false">
+
+      <div class="game-controls">
+        <button class="control-button" type="button" data-duck-button aria-label="下蹲" title="下蹲">
+          <span aria-hidden="true">&#8595;</span>
+        </button>
+        <button class="control-button" type="button" data-jump-button aria-label="跳跃" title="跳跃">
+          <span aria-hidden="true">&#8593;</span>
+        </button>
+      </div>
+    </section>
+
+    <footer class="game-meta" aria-label="游戏统计">
+      <div class="stage-meter">
+        <div class="stage-meter__label">
+          <span>当前阶段</span>
+          <strong data-stage-label>1 · 原野</strong>
+        </div>
+        <div class="stage-meter__track" aria-hidden="true"><span data-stage-progress></span></div>
+      </div>
+      <div class="run-stats">
+        <div><span>时间</span><strong data-run-time>0.0s</strong></div>
+        <div><span>挑战</span><strong data-run-count>0</strong></div>
+        <div><span>最长</span><strong data-best-time>0.0s</strong></div>
+      </div>
+    </footer>
+  </main>
+</body>
+</html>
