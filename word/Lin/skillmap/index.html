@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="小林的网络安全技能与项目路线图">
+  <meta name="theme-color" content="#f4f6f2">
+  <title>网络安全路线图 | 小林的个人网页</title>
+  <link rel="stylesheet" href="flowy.css">
+  <link rel="stylesheet" href="style.css">
+  <script src="flowy.js" defer></script>
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <a class="icon-button back-button" href="../../../index.html#portfolio" aria-label="返回作品集" title="返回作品集">
+        <span aria-hidden="true">&#8592;</span>
+      </a>
+      <div class="brand">
+        <span class="brand-kicker">SKILL MAP / 01</span>
+        <h1>小林网络安全路线图</h1>
+      </div>
+      <div class="header-status" aria-live="polite">
+        <span id="nodeCount">0 个节点</span>
+        <span class="save-state" id="saveState"><i aria-hidden="true"></i>本地草稿</span>
+      </div>
+      <nav class="tool-strip" aria-label="路线图工具">
+        <button class="icon-button" id="centerButton" type="button" aria-label="居中路线图" title="居中路线图">
+          <span aria-hidden="true">&#9678;</span>
+        </button>
+        <button class="icon-button" id="resetButton" type="button" aria-label="恢复初始路线图" title="恢复初始路线图">
+          <span aria-hidden="true">&#8634;</span>
+        </button>
+        <button class="icon-button library-toggle" id="libraryToggle" type="button" aria-label="打开节点库" title="节点库" aria-expanded="false">
+          <span aria-hidden="true">&#8801;</span>
+        </button>
+      </nav>
+    </header>
+
+    <aside class="node-library" id="nodeLibraryPanel" aria-label="节点库">
+      <div class="library-head">
+        <div>
+          <span class="panel-kicker">LIBRARY</span>
+          <strong>节点库</strong>
+        </div>
+        <button class="icon-button library-close" id="libraryClose" type="button" aria-label="关闭节点库" title="关闭节点库">
+          <span aria-hidden="true">&#215;</span>
+        </button>
+      </div>
+
+      <div class="library-tabs" role="tablist" aria-label="节点类型">
+        <button type="button" class="active" role="tab" data-library-tab="skill" aria-selected="true">技能</button>
+        <button type="button" role="tab" data-library-tab="project" aria-selected="false">项目</button>
+        <button type="button" role="tab" data-library-tab="goal" aria-selected="false">目标</button>
+      </div>
+
+      <label class="library-search" for="nodeSearch">
+        <span aria-hidden="true">&#9906;</span>
+        <input id="nodeSearch" type="search" placeholder="搜索节点" autocomplete="off">
+      </label>
+
+      <div class="node-list" id="nodeLibrary" aria-live="polite"></div>
+
+      <footer class="source-note">
+        <span>基于 Alyssa X 的 Flowy 改造</span>
+        <span><a href="https://github.com/alyssaxuu/flowy" target="_blank" rel="noopener noreferrer">源代码</a> · <a href="LICENSE">MIT License</a></span>
+      </footer>
+    </aside>
+
+    <main class="workspace" id="workspace">
+      <div class="map-status" aria-hidden="true">
+        <i></i>
+        <span>SECURITY ROADMAP</span>
+      </div>
+      <div id="canvas" aria-label="可拖拽的技能路线图" tabindex="0"></div>
+
+      <aside class="inspector" id="inspector" aria-hidden="true" aria-label="节点详情">
+        <div class="inspector-head">
+          <span class="inspector-kind" id="inspectorKind">技能</span>
+          <button class="icon-button" id="inspectorClose" type="button" aria-label="关闭节点详情" title="关闭详情">
+            <span aria-hidden="true">&#215;</span>
+          </button>
+        </div>
+        <div class="inspector-mark" id="inspectorMark">FE</div>
+        <h2 id="inspectorTitle">网络攻防基础</h2>
+        <p id="inspectorDescription"></p>
+        <div class="inspector-level" id="inspectorLevel">
+          <div><span>熟练度</span><strong id="inspectorLevelValue">0%</strong></div>
+          <div class="level-track"><i id="inspectorLevelBar"></i></div>
+        </div>
+        <dl class="inspector-meta">
+          <div><dt>方向</dt><dd id="inspectorDirection"></dd></div>
+          <div><dt>状态</dt><dd id="inspectorStatus"></dd></div>
+        </dl>
+        <a class="primary-command" id="inspectorLink" href="#" hidden>
+          <span>打开作品</span><b aria-hidden="true">&#8599;</b>
+        </a>
+        <button class="danger-command" id="removeBranchButton" type="button">
+          <span aria-hidden="true">&#9003;</span>删除分支
+        </button>
+      </aside>
+    </main>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <noscript>此路线图需要启用 JavaScript。</noscript>
+</body>
+</html>

@@ -1,0 +1,97 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">小林网络安全路线图预览</title>
+  <desc id="desc">浅色工作台中展示网络安全技能、项目和成长目标的节点路线图。</desc>
+  <defs>
+    <pattern id="dots" width="22" height="22" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#b6c0ba"/>
+    </pattern>
+  </defs>
+  <rect width="1200" height="760" fill="#f4f6f2"/>
+  <rect width="1200" height="68" fill="#ffffff"/>
+  <line x1="0" y1="68" x2="1200" y2="68" stroke="#d5dcd6"/>
+  <rect x="0" y="68" width="318" height="692" fill="#ffffff"/>
+  <line x1="318" y1="68" x2="318" y2="760" stroke="#d5dcd6"/>
+  <rect x="345" y="91" width="828" height="643" fill="url(#dots)"/>
+  <rect x="18" y="15" width="38" height="38" rx="6" fill="#ffffff" stroke="#d5dcd6"/>
+  <path d="M42 34H30m0 0 6-6m-6 6 6 6" fill="none" stroke="#17201d" stroke-width="2"/>
+  <text x="72" y="27" fill="#df514b" font-family="Consolas,monospace" font-size="10" font-weight="700">SKILL MAP / 01</text>
+  <text x="72" y="47" fill="#17201d" font-family="Arial,sans-serif" font-size="20" font-weight="700">小林网络安全路线图</text>
+  <text x="1032" y="40" fill="#68736e" font-family="Arial,sans-serif" font-size="13">12 个节点</text>
+  <rect x="1128" y="15" width="38" height="38" rx="6" fill="#ffffff" stroke="#d5dcd6"/>
+  <path d="M1141 34a7 7 0 1 0 12-5" fill="none" stroke="#17201d" stroke-width="2"/>
+  <path d="m1152 25 1 6-6-1" fill="none" stroke="#17201d" stroke-width="2"/>
+  <text x="20" y="103" fill="#df514b" font-family="Consolas,monospace" font-size="10" font-weight="700">LIBRARY</text>
+  <text x="20" y="127" fill="#17201d" font-family="Arial,sans-serif" font-size="17" font-weight="700">节点库</text>
+  <rect x="18" y="146" width="282" height="38" rx="6" fill="#edf1ec" stroke="#d5dcd6"/>
+  <rect x="21" y="149" width="88" height="32" rx="4" fill="#ffffff"/>
+  <text x="47" y="170" fill="#17201d" font-family="Arial,sans-serif" font-size="13" font-weight="700">技能</text>
+  <text x="137" y="170" fill="#68736e" font-family="Arial,sans-serif" font-size="13">项目</text>
+  <text x="224" y="170" fill="#68736e" font-family="Arial,sans-serif" font-size="13">目标</text>
+  <rect x="18" y="196" width="282" height="40" rx="6" fill="#ffffff" stroke="#d5dcd6"/>
+  <circle cx="38" cy="216" r="6" fill="none" stroke="#68736e" stroke-width="2"/>
+  <path d="m42 220 5 5" stroke="#68736e" stroke-width="2"/>
+  <text x="56" y="221" fill="#929c97" font-family="Arial,sans-serif" font-size="13">搜索节点</text>
+  <g font-family="Arial,sans-serif">
+    <rect x="18" y="252" width="282" height="62" rx="6" fill="#ffffff" stroke="#d5dcd6"/>
+    <rect x="18" y="252" width="4" height="62" rx="2" fill="#3578c6"/>
+    <rect x="32" y="266" width="34" height="34" rx="5" fill="#e7eff9"/>
+    <text x="40" y="288" fill="#3578c6" font-family="Consolas,monospace" font-size="11" font-weight="700">SEC</text>
+    <text x="78" y="278" fill="#17201d" font-size="14" font-weight="700">网络攻防基础</text>
+    <text x="78" y="296" fill="#68736e" font-size="11">攻击原理 · 防御思路</text>
+    <rect x="262" y="266" width="26" height="34" rx="5" fill="#ffffff" stroke="#d5dcd6"/>
+    <text x="270" y="289" fill="#17201d" font-size="21">+</text>
+    <rect x="18" y="325" width="282" height="62" rx="6" fill="#ffffff" stroke="#d5dcd6"/>
+    <rect x="18" y="325" width="4" height="62" rx="2" fill="#3578c6"/>
+    <rect x="32" y="339" width="34" height="34" rx="5" fill="#e7eff9"/>
+    <text x="38" y="361" fill="#3578c6" font-family="Consolas,monospace" font-size="11" font-weight="700">PEN</text>
+    <text x="78" y="351" fill="#17201d" font-size="14" font-weight="700">渗透测试</text>
+    <text x="78" y="369" fill="#68736e" font-size="11">Kali · Nmap · Burp Suite</text>
+    <rect x="262" y="339" width="26" height="34" rx="5" fill="#ffffff" stroke="#d5dcd6"/>
+    <text x="270" y="362" fill="#17201d" font-size="21">+</text>
+  </g>
+  <g fill="none" stroke="#9aa8a1" stroke-width="2">
+    <path d="M760 246v45H555v54"/>
+    <path d="M760 246v45h206v54"/>
+    <path d="M555 411v45H460v54"/>
+    <path d="M555 411v45h190v54"/>
+  </g>
+  <g font-family="Arial,sans-serif">
+    <g>
+      <rect x="638" y="136" width="244" height="106" rx="6" fill="#ffffff" stroke="#df514b" stroke-width="2"/>
+      <rect x="638" y="136" width="4" height="106" rx="2" fill="#df514b"/>
+      <rect x="655" y="152" width="36" height="36" rx="5" fill="#fae9e7"/>
+      <text x="662" y="176" fill="#df514b" font-family="Consolas,monospace" font-size="10" font-weight="700">LIN</text>
+      <text x="703" y="167" fill="#17201d" font-size="14" font-weight="700">小林 · 网络安全实践</text>
+      <text x="703" y="184" fill="#68736e" font-size="11">个人能力与项目脉络</text>
+      <text x="823" y="164" fill="#68736e" font-size="10">持续构建</text>
+      <rect x="655" y="220" width="210" height="3" fill="#edf1ec"/><rect x="655" y="220" width="176" height="3" fill="#df514b"/>
+    </g>
+    <g>
+      <rect x="433" y="345" width="244" height="106" rx="6" fill="#ffffff" stroke="#3578c6"/>
+      <rect x="433" y="345" width="4" height="106" rx="2" fill="#3578c6"/>
+      <rect x="450" y="361" width="36" height="36" rx="5" fill="#e7eff9"/>
+      <text x="457" y="385" fill="#3578c6" font-family="Consolas,monospace" font-size="10" font-weight="700">SEC</text>
+      <text x="498" y="376" fill="#17201d" font-size="14" font-weight="700">网络攻防基础</text>
+      <text x="498" y="393" fill="#68736e" font-size="11">攻击原理 · 防御思路</text>
+      <rect x="450" y="429" width="210" height="3" fill="#edf1ec"/><rect x="450" y="429" width="185" height="3" fill="#3578c6"/>
+    </g>
+    <g>
+      <rect x="844" y="345" width="244" height="106" rx="6" fill="#ffffff" stroke="#3578c6"/>
+      <rect x="844" y="345" width="4" height="106" rx="2" fill="#3578c6"/>
+      <rect x="861" y="361" width="36" height="36" rx="5" fill="#e7eff9"/>
+      <text x="868" y="385" fill="#3578c6" font-family="Consolas,monospace" font-size="10" font-weight="700">PY</text>
+      <text x="909" y="376" fill="#17201d" font-size="14" font-weight="700">Python 安全开发</text>
+      <text x="909" y="393" fill="#68736e" font-size="11">脚本 · 自动化 · 分析</text>
+      <rect x="861" y="429" width="210" height="3" fill="#edf1ec"/><rect x="861" y="429" width="160" height="3" fill="#3578c6"/>
+    </g>
+    <g>
+      <rect x="338" y="500" width="244" height="106" rx="6" fill="#ffffff" stroke="#1f8a70"/>
+      <rect x="338" y="500" width="4" height="106" rx="2" fill="#1f8a70"/>
+      <rect x="355" y="516" width="36" height="36" rx="5" fill="#e1f2ec"/>
+      <text x="360" y="539" fill="#1f8a70" font-family="Consolas,monospace" font-size="10" font-weight="700">AI</text>
+      <text x="403" y="531" fill="#17201d" font-size="14" font-weight="700">YOLO 苹果分拣系统</text>
+      <text x="403" y="548" fill="#68736e" font-size="11">YOLO11 · OpenCV · MQTT</text>
+      <rect x="355" y="584" width="210" height="3" fill="#edf1ec"/><rect x="355" y="584" width="210" height="3" fill="#1f8a70"/>
+    </g>
+  </g>
+</svg>

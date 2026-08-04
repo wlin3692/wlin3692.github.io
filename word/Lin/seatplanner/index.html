@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="选择座位并规划一场电影的观影预算。">
+  <title>观影座位规划器 | 小林作品集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="back-link" href="../../../index.html" aria-label="返回作品集">← <span>返回作品集</span></a>
+    <span class="brand">CINEMA PLANNER / 015</span>
+    <span class="local-badge">LOCAL SESSION</span>
+  </header>
+  <main class="shell">
+    <section class="intro">
+      <p class="eyebrow">INTERACTION INTERFACE · SEAT MAP</p>
+      <h1>今晚看什么？<br><em>先选个好位置。</em></h1>
+      <p class="intro-copy">把观影计划拆成一张清晰的座位图。选择片单、点亮座位，预算会跟着实时更新。</p>
+    </section>
+
+    <section class="planner" aria-labelledby="planner-title">
+      <div class="planner__head">
+        <div><span class="label">SESSION / 08.04 · ROOM A</span><h2 id="planner-title">本场座位规划</h2></div>
+        <button class="reset" id="reset" type="button">清空选择</button>
+      </div>
+      <div class="movie-picker">
+        <label for="movie">选择影片</label>
+        <select id="movie">
+          <option value="42">《夏夜信号》 · 2D / ¥42</option>
+          <option value="58">《潮汐之后》 · IMAX / ¥58</option>
+          <option value="36">《小小行星》 · 2D / ¥36</option>
+          <option value="66">《远方来信》 · VIP / ¥66</option>
+        </select>
+        <span class="showtime">19:30 · 影厅 04</span>
+      </div>
+
+      <div class="legend" aria-label="座位状态图例"><span><i class="seat"></i>可选</span><span><i class="seat seat--selected"></i>已选</span><span><i class="seat seat--occupied"></i>已占</span></div>
+
+      <div class="screen-wrap"><div class="screen"><span>SCREEN</span></div><p>银幕方向</p></div>
+      <div class="seat-map" id="seatMap" aria-label="座位图"></div>
+      <div class="planner__foot"><p>已选 <strong id="count">0</strong> 个座位 <span>·</span> 合计 <strong class="total">¥<span id="total">0</span></strong></p><button class="confirm" id="confirm" type="button" disabled>确认观影计划 <span>→</span></button></div>
+      <p class="saved-note" id="savedNote" role="status">座位选择会自动保存在本机</p>
+    </section>
+
+    <section class="tips"><article><span>01</span><h3>中间区域</h3><p>视线与声音更均衡，适合第一次观看。</p></article><article><span>02</span><h3>靠后两排</h3><p>画面更完整，适合喜欢观察整体构图的人。</p></article><article><span>03</span><h3>留出空位</h3><p>座位之间留一点呼吸感，观影更自在。</p></article></section>
+  </main>
+  <footer><span>基于 Movie Seat Booking · MIT License</span><span>个人静态作品实验</span></footer>
+  <script src="script.js"></script>
+</body>
+</html>

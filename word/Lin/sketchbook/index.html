@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="支持鼠标和触控绘画、撤销、橡皮擦与 PNG 导出的在线速写板。">
+  <title>随手画 · 小林互动作品</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../../index.html#portfolio"><span class="brand-mark" aria-hidden="true"></span>小林创作台</a>
+    <a class="back-link" href="../../../index.html#portfolio">返回作品集</a>
+  </header>
+
+  <main class="studio">
+    <div class="studio-heading">
+      <div><span class="eyebrow">CANVAS SKETCHBOOK</span><h1>随手画</h1></div>
+      <p id="canvasStatus" aria-live="polite">画笔 · 12 px</p>
+    </div>
+
+    <div class="toolbar" role="toolbar" aria-label="绘图工具">
+      <div class="tool-group mode-switch" aria-label="绘图模式">
+        <button id="brushTool" class="tool-button active" type="button" aria-label="画笔" title="画笔" aria-pressed="true">✎</button>
+        <button id="eraserTool" class="tool-button" type="button" aria-label="橡皮擦" title="橡皮擦" aria-pressed="false">⌫</button>
+      </div>
+      <div class="tool-group history-tools">
+        <button id="undoButton" class="tool-button" type="button" aria-label="撤销" title="撤销" disabled>↶</button>
+        <button id="redoButton" class="tool-button" type="button" aria-label="重做" title="重做" disabled>↷</button>
+      </div>
+      <label class="size-control" title="画笔大小"><span class="sr-only">画笔大小</span><input id="brushSize" type="range" min="2" max="48" value="12" aria-label="画笔大小"><output id="sizeOutput" for="brushSize">12</output></label>
+      <div class="palette" aria-label="快捷颜色">
+        <button type="button" class="swatch active" data-color="#17211d" style="--swatch:#17211d" aria-label="墨黑" title="墨黑" aria-pressed="true"></button>
+        <button type="button" class="swatch" data-color="#e44d5e" style="--swatch:#e44d5e" aria-label="珊瑚红" title="珊瑚红" aria-pressed="false"></button>
+        <button type="button" class="swatch" data-color="#1976d2" style="--swatch:#1976d2" aria-label="湖蓝" title="湖蓝" aria-pressed="false"></button>
+        <button type="button" class="swatch" data-color="#17875f" style="--swatch:#17875f" aria-label="松绿色" title="松绿色" aria-pressed="false"></button>
+        <button type="button" class="swatch" data-color="#8b5bb5" style="--swatch:#8b5bb5" aria-label="紫色" title="紫色" aria-pressed="false"></button>
+        <label class="custom-color" title="自定义颜色"><input id="colorPicker" type="color" value="#17211d" aria-label="自定义颜色"><span aria-hidden="true">＋</span></label>
+      </div>
+      <div class="tool-group file-tools">
+        <button id="gridButton" class="tool-button" type="button" aria-label="显示网格" title="显示网格" aria-pressed="false">#</button>
+        <button id="clearButton" class="tool-button" type="button" aria-label="清空画布" title="清空画布">×</button>
+        <button id="downloadButton" class="tool-button primary" type="button" aria-label="下载 PNG" title="下载 PNG">↓</button>
+      </div>
+    </div>
+
+    <div class="canvas-wrap" id="canvasWrap">
+      <canvas id="canvas" width="1200" height="800" aria-label="绘图画布"></canvas>
+      <div class="empty-hint" id="emptyHint" aria-hidden="true"><strong>LIN</strong><span>SKETCH 001</span></div>
+    </div>
+  </main>
+
+  <footer>基于 Traversy Media Drawing App 改造 · MIT License</footer>
+  <script src="script.js"></script>
+</body>
+</html>
