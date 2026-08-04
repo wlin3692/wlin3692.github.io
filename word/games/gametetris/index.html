@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="description" content="小林的响应式俄罗斯方块游戏">
+  <meta name="theme-color" content="#eef1ec">
+  <title>俄罗斯方块 | 小林的个人网页</title>
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('xiaolin-tetris-theme');
+        var dark = saved ? saved === 'dark' : window.matchMedia('(prefers-color-scheme: dark)').matches;
+        document.documentElement.dataset.theme = dark ? 'dark' : 'light';
+      } catch (error) {
+        document.documentElement.dataset.theme = 'light';
+      }
+    }());
+  </script>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" type="image/png" href="preview.png">
+</head>
+<body>
+  <a class="back-link icon-button" href="../../../index.html#portfolio" aria-label="返回作品集" title="返回作品集">&#8592;</a>
+
+  <main class="app-shell">
+    <header class="page-header">
+      <div class="brand-block">
+        <span class="eyebrow">BLOCK LAB</span>
+        <h1>俄罗斯方块</h1>
+      </div>
+      <div class="header-tools">
+        <button class="icon-button" id="soundToggle" type="button" aria-label="关闭音效" title="关闭音效"><span aria-hidden="true">&#9834;</span></button>
+        <button class="icon-button" id="themeToggle" type="button" aria-label="切换到深色模式" title="切换到深色模式"><span aria-hidden="true">&#9680;</span></button>
+      </div>
+    </header>
+
+    <section class="scoreboard" aria-label="游戏数据">
+      <div class="score-item"><span>得分</span><strong id="score">0</strong></div>
+      <div class="score-item"><span>最高</span><strong id="best">0</strong></div>
+      <div class="score-item"><span>等级</span><strong id="level">1</strong></div>
+      <div class="score-item"><span>消除</span><strong id="lines">0</strong></div>
+    </section>
+
+    <section class="game-layout">
+      <div class="board-column">
+        <div class="board-wrap">
+          <canvas id="board" width="300" height="600" aria-label="俄罗斯方块游戏区域">当前浏览器不支持 Canvas。</canvas>
+          <div class="game-overlay open" id="gameOverlay">
+            <span id="overlayTag">READY</span>
+            <h2 id="overlayTitle">准备挑战</h2>
+            <button id="overlayAction" type="button">开始游戏</button>
+          </div>
+        </div>
+
+        <nav class="game-controls" aria-label="游戏控制">
+          <button type="button" data-action="rotate" aria-label="旋转方块" title="旋转方块">&#8635;</button>
+          <button type="button" data-action="left" aria-label="向左移动" title="向左移动">&#8592;</button>
+          <button type="button" data-action="down" aria-label="向下移动" title="向下移动">&#8595;</button>
+          <button type="button" data-action="right" aria-label="向右移动" title="向右移动">&#8594;</button>
+          <button type="button" data-action="drop" aria-label="直接落下" title="直接落下">&#10515;</button>
+        </nav>
+      </div>
+
+      <aside class="game-sidebar">
+        <section class="next-panel" aria-label="下一个方块">
+          <span class="panel-label">下一个</span>
+          <canvas id="next" width="120" height="120" aria-hidden="true"></canvas>
+        </section>
+
+        <div class="game-status" aria-live="polite">
+          <span>状态</span>
+          <strong id="status">待机</strong>
+        </div>
+
+        <div class="side-actions">
+          <button class="side-button" id="pauseButton" type="button" aria-label="暂停游戏" title="暂停游戏"><span aria-hidden="true">&#8545;</span></button>
+          <button class="side-button" id="restartButton" type="button" aria-label="重新开始" title="重新开始"><span aria-hidden="true">&#8634;</span></button>
+        </div>
+      </aside>
+    </section>
+
+    <footer class="game-footer">
+      <span>基于 Jake Gordon 的开源项目改造</span>
+      <span><a href="https://github.com/jakesgordon/javascript-tetris" target="_blank" rel="noopener noreferrer">源代码</a> · <a href="LICENSE">MIT License</a></span>
+    </footer>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

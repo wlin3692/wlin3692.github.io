@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="description" content="霓虹吃豆人，支持键盘和手机触控的经典 Canvas 街机游戏。">
+  <title>霓虹吃豆人 · 小林互动作品</title>
+  <link rel="icon" href="favicon.png">
+  <link rel="stylesheet" href="./static/style/index.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../../index.html#portfolio">小林互动作品</a>
+    <a class="back-link" href="../../../index.html#portfolio">返回作品集</a>
+  </header>
+
+  <main>
+    <section class="game-shell" aria-labelledby="game-title">
+      <div class="game-heading">
+        <div><span class="eyebrow">12 LEVELS · CANVAS ARCADE</span><h1 id="game-title">霓虹吃豆人</h1></div>
+        <p>吃掉迷宫中的全部豆子，避开会协作追踪的幽灵。</p>
+      </div>
+      <div class="canvas-frame">
+        <canvas id="canvas" width="960" height="640">当前浏览器不支持 Canvas。</canvas>
+      </div>
+      <div class="touch-pad" aria-label="游戏触控操作">
+        <button type="button" data-key="38" aria-label="向上">↑</button>
+        <div>
+          <button type="button" data-key="37" aria-label="向左">←</button>
+          <button type="button" data-key="32" aria-label="开始或暂停">●</button>
+          <button type="button" data-key="39" aria-label="向右">→</button>
+        </div>
+        <button type="button" data-key="40" aria-label="向下">↓</button>
+      </div>
+      <div class="game-meta">
+        <span>方向键移动</span><span>空格键开始 / 暂停</span><span>共 12 个关卡</span>
+      </div>
+    </section>
+  </main>
+
+  <footer>基于 <a href="https://github.com/mumuy/pacman" target="_blank" rel="noopener">Pacman by HaoLe Zheng</a> 改造 · MIT License</footer>
+  <script src="./static/script/game.js"></script>
+  <script src="./static/script/index.js"></script>
+  <script>
+    function sendGameKey(code) {
+      var event = new Event('keydown', { bubbles: true, cancelable: true });
+      Object.defineProperty(event, 'keyCode', { value: code });
+      Object.defineProperty(event, 'which', { value: code });
+      window.dispatchEvent(event);
+    }
+    document.querySelectorAll('[data-key]').forEach(function (button) {
+      button.addEventListener('pointerdown', function (event) {
+        event.preventDefault();
+        sendGameKey(Number(button.dataset.key));
+      });
+    });
+  </script>
+</body>
+</html>
