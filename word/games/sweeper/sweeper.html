@@ -1,0 +1,123 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>小林的休闲扫雷</title>
+  <link rel="shortcut icon" href="assets/mine.png" type="image/x-icon">
+  <link rel="stylesheet" href="./index.css">
+
+  <style>
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, .55);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+    }
+    .modal-content {
+      background: #f0f0f0;
+      border: 5px solid #808080;
+      padding: 22px 30px 28px;
+      max-width: 420px;
+      position: relative;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, .35);
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    }
+    .modal-close {
+      position: absolute;
+      top: 8px;
+      right: 12px;
+      font-size: 24px;
+      font-weight: bold;
+      color: #333;
+      cursor: pointer;
+      user-select: none;
+    }
+    .modal-close:hover { color: #000; }
+    .modal-title { margin: 0 0 12px; font-size: 22px; text-align: center; }
+    .modal-text  { font-size: 15px; line-height: 1.6; color: #222; }
+    .modal-text ul { margin: 10px 0; padding-left: 22px; }
+    .modal-text li { margin-bottom: 6px; }
+  </style>
+</head>
+<body>
+  <div id="app" class="app">
+    <h1>小林的休闲扫雷</h1>
+    <a class="portfolio-back" href="../../../index.html#portfolio">返回作品集</a>
+
+    <div class="settings">
+      <select class="levels" id="levelSelect" aria-label="选择难度">
+        <option value="level1">初级</option>
+        <option value="level2">中级</option>
+        <option value="level3">高级</option>
+      </select>
+      <button type="button" class="btn" id="startGame">重新开始</button>
+    </div>
+
+    <div class="action-buttons">
+      <button type="button" class="action-btn active" data-action="dig">⛏ 挖掘</button>
+      <button type="button" class="action-btn" data-action="flag">🚩 插旗</button>
+      <button type="button" class="action-btn" data-action="unflag">↩ 拔旗</button>
+      <button type="button" class="action-btn" id="openRules">📋 规则</button>
+    </div>
+
+    <div class="main">
+      <div class="title">
+        <div class="mine-remain">
+          <span id="mineCount" aria-label="剩余地雷"></span>
+        </div>
+        <button class="face" id="faceButton" type="button" aria-label="重新开始">
+          <img class="icon" id="faceImage" src="assets/smile.png" alt="游戏进行中">
+        </button>
+        <div class="time">
+          <span id="timeCount" aria-label="用时"></span>
+        </div>
+      </div>
+
+      <div class="board-viewport">
+        <div class="cell-grid board-simple" id="board" role="grid" aria-label="扫雷棋盘"></div>
+      </div>
+      <p class="game-status" id="gameStatus" aria-live="polite">选择格子开始游戏</p>
+    </div>
+  </div>
+
+  <div id="rulesModal" class="modal-overlay" role="dialog" aria-modal="true" aria-labelledby="rulesTitle">
+    <div class="modal-content">
+      <button type="button" class="modal-close" id="closeRules" aria-label="关闭规则">&times;</button>
+      <h2 class="modal-title" id="rulesTitle">扫雷游戏规则</h2>
+      <div class="modal-text">
+        <p>游戏目标：在不踩到地雷的情况下，揭开所有非雷格子。</p>
+        <ul>
+          <li>左键（挖掘）：揭开所选格子；若首次踩雷，雷会重新布置。</li>
+          <li>右键（插旗/拔旗）：对格子插旗或拔旗，用于标记疑似地雷。</li>
+          <li>数字提示：格子中的数字表示周围 8 格中地雷的数量。</li>
+          <li>胜利条件：揭开所有非雷格子或正确标记所有地雷。</li>
+          <li>失败条件：揭开含地雷的格子。</li>
+        </ul>
+        <p>祝你游戏愉快，小心地雷！</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="./main.js"></script>
+
+  <script>
+    document.getElementById('closeRules').onclick = function () {
+      document.getElementById('rulesModal').style.display = 'none';
+    };
+    document.getElementById('rulesModal').onclick = function (e) {
+      if (e.target === this) {
+        this.style.display = 'none';
+      }
+    };
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') {
+        document.getElementById('rulesModal').style.display = 'none';
+      }
+    });
+  </script>
+</body>
+</html>

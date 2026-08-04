@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="拖拽滑杆比较设计迭代前后的视觉差异。">
+  <title>设计迭代对照台 | 小林作品集</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a href="../../../index.html" class="back-link" aria-label="返回作品集">← <span>返回作品集</span></a>
+    <p class="brand">DESIGN REVIEW / 014</p>
+    <span class="local-badge">LOCAL ASSETS</span>
+  </header>
+
+  <main>
+    <section class="intro">
+      <p class="eyebrow">视觉迭代记录 · INTERACTION TOOL</p>
+      <h1>设计迭代<br><em>对照台</em></h1>
+      <p class="intro-copy">拖动中央滑杆，在同一块画布上查看“草案”和“定稿”。适合复盘界面、海报和插画的视觉变化。</p>
+    </section>
+
+    <section class="workbench" aria-labelledby="compare-title">
+      <div class="workbench__head">
+        <div><span class="label">CASE 014 / VISUAL SYSTEM</span><h2 id="compare-title">夜航界面 · 一次配色迭代</h2></div>
+        <span class="counter">01 <i>/</i> 02</span>
+      </div>
+      <div class="comparison" id="comparison" aria-label="拖动滑杆比较设计草案与定稿">
+        <img class="comparison__after" src="assets/after.svg" alt="定稿：高对比夜航界面">
+        <div class="comparison__before"><img src="assets/before.svg" alt="草案：低对比夜航界面"></div>
+        <div class="comparison__handle" id="handle" role="slider" aria-label="对比位置" aria-valuemin="0" aria-valuemax="100" aria-valuenow="50" tabindex="0"><span></span></div>
+        <span class="comparison__tag comparison__tag--before">草案 / DRAFT</span>
+        <span class="comparison__tag comparison__tag--after">定稿 / FINAL</span>
+      </div>
+      <div class="workbench__foot"><span>拖动滑杆 · 使用 ← → 键微调</span><span id="positionLabel">对比位置 50%</span></div>
+    </section>
+
+    <section class="notes" aria-label="设计迭代摘要">
+      <article><span>01</span><h3>信息层级</h3><p>提高标题与状态提示的明度差，让首屏更快被扫描。</p></article>
+      <article><span>02</span><h3>色彩系统</h3><p>从暖灰草案切换到深夜蓝，保留荧光黄作为行动色。</p></article>
+      <article><span>03</span><h3>交互反馈</h3><p>滑杆在触控端保持 44px 可操作区域，键盘也能精确复盘。</p></article>
+    </section>
+  </main>
+
+  <footer><span>基于 Image Comparison Slider · MIT License</span><a href="https://github.com/solygambas/html-css-javascript-projects" target="_blank" rel="noreferrer">查看开源集合 ↗</a></footer>
+  <script src="script.js"></script>
+</body>
+</html>
