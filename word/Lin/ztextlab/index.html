@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="可实时调节厚度、层数和指针联动的 3D 立体文字实验室。">
+  <title>立体字实验室 · 小林互动作品</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../../index.html#portfolio"><span class="brand-mark">Z</span>小林互动作品</a><a class="back-link" href="../../../index.html#portfolio">返回作品集</a></header>
+  <main class="zlab">
+    <div class="heading"><div><span class="eyebrow">3D TYPE EXPERIMENT</span><h1>立体字实验室</h1></div><p>把一个词变成可以被指针牵引的空间物体。</p></div>
+    <section class="stage" id="stage" aria-label="立体文字预览"><span id="heroText" data-z="true" data-z-depth="24px" data-z-layers="12" data-z-event="pointer" data-z-eventrotation="28deg" data-z-fade="true">CREATE</span><span class="stage-mark">Z / 001</span></section>
+    <section class="controls" aria-label="立体字设置">
+      <label class="text-control"><span>文字</span><input id="textInput" type="text" value="CREATE" maxlength="18" aria-label="预览文字"></label>
+      <label><span>厚度 <output id="depthValue">24</output> px</span><input id="depthInput" type="range" min="1" max="60" value="24"></label>
+      <label><span>层数 <output id="layersValue">12</output></span><input id="layersInput" type="range" min="2" max="24" value="12"></label>
+      <label><span>方向</span><select id="directionInput"><option value="both">向两侧</option><option value="forwards">向前</option><option value="backwards">向后</option></select></label>
+      <label class="check-control"><span>渐隐层</span><input id="fadeInput" type="checkbox" checked></label>
+      <label class="check-control"><span>指针联动</span><input id="pointerInput" type="checkbox" checked></label>
+    </section>
+    <div class="note-line"><span>本地运行 · 无外部字体依赖</span><span>MIT / ztext.js by Bennett Feely</span></div>
+  </main>
+  <footer>基于 ztext.js 改造 · MIT License</footer>
+  <script src="ztext.min.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

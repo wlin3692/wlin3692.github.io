@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小林键盘反应训练互动作品。">
+  <title>键盘反应训练 · 小林互动作品</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="../../../index.html#portfolio"><span class="brand-mark">⌁</span>小林互动作品</a>
+    <a class="back-link" href="../../../index.html#portfolio">返回作品集</a>
+  </header>
+  <main class="typing-app">
+    <div class="app-heading">
+      <div><span class="eyebrow">KEYBOARD REACTION TRAINER</span><h1>键盘反应训练</h1></div>
+      <button id="settingsButton" class="icon-button" type="button" aria-label="打开设置" title="设置">⚙</button>
+    </div>
+    <section class="game-panel" aria-labelledby="gameTitle">
+      <div class="panel-top"><span id="gameTitle">专注输入</span><span class="live-mark"><i></i><span id="stateText">准备开始</span></span></div>
+      <div class="stats" aria-live="polite">
+        <div><span>剩余时间</span><strong id="time">45</strong><small>秒</small></div>
+        <div><span>得分</span><strong id="score">0</strong><small>分</small></div>
+        <div><span>准确率</span><strong id="accuracy">100</strong><small>%</small></div>
+        <div><span>连击</span><strong id="streak">0</strong><small>次</small></div>
+      </div>
+      <div class="word-zone"><span class="word-label">输入下面的单词</span><h2 id="word">准备好了吗？</h2><p id="hint">输入正确后自动切换下一个单词</p></div>
+      <div class="input-row"><input id="text" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" placeholder="点击开始，开始输入…" aria-label="输入单词"><button id="startButton" class="start-button" type="button">开始训练</button></div>
+      <div class="progress-track" aria-hidden="true"><span id="progressBar"></span></div>
+    </section>
+    <div class="secondary-row"><span>历史最佳：<strong id="best">0</strong> 分</span><span>训练词库 · Web / Design / Create</span></div>
+    <section class="result-panel" id="resultPanel" hidden><span class="eyebrow">SESSION COMPLETE</span><h2 id="resultTitle">训练完成</h2><p>本轮完成 <strong id="resultWords">0</strong> 个单词，最终准确率 <strong id="resultAccuracy">100</strong>%。</p><button id="restartButton" class="start-button" type="button">再练一次</button></section>
+  </main>
+  <aside class="settings-panel" id="settingsPanel" hidden><div class="settings-head"><strong>训练设置</strong><button id="closeSettings" class="icon-button" type="button" aria-label="关闭设置">×</button></div><label>训练时长<select id="duration"><option value="30">30 秒 · 冲刺</option><option value="45" selected>45 秒 · 专注</option><option value="60">60 秒 · 持久</option></select></label><p>设置会自动保存在本机。</p></aside>
+  <footer>基于 Traversy Media Speed Typer 改造 · MIT License</footer>
+  <script src="script.js"></script>
+</body>
+</html>
