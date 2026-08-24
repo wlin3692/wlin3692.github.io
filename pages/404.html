@@ -18,7 +18,7 @@
   </style>
 </head>
 <body><div class="stars"></div>
-  <main class="scene" aria-labelledby="title"><div class="badge" aria-hidden="true">404</div><h1 id="title">这页暂时走丢了</h1><p>链接可能已更新，或者页面正在实验室里调试。你可以回到首页，继续探索我的互动作品。</p><div class="actions"><a href="index.html">返回首页</a><a class="secondary" href="projects.html">浏览全部作品</a><a class="secondary" href="status.html">查看网站状态</a><button id="secretButton" type="button">点击寻找线索</button></div><div id="secret" role="status" aria-live="polite"></div></main>
+  <main class="scene" aria-labelledby="title"><div class="badge" aria-hidden="true">404</div><h1 id="title">这页暂时走丢了</h1><p>链接可能已更新，或者页面正在实验室里调试。你可以回到首页，继续探索我的互动作品。</p><div class="actions"><a href="../index.html">返回首页</a><a class="secondary" href="projects.html">浏览全部作品</a><a class="secondary" href="status.html">查看网站状态</a><button id="secretButton" type="button">点击寻找线索</button></div><div id="secret" role="status" aria-live="polite"></div></main>
   <script>const button=document.getElementById('secretButton');const output=document.getElementById('secret');const clues=['线索：每个项目都藏着一个小实验。','线索：试试按键盘上的 Esc。','线索：下一次更新也许就在今天。'];button.addEventListener('click',()=>{output.textContent=clues[Math.floor(Math.random()*clues.length)];});</script>
 </body>
 </html>

@@ -75,13 +75,45 @@
       iconViewer = document.createElement('div');
       iconViewer.className = 'brand-icon-viewer';
       iconViewer.setAttribute('aria-hidden', 'true');
-      iconViewer.innerHTML = '<div class="brand-icon-viewer__panel" role="dialog" aria-modal="true" aria-label="龙盾动画"><button type="button" class="brand-icon-viewer__close" aria-label="关闭图标预览">×</button><video class="brand-icon-viewer__video" playsinline preload="auto" controls></video><img class="brand-icon-viewer__image" alt="网站龙盾图标" hidden></div>';
+      iconViewer.innerHTML = '<div class="brand-icon-viewer__panel" role="dialog" aria-modal="true" aria-label="龙盾动画"><button type="button" class="brand-icon-viewer__close" aria-label="关闭图标预览">×</button><div class="brand-icon-viewer__video-wrap"><video class="brand-icon-viewer__video" playsinline preload="auto" controls></video><button type="button" class="brand-icon-viewer__video-reveal" aria-label="显示播放控制" hidden></button></div><img class="brand-icon-viewer__image" alt="网站龙盾图标" hidden></div>';
       document.body.appendChild(iconViewer);
       iconViewer.addEventListener('click', event => { if (event.target === iconViewer || event.target.closest('.brand-icon-viewer__close')) closeIconViewer(); });
-      iconViewer.querySelector('.brand-icon-viewer__video').addEventListener('ended', () => {
+      const video = iconViewer.querySelector('.brand-icon-viewer__video');
+      const reveal = iconViewer.querySelector('.brand-icon-viewer__video-reveal');
+      let hideTimer = 0;
+      const hideControls = () => {
+        if (video.paused || video.ended) return;
+        video.controls = false;
+        reveal.hidden = false;
+      };
+      const showControls = () => {
+        window.clearTimeout(hideTimer);
+        video.controls = true;
+        reveal.hidden = true;
+        if (!video.paused && !video.ended) hideTimer = window.setTimeout(hideControls, 3000);
+      };
+      video.addEventListener('play', () => {
+        video.controls = false;
+        reveal.hidden = false;
+        window.clearTimeout(hideTimer);
+        hideTimer = window.setTimeout(hideControls, 3000);
+      });
+      video.addEventListener('pause', () => {
+        window.clearTimeout(hideTimer);
+        video.controls = true;
+        reveal.hidden = true;
+      });
+      reveal.addEventListener('click', event => {
+        event.stopPropagation();
+        showControls();
+      });
+      video.addEventListener('ended', () => {
+        window.clearTimeout(hideTimer);
         const video = iconViewer.querySelector('.brand-icon-viewer__video');
         const image = iconViewer.querySelector('.brand-icon-viewer__image');
+        const reveal = iconViewer.querySelector('.brand-icon-viewer__video-reveal');
         video.hidden = true;
+        reveal.hidden = true;
         image.hidden = false;
         image.focus?.();
       });
@@ -94,6 +126,8 @@
       video.hidden = false;
       image.hidden = true;
       video.loop = false;
+      video.controls = true;
+      iconViewer.querySelector('.brand-icon-viewer__video-reveal').hidden = true;
       video.src = icon.dataset.videoSrc;
       video.currentTime = 0;
     } else {

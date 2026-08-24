@@ -50,7 +50,7 @@ window.renderHomeComponents = function renderHomeComponents() {
       <button type="button" class="social-placeholder" data-platform="微博" title="微博" aria-label="微博"><i class="bi bi-sina-weibo" aria-hidden="true"></i></button>
     </div>
     <div class="footer-info"><p><strong>小林工作室</strong></p><p>专业 · 创新 · 品质</p></div>
-    <p><a href="status.html">网站状态</a> · <a href="report.html">问题反馈</a> · <a href="mailto:wlin3692@163.com">发送邮件</a></p>
+    <p><a href="pages/status.html">网站状态</a> · <a href="pages/report.html">问题反馈</a> · <a href="mailto:wlin3692@163.com">发送邮件</a></p>
     <p>&copy; ${new Date().getFullYear()} 小林的个人网页. 版权所有.</p>
   </div>
 </footer>

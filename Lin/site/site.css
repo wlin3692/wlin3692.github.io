@@ -90,7 +90,11 @@
 .brand-icon-viewer.is-open { opacity: 1; visibility: visible; }
 .brand-icon-viewer__panel { position: relative; display: grid; max-width: min(86vw, 720px); max-height: 86vh; padding: 14px; border: 1px solid rgba(0, 215, 255, .45); border-radius: 18px; background: #050b13; box-shadow: 0 24px 80px rgba(0, 0, 0, .5); }
 .brand-icon-viewer__image { display: block; width: min(72vw, 620px); height: min(72vw, 620px); max-width: 78vh; max-height: 78vh; object-fit: contain; border-radius: 12px; }
-.brand-icon-viewer__video { display: block; width: min(72vw, 620px); height: min(72vw, 620px); max-width: 78vh; max-height: 78vh; object-fit: contain; border-radius: 12px; background: #02060b; }
+.brand-icon-viewer__video-wrap { position: relative; width: min(72vw, 620px); height: min(72vw, 620px); max-width: 78vh; max-height: 78vh; }
+.brand-icon-viewer__video { display: block; width: 100%; height: 100%; object-fit: contain; border-radius: 12px; background: #02060b; }
+.brand-icon-viewer__video-reveal { position: absolute; inset: 0; display: block; width: 100%; height: 100%; border: 0; border-radius: 12px; background: transparent; cursor: pointer; }
+.brand-icon-viewer__video-reveal[hidden] { display: none; }
+.brand-icon-viewer__video[hidden], .brand-icon-viewer__image[hidden] { display: none; }
     .brand-icon-viewer__close { position: absolute; top: -14px; right: -14px; display: grid; width: 38px; height: 38px; place-items: center; border: 1px solid rgba(255, 255, 255, .55); border-radius: 50%; background: #fff; color: #102033; cursor: pointer; font-size: 1.6rem; line-height: 1; }
     .site-update { display: inline-flex; align-items: center; gap: 6px; margin-top: 8px; color: rgba(255,255,255,.82); font-size: .78rem; letter-spacing: .02em; }
     .site-update i { color: #9fffe0; }

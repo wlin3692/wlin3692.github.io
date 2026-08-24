@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="报告小林个人网站中的链接、图片或显示问题。">
+  <meta name="robots" content="noindex,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#0f3b78">
+  <title>问题反馈 · 小林的个人网站</title>
+  <link rel="icon" href="../Lin/site/dragon-shield-icon-256.png" type="image/png">
+  <link rel="stylesheet" href="../Lin/site/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="../Lin/site/site.css">
+  <link rel="stylesheet" href="../Lin/site/utility-pages.css">
+  <link rel="stylesheet" href="../Lin/site/page-transitions.css">
+  <script src="../Lin/site/theme.js"></script>
+  <script src="../Lin/site/page-transitions.js"></script>
+</head>
+<body class="utility-page report-page">
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <nav aria-label="辅助页面导航"><div class="nav-container utility-nav">
+    <a href="../index.html" class="logo"><img class="site-brand-icon" data-full-src="../Lin/site/dragon-shield-icon.webp" src="../Lin/site/dragon-shield-icon-256.png" alt="" width="34" height="34">小林的个人网站</a>
+    <div class="utility-nav__links"><a href="../index.html">首页</a><a href="projects.html">全部作品</a><a href="status.html">网站状态</a></div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换主题"></button>
+  </div></nav>
+  <main id="main-content" class="utility-main" tabindex="-1">
+    <section class="utility-hero utility-hero--compact" aria-labelledby="reportTitle"><p class="section-kicker">FEEDBACK</p><h1 id="reportTitle">发现问题？告诉我</h1><p>作品打不开、图片缺失或显示异常时，留下足够的信息可以更快定位原因。</p></section>
+    <section class="report-layout">
+      <aside class="report-aside" aria-label="反馈说明"><div class="report-aside__icon"><i class="bi bi-life-preserver"></i></div><h2>帮助完善作品集</h2><p>这份反馈会预先填好邮件内容，由你的邮件应用确认发送，不会直接上传到网站。</p><ul><li><i class="bi bi-check2"></i> 说明发生问题的页面</li><li><i class="bi bi-check2"></i> 描述操作步骤或显示情况</li><li><i class="bi bi-check2"></i> 可选留下回复方式</li></ul><a href="status.html" class="text-action"><i class="bi bi-activity"></i> 先查看网站状态</a></aside>
+      <section class="utility-surface report-form-surface" aria-labelledby="reportFormTitle"><h2 id="reportFormTitle">提交反馈</h2><form id="reportForm" novalidate>
+        <div class="form-group"><label for="reportType">问题类型</label><select id="reportType" name="type"><option value="页面无法打开">页面无法打开</option><option value="图片或资源缺失">图片或资源缺失</option><option value="布局或交互异常">布局或交互异常</option><option value="其他问题">其他问题</option></select></div>
+        <div class="form-group"><label for="reportPage">问题页面或作品</label><input id="reportPage" name="page" maxlength="100" autocomplete="off" placeholder="例如：2048 数字合成" required></div>
+        <div class="form-group"><div class="field-label"><label for="reportIssue">问题描述</label><span id="reportCounter">0 / 1000</span></div><textarea id="reportIssue" name="issue" maxlength="1000" placeholder="描述你看到的情况、发生步骤或设备信息" required></textarea></div>
+        <div class="form-group"><label for="reportContact">联系方式 <span>（可选）</span></label><input id="reportContact" name="contact" maxlength="120" autocomplete="email" placeholder="邮箱或其他联系方式"></div>
+        <p id="reportStatus" class="form-status" role="status" aria-live="polite" hidden></p><div class="form-actions"><button class="btn" type="submit"><i class="bi bi-envelope-arrow-up"></i> 打开邮件反馈</button><a class="btn btn-secondary" href="../index.html">返回首页</a></div>
+      </form></section>
+    </section>
+  </main>
+  <footer class="utility-footer"><p><a href="../index.html">小林的个人网站</a><span aria-hidden="true">·</span><a href="projects.html">全部作品</a></p></footer>
+  <script src="../Lin/site/utility-pages.js"></script>
+</body>
+</html>
