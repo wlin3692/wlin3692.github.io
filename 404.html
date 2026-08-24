@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小林个人网站的页面未找到提示。">
+  <meta name="robots" content="noindex,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#0f3b78">
+  <title>页面未找到 · 小林的个人网站</title>
+  <style>
+    :root{font-family:"Microsoft YaHei UI","PingFang SC",system-ui,sans-serif;color:#eaf2ff;background:#07152b}
+    *{box-sizing:border-box}body{min-height:100vh;margin:0;display:grid;place-items:center;overflow:hidden;background:radial-gradient(circle at 50% 18%,#164e8a 0,transparent 42%),#07152b}
+    .scene{width:min(680px,calc(100% - 36px));padding:clamp(32px,8vw,72px) clamp(24px,7vw,70px);text-align:center;border:1px solid rgba(150,205,255,.28);border-radius:8px;background:rgba(9,29,58,.72);box-shadow:0 24px 70px rgba(0,0,0,.35);backdrop-filter:blur(14px)}
+    .badge{display:inline-grid;place-items:center;width:132px;height:132px;margin-bottom:22px;border:1px solid rgba(125,211,252,.45);border-radius:50%;color:#7dd3fc;font-size:clamp(44px,12vw,76px);font-weight:800;letter-spacing:0;text-shadow:0 0 30px rgba(125,211,252,.55);animation:float 3.6s ease-in-out infinite}
+    h1{margin:0;color:#fff;font-size:clamp(25px,5vw,38px)}p{margin:14px auto 0;max-width:460px;color:#b7c9e2;line-height:1.7}.actions{display:flex;flex-wrap:wrap;justify-content:center;gap:12px;margin-top:30px}a,button{min-height:44px;padding:10px 18px;border-radius:8px;font:inherit;font-weight:700;text-decoration:none;cursor:pointer}a{display:inline-flex;align-items:center;justify-content:center;background:#0f3b78;color:#fff;border:1px solid #3d78b9}a.secondary,button{background:transparent;color:#b9ddff;border:1px solid rgba(185,221,255,.42)}button:hover,a:hover{transform:translateY(-2px);filter:brightness(1.12)}#secret{min-height:1.5em;margin-top:18px;color:#7dd3fc;font-size:.9rem} .stars{position:fixed;inset:0;pointer-events:none;opacity:.5;background-image:radial-gradient(#b9ddff 1px,transparent 1px);background-size:62px 62px;mask-image:linear-gradient(#000,transparent)}
+    @keyframes float{50%{transform:translateY(-9px) rotate(2deg)}}@media(prefers-reduced-motion:reduce){.badge{animation:none}}
+  </style>
+</head>
+<body><div class="stars"></div>
+  <main class="scene" aria-labelledby="title"><div class="badge" aria-hidden="true">404</div><h1 id="title">这页暂时走丢了</h1><p>链接可能已更新，或者页面正在实验室里调试。你可以回到首页，继续探索我的互动作品。</p><div class="actions"><a href="index.html">返回首页</a><a class="secondary" href="pages/projects.html">浏览全部作品</a><a class="secondary" href="status.html">查看网站状态</a><button id="secretButton" type="button">点击寻找线索</button></div><div id="secret" role="status" aria-live="polite"></div></main>
+  <script>const button=document.getElementById('secretButton');const output=document.getElementById('secret');const clues=['线索：每个项目都藏着一个小实验。','线索：试试按键盘上的 Esc。','线索：下一次更新也许就在今天。'];button.addEventListener('click',()=>{output.textContent=clues[Math.floor(Math.random()*clues.length)];});</script>
+</body>
+</html>

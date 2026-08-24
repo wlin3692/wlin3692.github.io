@@ -4,15 +4,49 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="小林的网页互动作品集，收录小游戏、网页界面与浏览器互动实验。">
+  <meta name="author" content="小林">
+  <meta name="keywords" content="小林,个人网站,网页作品集,互动实验,网络安全">
   <meta name="robots" content="index,follow">
   <meta name="referrer" content="strict-origin-when-cross-origin">
-  <meta name="theme-color" content="#0066ff">
+  <meta name="theme-color" content="#0f3b78">
+  <link rel="preload" as="image" href="Lin/site/666.webp" fetchpriority="high">
   <title>小林的个人网站</title>
   <meta property="og:type" content="website">
   <meta property="og:locale" content="zh_CN">
   <meta property="og:site_name" content="小林的个人网页">
   <meta property="og:title" content="小林的个人网站">
   <meta property="og:description" content="收录小游戏、网页界面与浏览器互动实验。">
+  <meta property="og:url" content="./">
+  <meta property="og:image" content="Lin/site/666.webp">
+  <meta property="og:image:alt" content="小林个人网站欢迎图">
+  <meta property="og:image:type" content="image/jpeg">
+  <meta property="og:image:width" content="2279">
+  <meta property="og:image:height" content="1280">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="小林的个人网站">
+  <meta name="twitter:description" content="收录小游戏、网页界面与浏览器互动实验。">
+  <meta name="twitter:image" content="Lin/site/666.webp">
+  <meta name="twitter:image:alt" content="小林个人网站欢迎图">
+  <link rel="canonical" href="./">
+  <link rel="icon" href="Lin/site/dragon-shield-icon-256.png" type="image/png">
+  <script type="application/ld+json">
+    [{
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "小林",
+      "url": "./",
+      "jobTitle": "网络空间安全专业学生",
+      "description": "专注安全开发与浏览器互动实验的网络空间安全学习者。"
+    },
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "小林的个人网站",
+      "url": "./",
+      "inLanguage": "zh-CN",
+      "description": "收录小游戏、网页界面与浏览器互动实验。"
+    }]
+  </script>
   <link rel="stylesheet" href="Lin/site/vendor/bootstrap-icons/bootstrap-icons.css">
   <link rel="stylesheet" href="Lin/site/vendor/aos/aos.css">
   <link rel="stylesheet" href="Lin/site/site.css">
@@ -22,12 +56,27 @@
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳到主要内容</a>
-  <div id="siteTop"></div>
+  <div id="siteTop">
+    <!-- JavaScript 会把这里增强为完整导航；禁用脚本时仍保留可访问的页面入口。 -->
+    <header class="static-site-header">
+      <h1>小林的个人网站</h1>
+      <p>网络空间安全学习者，专注安全开发与浏览器互动实验。</p>
+    </header>
+    <nav class="static-site-nav" aria-label="主导航">
+      <a href="#home">首页</a>
+      <a href="#about">关于我</a>
+      <a href="#services">服务</a>
+      <a href="#portfolio">作品集</a>
+      <a href="#updates">更新日志</a>
+      <a href="#contact">联系我们</a>
+      <a href="#guestbook">留言板</a>
+    </nav>
+  </div>
 
   <main id="main-content" class="container" tabindex="-1">
     <section id="home" class="card" data-aos="fade-up">
       <h2 data-typewriter>首页</h2>
-      <img class="welcome-image" src="Lin/site/666.jpg" alt="欢迎图" width="2279" height="1280" loading="eager" fetchpriority="high" decoding="async">
+      <img class="welcome-image" src="Lin/site/666.webp" alt="欢迎图" width="2279" height="1280" loading="eager" fetchpriority="high" decoding="async">
       <p>欢迎来到我的个人网站。这里收录了网页界面、互动实验和浏览器小游戏，也记录我持续打磨设计与开发能力的过程。</p>
       <div class="section-actions">
         <a class="btn" href="#contact">立即联系</a>
@@ -39,7 +88,7 @@
       <h2 data-typewriter>关于我</h2>
       <p class="about-lead">我是一名网络空间安全专业的本科生（2023.09—2027.07），关注网络攻防、渗透测试与安全开发。这个网站既是我的个人作品集，也记录了我把安全知识落到真实项目中的过程。</p>
       <div class="about-facts" aria-label="个人方向概览">
-        <div class="about-fact"><i class="bi bi-crosshair"></i><span><small>关注方向</small><strong>攻防 · 渗透 · 安全开发</strong></span></div>
+        <div class="about-fact"><i class="bi bi-bullseye"></i><span><small>关注方向</small><strong>攻防 · 渗透 · 安全开发</strong></span></div>
         <div class="about-fact"><i class="bi bi-kanban"></i><span><small>实践方式</small><strong>从原理到项目验证</strong></span></div>
         <div class="about-fact"><i class="bi bi-graph-up-arrow"></i><span><small>成长目标</small><strong>持续积累实战能力</strong></span></div>
       </div>
@@ -75,30 +124,12 @@
     </section>
 
     <section id="portfolio" class="card" data-aos="fade-up">
-      <h2 data-typewriter>作品集</h2>
-      <p>浏览 108 个可直接体验的小游戏、网页界面与互动实验。</p>
-      <div class="portfolio-toolbar" aria-label="作品筛选工具">
-        <div class="portfolio-search">
-          <i class="bi bi-search" aria-hidden="true"></i>
-          <input id="portfolioSearch" type="search" placeholder="搜索作品或技术..." aria-label="搜索作品">
-        </div>
-        <div class="portfolio-filters" role="group" aria-label="按类型筛选">
-          <button type="button" class="portfolio-filter active" data-filter="all" aria-pressed="true">全部</button>
-          <button type="button" class="portfolio-filter" data-filter="game" aria-pressed="false">游戏</button>
-          <button type="button" class="portfolio-filter" data-filter="web" aria-pressed="false">网页</button>
-          <button type="button" class="portfolio-filter" data-filter="interactive" aria-pressed="false">互动</button>
-        </div>
-        <label class="portfolio-favorites-toggle">
-          <input id="portfolioFavoritesOnly" type="checkbox">
-          <i class="bi bi-heart-fill" aria-hidden="true"></i>
-          <span>仅看收藏</span>
-        </label>
-      </div>
-      <div class="portfolio-summary" id="portfolioSummary" aria-live="polite"></div>
+      <h2 data-typewriter>精选作品</h2>
+      <p>先看看我最想展示的 6 个项目，再进入作品目录浏览全部 108 个作品。</p>
       <div class="services-grid portfolio-grid" id="portfolioGrid">
         <article class="service-item project-card project-card--dino" data-project-id="dino-runner" data-featured="true" data-featured-order="3" data-category="game" data-keywords="恐龙 跑酷 游戏 javascript 响应式 触控 下蹲 翼龙 昼夜">
           <div class="project-media">
-            <img src="word/games/dinogame/imgs/dino-run-0.png" alt="像素小恐龙跑酷游戏" loading="lazy">
+            <img src="word/games/dinogame/imgs/dino-run-0.png" alt="像素小恐龙跑酷游戏" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-dino-score" aria-hidden="true">00128</span>
             <span class="project-category"><i class="bi bi-controller"></i> 游戏</span>
             <button class="project-favorite" type="button" aria-label="收藏小恐龙快跑" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
@@ -108,6 +139,7 @@
             <p>融合跳跃、下蹲、动态场景和本地记录的像素跑酷游戏。</p>
             <div class="project-tags"><span>JavaScript</span><span>动态关卡</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=dino-runner"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="word/games/dinogame/index.html"><i class="bi bi-play-fill"></i> 体验</a>
             </div>
@@ -115,7 +147,7 @@
         </article>
         <article class="service-item project-card project-card--2048" data-project-id="number-2048" data-featured="true" data-featured-order="4" data-category="game" data-keywords="2048 数字 合成 益智 游戏 javascript 响应式 触控 深色模式">
           <div class="project-media">
-            <img src="word/games/game2048/meta/apple-touch-icon.png" alt="2048 数字合成游戏图标" loading="lazy">
+            <img src="word/games/game2048/meta/apple-touch-icon.png" alt="2048 数字合成游戏图标" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-category"><i class="bi bi-grid-3x3-gap"></i> 游戏</span>
             <button class="project-favorite" type="button" aria-label="收藏 2048 数字合成" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
           </div>
@@ -124,454 +156,15 @@
             <p>支持键盘、触屏手势、深色模式和本地记录的数字益智游戏。</p>
             <div class="project-tags"><span>数字逻辑</span><span>触屏手势</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=number-2048"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="word/games/game2048/index.html"><i class="bi bi-play-fill"></i> 体验</a>
             </div>
           </div>
         </article>
-        <article class="service-item project-card project-card--tetris" data-project-id="block-tetris" data-category="game" data-keywords="俄罗斯方块 tetris 方块 消除 游戏 javascript canvas 响应式 触控 深色模式">
-          <div class="project-media">
-            <img src="word/games/gametetris/preview.png" alt="俄罗斯方块游戏画面" loading="lazy">
-            <span class="project-category"><i class="bi bi-boxes"></i> 游戏</span>
-            <button class="project-favorite" type="button" aria-label="收藏俄罗斯方块" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>俄罗斯方块</h3>
-            <p>支持幽灵落点、等级加速、本地最高分和手机按键的经典消除游戏。</p>
-            <div class="project-tags"><span>Canvas</span><span>移动端控制</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/games/gametetris/index.html"><i class="bi bi-play-fill"></i> 体验</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--pacman" data-project-id="neon-pacman" data-category="game" data-keywords="吃豆人 pacman 迷宫 街机 游戏 canvas 寻路 触控 多关卡">
-          <div class="project-media">
-            <img src="word/games/pacman/preview.svg" alt="霓虹吃豆人迷宫游戏画面" loading="lazy">
-            <span class="project-category"><i class="bi bi-controller"></i> 游戏</span>
-            <button class="project-favorite" type="button" aria-label="收藏霓虹吃豆人" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>霓虹吃豆人</h3>
-            <p>包含 12 个迷宫关卡与幽灵协作寻路，支持键盘和手机触控操作。</p>
-            <div class="project-tags"><span>Canvas</span><span>智能寻路</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/games/pacman/index.html"><i class="bi bi-play-fill"></i> 体验</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--fluid" data-project-id="fluid-light-lab" data-category="interactive" data-keywords="流体 光绘 webgl canvas 互动 鼠标 触控 多点触控 生成艺术 参数调节 截图">
-          <div class="project-media">
-            <img src="word/Lin/fluidlab/preview.webp" alt="流体光绘互动实验画面" loading="lazy">
-            <span class="project-category"><i class="bi bi-bezier2"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏流体光绘" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>流体光绘实验室</h3>
-            <p>用鼠标或手指搅动彩色流体，自定义光效与参数并保存生成画面。</p>
-            <div class="project-tags"><span>WebGL</span><span>生成艺术</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/fluidlab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--typinglab" data-project-id="typing-lab" data-category="game" data-keywords="打字 速度 键盘 训练 游戏 英文单词 计时 得分 准确率 连击">
-          <div class="project-media">
-            <img src="word/Lin/typinglab/preview.svg" alt="键盘反应训练界面" loading="lazy">
-            <span class="project-category"><i class="bi bi-keyboard"></i> 游戏</span>
-            <button class="project-favorite" type="button" aria-label="收藏键盘反应训练" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>键盘反应训练</h3>
-            <p>在限定时间内完成单词输入，追踪得分、准确率、连击和本地最佳成绩。</p>
-            <div class="project-tags"><span>键盘互动</span><span>本地记录</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/typinglab/index.html"><i class="bi bi-play-fill"></i> 体验</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--breakout" data-project-id="neon-breakout" data-category="game" data-keywords="打砖块 breakout canvas 游戏 球拍 关卡 生命值 键盘 触控 最高分">
-          <div class="project-media">
-            <img src="word/games/breakout/preview.svg" alt="霓虹打砖块游戏画面" loading="lazy">
-            <span class="project-category"><i class="bi bi-controller"></i> 游戏</span>
-            <button class="project-favorite" type="button" aria-label="收藏霓虹打砖块" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>霓虹打砖块</h3>
-            <p>多关卡 Canvas 打砖块，支持键盘、触控跟随、暂停、生命值和最高分。</p>
-            <div class="project-tags"><span>Canvas</span><span>多关卡</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/games/breakout/index.html"><i class="bi bi-play-fill"></i> 体验</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--ztextlab" data-project-id="ztext-lab" data-category="interactive" data-keywords="立体字 3d typography ztext 文字 鼠标 指针 联动 厚度 层数 互动">
-          <div class="project-media">
-            <img src="word/Lin/ztextlab/preview.svg" alt="立体字实验室预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-type"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏立体字实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>立体字实验室</h3>
-            <p>实时调节文字厚度、层数和渐隐效果，让立体字随指针产生空间旋转。</p>
-            <div class="project-tags"><span>CSS 3D</span><span>参数实验</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/ztextlab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--nestlab" data-project-id="particle-nest-lab" data-category="interactive" data-keywords="粒子 连线 canvas nest 鼠标 互动 密度 颜色 透明度 生成艺术">
-          <div class="project-media">
-            <img src="word/Lin/nestlab/preview.svg" alt="粒子连线实验室预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-bezier2"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏粒子连线实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>粒子连线实验室</h3>
-            <p>拖动指针观察粒子连接，实时调节数量、透明度和主题颜色。</p>
-            <div class="project-tags"><span>Canvas</span><span>生成艺术</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/nestlab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--particlelab" data-project-id="particle-field-lab" data-category="interactive" data-keywords="粒子场 particles.js canvas 配置器 形状 速度 密度 交互 生成艺术">
-          <div class="project-media">
-            <img src="word/Lin/particlelab/preview.svg" alt="粒子场控制台预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-sliders"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏粒子场控制台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>粒子场控制台</h3>
-            <p>调节粒子数量、速度、形状和指针模式，生成不同的动态粒子空间。</p>
-            <div class="project-tags"><span>Particles.js</span><span>参数控制</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/particlelab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--hoverlab" data-project-id="image-distortion-lab" data-category="interactive" data-keywords="WebGL 图片 扭曲 hover effect three.js gsap 鼠标 触控 图像切换">
-          <div class="project-media">
-            <img src="word/Lin/hoverlab/preview.svg" alt="图像扰动实验室预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-image"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏图像扰动实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>图像扰动实验室</h3>
-            <p>在三组图片之间体验 WebGL 流体扭曲切换，支持柔和和强烈两种模式。</p>
-            <div class="project-tags"><span>WebGL</span><span>图像交互</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/hoverlab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
-        <article class="service-item project-card project-card--disintegratelab" data-project-id="disintegrate-lab" data-category="interactive" data-keywords="元素 碎裂 粒子 canvas dom html2canvas 动画 互动 爆散 流星">
-          <div class="project-media">
-            <img src="word/Lin/disintegratelab/preview.svg" alt="元素碎裂实验室预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-stars"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏元素碎裂实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-body"><h3>元素碎裂实验室</h3><p>将真实 DOM 卡片采样为 Canvas 粒子，在漂移、爆散和流星轨迹间自由切换。</p><div class="project-tags"><span>Canvas</span><span>粒子动画</span><span>DOM Capture</span></div><div class="project-actions"><button class="project-detail" type="button">查看详情</button><a class="btn" href="word/Lin/disintegratelab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--comparisonlab" data-project-id="design-comparison-lab" data-category="interactive" data-keywords="设计 对照 迭代 滑杆 图片比较 视觉 交互 键盘 触控">
-          <div class="project-media">
-            <img src="word/Lin/comparisonlab/assets/after.svg" alt="设计迭代对照台预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-columns-gap"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏设计迭代对照台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-body"><h3>设计迭代对照台</h3><p>拖动滑杆复盘视觉草案与定稿，支持触控、鼠标和键盘微调。</p><div class="project-tags"><span>视觉复盘</span><span>滑杆交互</span><span>触控</span></div><div class="project-actions"><button class="project-detail" type="button">查看详情</button><a class="btn" href="word/Lin/comparisonlab/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--seatplanner" data-project-id="cinema-seat-planner" data-category="interactive" data-keywords="影院 座位 电影 规划 票价 预算 选择 触控 本地保存">
-          <div class="project-media">
-            <img src="word/Lin/seatplanner/preview.svg" alt="观影座位规划器预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-grid-3x3-gap"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏观影座位规划器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-body"><h3>观影座位规划器</h3><p>选择影片和座位，实时计算预算并记住本机上的观影计划。</p><div class="project-tags"><span>座位图</span><span>预算统计</span><span>本地保存</span></div><div class="project-actions"><button class="project-detail" type="button">查看详情</button><a class="btn" href="word/Lin/seatplanner/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--focusplayer" data-project-id="focus-player" data-category="interactive" data-keywords="专注 播放器 Web Audio 音乐 音轨 合成 声音 进度 音量 离线">
-          <div class="project-media">
-            <img src="word/Lin/focusplayer/preview.svg" alt="专注播放台预览" loading="lazy">
-            <span class="project-category"><i class="bi bi-soundwave"></i> 互动</span>
-            <button class="project-favorite" type="button" aria-label="收藏专注播放台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-body"><h3>专注播放台</h3><p>用 Web Audio API 即时生成三种氛围音轨，支持播放、进度和音量控制。</p><div class="project-tags"><span>Web Audio</span><span>离线生成</span><span>播放器</span></div><div class="project-actions"><button class="project-detail" type="button">查看详情</button><a class="btn" href="word/Lin/focusplayer/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="password-lab" data-category="interactive" data-keywords="密码 密钥 生成器 随机 安全 字符 工具">
-          <div class="project-media"><img src="word/previews/password-lab.webp" alt="密钥生成器预览" loading="lazy"><span class="project-category"><i class="bi bi-key"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏密钥生成器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>密钥生成器</h3><p>在浏览器本地生成随机密钥，支持长度与复制操作。</p><div class="project-tags"><span>随机</span><span>安全工具</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/passwordlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="notes-lab" data-category="interactive" data-keywords="便签 笔记 本地保存 文字 记录 工具">
-          <div class="project-media"><img src="word/previews/notes-lab.webp" alt="便签空间预览" loading="lazy"><span class="project-category"><i class="bi bi-journal-text"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏便签空间" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>便签空间</h3><p>快速记录临时想法，内容保存在本机并支持删除。</p><div class="project-tags"><span>便签</span><span>LocalStorage</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/noteslab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="quiz-lab" data-category="game" data-keywords="问答 测验 观察力 游戏 选择 计分">
-          <div class="project-media"><img src="word/previews/quiz-lab.webp" alt="灵感小测预览" loading="lazy"><span class="project-category"><i class="bi bi-question-circle"></i> 游戏</span><button class="project-favorite" type="button" aria-label="收藏灵感小测" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>灵感小测</h3><p>三道轻量问题，测试你从细节中观察和判断的能力。</p><div class="project-tags"><span>问答</span><span>计分</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/quizlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="task-lab" data-category="interactive" data-keywords="任务 清单 待办 本地保存 计划 工具">
-          <div class="project-media"><img src="word/previews/task-lab.webp" alt="轻量任务板预览" loading="lazy"><span class="project-category"><i class="bi bi-check2-square"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏轻量任务板" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>轻量任务板</h3><p>添加、完成和删除今日任务，实时查看完成比例。</p><div class="project-tags"><span>待办</span><span>本地保存</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/tasklab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="insect-lab" data-category="game" data-keywords="点击 反应 游戏 光点 计时 触控">
-          <div class="project-media"><img src="word/previews/insect-lab.webp" alt="捕光小游戏预览" loading="lazy"><span class="project-category"><i class="bi bi-bug"></i> 游戏</span><button class="project-favorite" type="button" aria-label="收藏捕光小游戏" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>捕光小游戏</h3><p>30 秒内点击移动光点，挑战自己的反应速度。</p><div class="project-tags"><span>反应</span><span>计时</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/insectlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="slider-lab" data-category="interactive" data-keywords="滑杆 触控 参数 颜色 动画 视觉">
-          <div class="project-media"><img src="word/previews/slider-lab.webp" alt="触感滑台预览" loading="lazy"><span class="project-category"><i class="bi bi-sliders"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏触感滑台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>触感滑台</h3><p>拖动一条线，观察空间、角度和颜色的即时变化。</p><div class="project-tags"><span>滑杆</span><span>动效</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/sliderlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="range-lab" data-category="interactive" data-keywords="参数 范围 条形图 数据 可视化 控制台">
-          <div class="project-media"><img src="word/previews/range-lab.webp" alt="参数刻度台预览" loading="lazy"><span class="project-category"><i class="bi bi-bar-chart"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏参数刻度台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>参数刻度台</h3><p>拖动密度和速度，观察一组数据柱状图如何变化。</p><div class="project-tags"><span>数据可视化</span><span>参数</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/rangelab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="currency-lab" data-category="interactive" data-keywords="汇率 货币 换算 预算 离线 工具">
-          <div class="project-media"><img src="word/previews/currency-lab.webp" alt="汇率换算台预览" loading="lazy"><span class="project-category"><i class="bi bi-currency-exchange"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏汇率换算台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>汇率换算台</h3><p>用内置演示汇率快速估算旅行和日常预算。</p><div class="project-tags"><span>换算</span><span>离线</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/currencylab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="expense-lab" data-category="interactive" data-keywords="记账 开销 预算 金额 本地保存 工具">
-          <div class="project-media"><img src="word/previews/expense-lab.webp" alt="开销记账板预览" loading="lazy"><span class="project-category"><i class="bi bi-wallet2"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏开销记账板" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>开销记账板</h3><p>记录每一笔日常支出，实时汇总本页预算。</p><div class="project-tags"><span>记账</span><span>统计</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/expenselab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="memory-lab" data-category="game" data-keywords="记忆 翻牌 配对 游戏 触控">
-          <div class="project-media"><img src="word/previews/memory-lab.webp" alt="记忆翻牌预览" loading="lazy"><span class="project-category"><i class="bi bi-grid-3x3"></i> 游戏</span><button class="project-favorite" type="button" aria-label="收藏记忆翻牌" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>记忆翻牌</h3><p>翻开相同的星球图案，用更少步数完成配对。</p><div class="project-tags"><span>记忆游戏</span><span>本地最佳</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/memorylab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="relax-lab" data-category="interactive" data-keywords="呼吸 放松 计时 动画 练习">
-          <div class="project-media"><img src="word/previews/relax-lab.webp" alt="呼吸节奏预览" loading="lazy"><span class="project-category"><i class="bi bi-wind"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏呼吸节奏" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>呼吸节奏</h3><p>跟随圆环完成吸气、停留、呼气的节奏练习。</p><div class="project-tags"><span>呼吸练习</span><span>动画</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/relaxlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="sort-lab" data-category="interactive" data-keywords="排序 清单 优先级 流程 任务">
-          <div class="project-media"><img src="word/previews/sort-lab.webp" alt="顺序整理器预览" loading="lazy"><span class="project-category"><i class="bi bi-list-ol"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏顺序整理器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>顺序整理器</h3><p>用上移和下移按钮整理工作步骤与优先级。</p><div class="project-tags"><span>排序</span><span>流程</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/sortlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="guess-lab" data-category="game" data-keywords="数字 猜谜 游戏 逻辑 提示">
-          <div class="project-media"><img src="word/previews/guess-lab.webp" alt="数字猜谜预览" loading="lazy"><span class="project-category"><i class="bi bi-dice-5"></i> 游戏</span><button class="project-favorite" type="button" aria-label="收藏数字猜谜" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>数字猜谜</h3><p>在 1 到 100 中猜出答案，用提示一步步逼近。</p><div class="project-tags"><span>猜数字</span><span>逻辑</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/guesslab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="health-lab" data-category="interactive" data-keywords="健康 BMI 身高 体重 仪表盘 数据">
-          <div class="project-media"><img src="word/previews/health-lab.webp" alt="状态面板预览" loading="lazy"><span class="project-category"><i class="bi bi-heart-pulse"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏状态面板" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>状态面板</h3><p>输入基础数据，生成一张温和的个人状态观察卡。</p><div class="project-tags"><span>BMI</span><span>数据面板</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/healthlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="chat-lab" data-category="interactive" data-keywords="聊天 对话 界面 mockup 本地 交互">
-          <div class="project-media"><img src="word/previews/chat-lab.webp" alt="离线对话框预览" loading="lazy"><span class="project-category"><i class="bi bi-chat-dots"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏离线对话框" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>离线对话框</h3><p>没有后端的聊天界面练习，模拟消息发送与固定回应。</p><div class="project-tags"><span>聊天 UI</span><span>交互原型</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/chatlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="terminal-desk" data-category="interactive" data-keywords="终端 命令 行界面 作品集 导航 模拟">
-          <div class="project-media"><img src="word/previews/terminal-desk.webp" alt="作品终端预览" loading="lazy"><span class="project-category"><i class="bi bi-terminal"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏作品终端" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>作品终端</h3><p>用 help、list、about 探索一个安全的终端风格作品导航。</p><div class="project-tags"><span>命令行</span><span>导航原型</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/terminaldesk/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="soundboard-lab" data-category="interactive" data-keywords="音板 声音 Web Audio 按钮 音效 互动">
-          <div class="project-media"><img src="word/previews/soundboard-lab.webp" alt="节奏音板预览" loading="lazy"><span class="project-category"><i class="bi bi-music-note-beamed"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏节奏音板" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>节奏音板</h3><p>点击不同音板即时生成音色，体验按钮反馈和节奏组合。</p><div class="project-tags"><span>Web Audio</span><span>音效</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/soundboardlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="feedback-lab" data-category="interactive" data-keywords="反馈 星级 表单 评价 界面 本地">
-          <div class="project-media"><img src="word/previews/feedback-lab.webp" alt="反馈收集器预览" loading="lazy"><span class="project-category"><i class="bi bi-star"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏反馈收集器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>反馈收集器</h3><p>选择星级并留下最重要的一句话，练习一页式反馈流程。</p><div class="project-tags"><span>表单</span><span>反馈</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/feedbacklab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="toast-lab" data-category="interactive" data-keywords="Toast 提示 通知 状态 反馈 动画">
-          <div class="project-media"><img src="word/previews/toast-lab.webp" alt="提示消息实验室预览" loading="lazy"><span class="project-category"><i class="bi bi-bell"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏提示消息实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>提示消息实验室</h3><p>测试完成、提醒、注意和错误四种 Toast 状态的出现节奏。</p><div class="project-tags"><span>通知</span><span>状态反馈</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/toastlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="countdown-lab" data-category="interactive" data-keywords="倒计时 专注 番茄钟 计时器 进度">
-          <div class="project-media"><img src="word/previews/countdown-lab.webp" alt="专注倒计时预览" loading="lazy"><span class="project-category"><i class="bi bi-stopwatch"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏专注倒计时" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>专注倒计时</h3><p>设置一个短时段，观察进度条完成一次专注循环。</p><div class="project-tags"><span>番茄钟</span><span>计时器</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/countdownlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="nav-lab" data-category="interactive" data-keywords="导航 旋转 菜单 动画 入口">
-          <div class="project-media"><img src="word/previews/nav-lab.webp" alt="旋转导航预览" loading="lazy"><span class="project-category"><i class="bi bi-compass"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏旋转导航" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>旋转导航</h3><p>打开一个圆形入口菜单，体验方向和动效的变化。</p><div class="project-tags"><span>导航</span><span>动效</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/navlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="search-lab" data-category="interactive" data-keywords="搜索 过滤 筛选 隐藏 输入框 交互">
-          <div class="project-media"><img src="word/previews/search-lab.webp" alt="隐藏搜索预览" loading="lazy"><span class="project-category"><i class="bi bi-search"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏隐藏搜索" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>隐藏搜索</h3><p>需要时展开搜索框，即时过滤页面上的内容词条。</p><div class="project-tags"><span>搜索</span><span>过滤</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/searchlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="blur-load-lab" data-category="web" data-keywords="模糊 加载 占位 状态 过渡">
-          <div class="project-media"><img src="word/previews/blur-load-lab.webp" alt="模糊加载预览" loading="lazy"><span class="project-category"><i class="bi bi-hourglass-split"></i> 网页</span><button class="project-favorite" type="button" aria-label="收藏模糊加载" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>模糊加载</h3><p>点击切换从模糊占位到清晰内容的状态动画。</p><div class="project-tags"><span>加载</span><span>过渡</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/blurloadlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="scroll-lab" data-category="web" data-keywords="滚动 出现 页面 动画 叙事">
-          <div class="project-media"><img src="word/previews/scroll-lab.webp" alt="滚动出现预览" loading="lazy"><span class="project-category"><i class="bi bi-arrow-down-circle"></i> 网页</span><button class="project-favorite" type="button" aria-label="收藏滚动出现" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>滚动出现</h3><p>向下阅读时，让四张内容卡片逐块进入视野。</p><div class="project-tags"><span>滚动</span><span>叙事</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/scrolllab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="split-lab" data-category="web" data-keywords="双面 选择 入口 探索 工具 页面">
-          <div class="project-media"><img src="word/previews/split-lab.webp" alt="双面入口预览" loading="lazy"><span class="project-category"><i class="bi bi-intersect"></i> 网页</span><button class="project-favorite" type="button" aria-label="收藏双面入口" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>双面入口</h3><p>在探索互动和整理工具之间做一个轻量选择。</p><div class="project-tags"><span>选择</span><span>入口</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/splitlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="wave-lab" data-category="interactive" data-keywords="表单 波纹 输入 反馈 动画">
-          <div class="project-media"><img src="word/previews/wave-lab.webp" alt="波形表单预览" loading="lazy"><span class="project-category"><i class="bi bi-bezier2"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏波形表单" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>波形表单</h3><p>输入称呼，让表单下方的波纹随着文字长度反馈。</p><div class="project-tags"><span>表单</span><span>波形</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/wavelab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="faq-lab" data-category="interactive" data-keywords="FAQ 问答 折叠 内容 信息层级 展开">
-          <div class="project-media"><img src="word/previews/faq-lab.webp" alt="折叠问答预览" loading="lazy"><span class="project-category"><i class="bi bi-question-lg"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏折叠问答" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>折叠问答</h3><p>只展开需要的答案，让长内容保持清晰可扫描。</p><div class="project-tags"><span>FAQ</span><span>内容折叠</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/faqlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="pick-lab" data-category="interactive" data-keywords="随机 选择 决策 选项 工具">
-          <div class="project-media"><img src="word/previews/pick-lab.webp" alt="随机选择器预览" loading="lazy"><span class="project-category"><i class="bi bi-shuffle"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏随机选择器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>随机选择器</h3><p>输入选项，让随机结果帮你结束一次犹豫。</p><div class="project-tags"><span>随机</span><span>决策</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/picklab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="anim-nav-lab" data-category="interactive" data-keywords="导航 动画 菜单 入口 stagger 交互">
-          <div class="project-media"><img src="word/previews/anim-nav-lab.webp" alt="动画导航预览" loading="lazy"><span class="project-category"><i class="bi bi-list"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏动画导航" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>动画导航</h3><p>点击展开菜单，让不同入口按照顺序出现。</p><div class="project-tags"><span>菜单</span><span>动效</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/animnavlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="water-lab" data-category="interactive" data-keywords="喝水 习惯 记录 进度 本地保存 健康">
-          <div class="project-media"><img src="word/previews/water-lab.webp" alt="喝水提醒预览" loading="lazy"><span class="project-category"><i class="bi bi-cup-straw"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏喝水提醒" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>喝水提醒</h3><p>每点击一次记录一杯水，用进度条看见今日习惯。</p><div class="project-tags"><span>习惯</span><span>进度</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/waterlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="clock-lab" data-category="interactive" data-keywords="时钟 时间 主题 色温 本地">
-          <div class="project-media"><img src="word/previews/clock-lab.webp" alt="主题时钟预览" loading="lazy"><span class="project-category"><i class="bi bi-clock"></i> 工具</span><button class="project-favorite" type="button" aria-label="收藏主题时钟" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>主题时钟</h3><p>读取本地时间，根据时段切换页面色温和工作提示。</p><div class="project-tags"><span>时钟</span><span>主题</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/clocklab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="drag-lab" data-category="interactive" data-keywords="拖放 排序 手势 卡片 触控">
-          <div class="project-media"><img src="word/previews/drag-lab.webp" alt="拖放排序预览" loading="lazy"><span class="project-category"><i class="bi bi-arrows-move"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏拖放排序" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>拖放排序</h3><p>拖动流程卡片，或点击两张卡片交换顺序。</p><div class="project-tags"><span>拖放</span><span>手势</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/draglab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="loader-lab" data-category="interactive" data-keywords="加载器 等待 状态 旋转 动画">
-          <div class="project-media"><img src="word/previews/loader-lab.webp" alt="加载器工坊预览" loading="lazy"><span class="project-category"><i class="bi bi-arrow-repeat"></i> 互动</span><button class="project-favorite" type="button" aria-label="收藏加载器工坊" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>加载器工坊</h3><p>切换加载中、同步中和完成三种等待状态。</p><div class="project-tags"><span>加载器</span><span>状态</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/loaderlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="dad-joke-lab" data-category="interactive" data-keywords="冷笑话 随机 文案">
-          <div class="project-media"><img src="word/previews/dad-joke-lab.webp" alt="冷笑话抽签预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏冷笑话抽签" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>冷笑话抽签</h3><p>点击生成一条本地准备的冷笑话。</p><div class="project-tags"><span>随机</span><span>文案</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/dadjokelab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="movie-lab" data-category="interactive" data-keywords="电影 片单 筛选 观影">
-          <div class="project-media"><img src="word/previews/movie-lab.webp" alt="电影片单预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏电影片单" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>电影片单</h3><p>在本地片单中筛选一部今晚想看的电影。</p><div class="project-tags"><span>片单</span><span>筛选</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/movielab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="sticky-lab" data-category="web" data-keywords="吸附 导航 滚动 状态">
-          <div class="project-media"><img src="word/previews/sticky-lab.webp" alt="吸附导航预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏吸附导航" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>吸附导航</h3><p>滚动或点击按钮，观察导航栏在页面中的位置变化。</p><div class="project-tags"><span>导航</span><span>滚动</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/stickylab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="vertical-slider-lab" data-category="interactive" data-keywords="垂直 滑台 位置 方向">
-          <div class="project-media"><img src="word/previews/vertical-slider-lab.webp" alt="双向滑台预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏双向滑台" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>双向滑台</h3><p>拖动一条滑杆，在上下两种视觉状态之间切换。</p><div class="project-tags"><span>滑杆</span><span>方向</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/verticalsliderlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="github-profile-lab" data-category="web" data-keywords="用户 资料 筛选 开发者">
-          <div class="project-media"><img src="word/previews/github-profile-lab.webp" alt="个人资料卡预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏个人资料卡" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>个人资料卡</h3><p>用关键词筛选一组本地开发者资料卡。</p><div class="project-tags"><span>筛选</span><span>资料</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/githublab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="heart-lab" data-category="interactive" data-keywords="双击 收藏 心形 反馈">
-          <div class="project-media"><img src="word/previews/heart-lab.webp" alt="双击收藏预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏双击收藏" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>双击收藏</h3><p>双击卡片留下一个心形收藏反馈。</p><div class="project-tags"><span>双击</span><span>反馈</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/heartlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="good-cheap-fast-lab" data-category="interactive" data-keywords="好 快 省 平衡 选择 项目">
-          <div class="project-media"><img src="word/previews/good-cheap-fast-lab.webp" alt="选择平衡器预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏选择平衡器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>选择平衡器</h3><p>在好、快、省之间调整你的项目优先级。</p><div class="project-tags"><span>决策</span><span>项目</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/goodcheapfastlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="carousel-lab" data-category="web" data-keywords="轮播 图片 卡片 切换">
-          <div class="project-media"><img src="word/previews/carousel-lab.webp" alt="横向轮播预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏横向轮播" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>横向轮播</h3><p>用按钮查看一组本地视觉卡片。</p><div class="project-tags"><span>轮播</span><span>卡片</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/carousellab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="hoverboard-lab" data-category="interactive" data-keywords="悬浮 色板 颜色 鼠标">
-          <div class="project-media"><img src="word/previews/hoverboard-lab.webp" alt="悬浮色板预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏悬浮色板" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>悬浮色板</h3><p>移动到色块上，生成一片颜色灵感。</p><div class="project-tags"><span>颜色</span><span>悬浮</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/hoverboardlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="pokedex-lab" data-category="interactive" data-keywords="图鉴 条目 详情 搜索">
-          <div class="project-media"><img src="word/previews/pokedex-lab.webp" alt="小型图鉴预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏小型图鉴" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>小型图鉴</h3><p>点击条目查看本地图鉴详情。</p><div class="project-tags"><span>图鉴</span><span>详情</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/pokedexlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="tab-lab" data-category="web" data-keywords="标签栏 移动端 内容 切换">
-          <div class="project-media"><img src="word/previews/tab-lab.webp" alt="移动标签栏预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏移动标签栏" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>移动标签栏</h3><p>切换三个内容标签，观察信息区域的变化。</p><div class="project-tags"><span>标签</span><span>移动端</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/tablab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="strength-lab" data-category="interactive" data-keywords="密码 强度 输入 背景 安全">
-          <div class="project-media"><img src="word/previews/strength-lab.webp" alt="密钥强度预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏密钥强度" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>密钥强度</h3><p>输入一段文本，实时估算它的强度。</p><div class="project-tags"><span>安全</span><span>输入</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/strengthlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="boxes-lab" data-category="interactive" data-keywords="3D 盒子 旋转 空间 CSS">
-          <div class="project-media"><img src="word/previews/boxes-lab.webp" alt="立体盒子预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏立体盒子" aria-pressed="false" title="收藏"><i class="bi bi-box"></i></button></div><div class="project-content"><h3>立体盒子</h3><p>拖动滑杆调整空间盒子的旋转角度。</p><div class="project-tags"><span>3D</span><span>CSS</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/boxeslab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="verify-lab" data-category="interactive" data-keywords="验证码 输入 表单 验证">
-          <div class="project-media"><img src="word/previews/verify-lab.webp" alt="验证码输入预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏验证码输入" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>验证码输入</h3><p>逐格输入验证码，完成一次表单确认。</p><div class="project-tags"><span>表单</span><span>验证</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/verifylab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="filter-lab" data-category="interactive" data-keywords="用户 筛选 过滤 列表">
-          <div class="project-media"><img src="word/previews/filter-lab.webp" alt="实时用户筛选预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏实时用户筛选" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>实时用户筛选</h3><p>输入关键词，过滤本地用户列表。</p><div class="project-tags"><span>筛选</span><span>列表</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/filterlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="range-special-lab" data-category="interactive" data-keywords="范围 参数 进度 滑杆">
-          <div class="project-media"><img src="word/previews/range-special-lab.webp" alt="刻度范围预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏刻度范围" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>刻度范围</h3><p>拖动范围参数，查看数值和进度反馈。</p><div class="project-tags"><span>参数</span><span>滑杆</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/rangespeciallab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="netflix-lab" data-category="web" data-keywords="移动导航 电影 菜单 移动端">
-          <div class="project-media"><img src="word/previews/netflix-lab.webp" alt="移动导航预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏移动导航" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>移动导航</h3><p>打开和关闭一层移动端导航。</p><div class="project-tags"><span>菜单</span><span>移动端</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/netflixlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="testimonial-lab" data-category="web" data-keywords="评价 轮播 用户反馈 内容切换">
-          <div class="project-media"><img src="word/previews/testimonial-lab.webp" alt="评价切换预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏评价切换" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>评价切换</h3><p>切换三条本地评价，练习内容轮播。</p><div class="project-tags"><span>评价</span><span>轮播</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/testimoniallab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="imagegen-lab" data-category="interactive" data-keywords="随机 图片 渐变 生成 视觉">
-          <div class="project-media"><img src="word/previews/imagegen-lab.webp" alt="色彩图像生成器预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏色彩图像生成器" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>色彩图像生成器</h3><p>点击生成一张本地渐变色视觉卡。</p><div class="project-tags"><span>渐变</span><span>随机</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/imagegenlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="video-background-lab" data-category="web" data-keywords="视频背景 播放 暂停 静音 状态">
-          <div class="project-media"><img src="word/previews/video-background-lab.webp" alt="视频背景状态预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏视频背景状态" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>视频背景状态</h3><p>切换播放、暂停和静音三种背景状态。</p><div class="project-tags"><span>背景</span><span>状态</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/videobackgroundlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="portfolio-grid-lab" data-category="web" data-keywords="作品网格 筛选 作品集 类别">
-          <div class="project-media"><img src="word/previews/portfolio-grid-lab.webp" alt="作品网格预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏作品网格" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>作品网格</h3><p>按类别筛选一个小型作品网格。</p><div class="project-tags"><span>作品集</span><span>筛选</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/portfoliogridlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="glass-dashboard-lab" data-category="web" data-keywords="玻璃 仪表盘 指标 数据 UI">
-          <div class="project-media"><img src="word/previews/glass-dashboard-lab.webp" alt="玻璃仪表盘预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏玻璃仪表盘" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>玻璃仪表盘</h3><p>调整指标，观察仪表盘卡片的变化。</p><div class="project-tags"><span>Dashboard</span><span>数据</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/glassdashboardlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="parallax-svg-lab" data-category="interactive" data-keywords="视差 SVG 几何 鼠标 层次">
-          <div class="project-media"><img src="word/previews/parallax-svg-lab.webp" alt="视差层预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏视差层" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button></div><div class="project-content"><h3>视差层</h3><p>拖动指针，让几层几何形状产生视差。</p><div class="project-tags"><span>视差</span><span>SVG</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/parallaxsvglab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="product-3d-lab" data-category="interactive" data-keywords="3D 产品 卡片 旋转 角度">
-          <div class="project-media"><img src="word/previews/product-3d-lab.webp" alt="产品旋转卡预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏产品旋转卡" aria-pressed="false" title="收藏"><i class="bi bi-box-seam"></i></button></div><div class="project-content"><h3>产品旋转卡</h3><p>拖动角度查看一个简化产品卡。</p><div class="project-tags"><span>3D</span><span>产品</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/product3dlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="form-validator-lab" data-category="interactive" data-keywords="表单 验证 邮箱 密码 输入">
-          <div class="project-media"><img src="word/previews/form-validator-lab.webp" alt="表单验证预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏表单验证" aria-pressed="false" title="收藏"><i class="bi bi-check-circle"></i></button></div><div class="project-content"><h3>表单验证</h3><p>输入邮箱和密码，观察即时验证提示。</p><div class="project-tags"><span>表单</span><span>验证</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/formvalidatorlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="video-player-lab" data-category="interactive" data-keywords="视频 播放器 进度 控制 音量">
-          <div class="project-media"><img src="word/previews/video-player-lab.webp" alt="本地视频控制台预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏本地视频控制台" aria-pressed="false" title="收藏"><i class="bi bi-play-btn"></i></button></div><div class="project-content"><h3>本地视频控制台</h3><p>用进度和播放按钮模拟自定义视频播放器。</p><div class="project-tags"><span>播放器</span><span>进度</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/videoplayerlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="array-method-lab" data-category="interactive" data-keywords="数组 map filter reduce JavaScript 数据">
-          <div class="project-media"><img src="word/previews/array-method-lab.webp" alt="数组方法台预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏数组方法台" aria-pressed="false" title="收藏"><i class="bi bi-code-slash"></i></button></div><div class="project-content"><h3>数组方法台</h3><p>选择 map、filter、reduce 查看数据结果。</p><div class="project-tags"><span>JavaScript</span><span>数据</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/arraymethodlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="menu-modal-lab" data-category="web" data-keywords="菜单 弹窗 模态框 关闭 交互">
-          <div class="project-media"><img src="word/previews/menu-modal-lab.webp" alt="菜单弹窗预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏菜单弹窗" aria-pressed="false" title="收藏"><i class="bi bi-window"></i></button></div><div class="project-content"><h3>菜单弹窗</h3><p>打开一个菜单弹窗并关闭它。</p><div class="project-tags"><span>弹窗</span><span>菜单</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/menumodallab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="hangman-lab" data-category="game" data-keywords="猜词 吊人 游戏 字母 逻辑">
-          <div class="project-media"><img src="word/previews/hangman-lab.webp" alt="单词猜谜预览" loading="lazy"><span class="project-category">游戏</span><button class="project-favorite" type="button" aria-label="收藏单词猜谜" aria-pressed="false" title="收藏"><i class="bi bi-controller"></i></button></div><div class="project-content"><h3>单词猜谜</h3><p>猜出隐藏单词中的字母。</p><div class="project-tags"><span>猜词</span><span>游戏</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/hangmanlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="meal-finder-lab" data-category="interactive" data-keywords="菜单 食物 随机 推荐 生活">
-          <div class="project-media"><img src="word/previews/meal-finder-lab.webp" alt="今日菜单预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏今日菜单" aria-pressed="false" title="收藏"><i class="bi bi-egg-fried"></i></button></div><div class="project-content"><h3>今日菜单</h3><p>从本地菜单中随机找到一道菜。</p><div class="project-tags"><span>推荐</span><span>随机</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/mealfinderlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="infinite-scroll-lab" data-category="web" data-keywords="无限滚动 文章 加载 内容 列表">
-          <div class="project-media"><img src="word/previews/infinite-scroll-lab.webp" alt="无限文章流预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏无限文章流" aria-pressed="false" title="收藏"><i class="bi bi-arrow-down-square"></i></button></div><div class="project-content"><h3>无限文章流</h3><p>点击加载更多本地文章片段。</p><div class="project-tags"><span>文章流</span><span>加载</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/infinitescrolllab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="speech-lab" data-category="interactive" data-keywords="语音 朗读 文本 Web Speech 输入">
-          <div class="project-media"><img src="word/previews/speech-lab.webp" alt="文字朗读台预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏文字朗读台" aria-pressed="false" title="收藏"><i class="bi bi-volume-up"></i></button></div><div class="project-content"><h3>文字朗读台</h3><p>输入文字并调用浏览器语音朗读。</p><div class="project-tags"><span>语音</span><span>Web API</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/speechlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="lyrics-lab" data-category="interactive" data-keywords="歌词 滚动 音乐 文本 句子">
-          <div class="project-media"><img src="word/previews/lyrics-lab.webp" alt="歌词滚动预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏歌词滚动" aria-pressed="false" title="收藏"><i class="bi bi-music-note"></i></button></div><div class="project-content"><h3>歌词滚动</h3><p>点击下一句，让歌词逐行出现。</p><div class="project-tags"><span>歌词</span><span>滚动</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/lyricslab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="new-year-lab" data-category="web" data-keywords="新年 倒计时 时间 计时器">
-          <div class="project-media"><img src="word/previews/new-year-lab.webp" alt="新年倒计时预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏新年倒计时" aria-pressed="false" title="收藏"><i class="bi bi-calendar-event"></i></button></div><div class="project-content"><h3>新年倒计时</h3><p>输入秒数启动一段倒计时。</p><div class="project-tags"><span>倒计时</span><span>时间</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/newyearlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="agency-lab" data-category="web" data-keywords="创意机构 服务 品牌 语气 标签">
-          <div class="project-media"><img src="word/previews/agency-lab.webp" alt="创意机构入口预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏创意机构入口" aria-pressed="false" title="收藏"><i class="bi bi-building"></i></button></div><div class="project-content"><h3>创意机构入口</h3><p>切换品牌语气和服务标签。</p><div class="project-tags"><span>品牌</span><span>服务</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/agencylab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="animated-svg-lab" data-category="interactive" data-keywords="SVG 动画 旋转 图形 向量">
-          <div class="project-media"><img src="word/previews/animated-svg-lab.webp" alt="SVG动画台预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏 SVG 动画台" aria-pressed="false" title="收藏"><i class="bi bi-bezier"></i></button></div><div class="project-content"><h3>SVG 动画台</h3><p>点击按钮让本地 SVG 图形旋转。</p><div class="project-tags"><span>SVG</span><span>动画</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/animatedsvglab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="parallax-landing-lab" data-category="web" data-keywords="视差 首页 进度 层次 滑杆">
-          <div class="project-media"><img src="word/previews/parallax-landing-lab.webp" alt="视差首页预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏视差首页" aria-pressed="false" title="收藏"><i class="bi bi-layers"></i></button></div><div class="project-content"><h3>视差首页</h3><p>拖动进度体验前后景层次。</p><div class="project-tags"><span>视差</span><span>首页</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/parallaxlandinglab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="fullscreen-lab" data-category="web" data-keywords="全屏 画廊 图片 聚焦 模态">
-          <div class="project-media"><img src="word/previews/fullscreen-lab.webp" alt="全屏画廊预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏全屏画廊" aria-pressed="false" title="收藏"><i class="bi bi-fullscreen"></i></button></div><div class="project-content"><h3>全屏画廊</h3><p>点击卡片进入大图模式，再次关闭。</p><div class="project-tags"><span>画廊</span><span>全屏</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/fullscreenlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="lightbox-lab" data-category="web" data-keywords="图片 灯箱 聚焦 缩略图 模态">
-          <div class="project-media"><img src="word/previews/lightbox-lab.webp" alt="图片灯箱预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏图片灯箱" aria-pressed="false" title="收藏"><i class="bi bi-image"></i></button></div><div class="project-content"><h3>图片灯箱</h3><p>点击缩略卡片打开聚焦视图。</p><div class="project-tags"><span>灯箱</span><span>图片</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/lightboxlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="sneaker-lab" data-category="web" data-keywords="鞋款 产品 颜色 尺码 商店">
-          <div class="project-media"><img src="word/previews/sneaker-lab.webp" alt="鞋款选择器预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏鞋款选择器" aria-pressed="false" title="收藏"><i class="bi bi-bag"></i></button></div><div class="project-content"><h3>鞋款选择器</h3><p>切换三种配色和尺码。</p><div class="project-tags"><span>产品</span><span>选择器</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/sneakerlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="coming-soon-lab" data-category="web" data-keywords="即将到来 邮箱 订阅 表单 提醒">
-          <div class="project-media"><img src="word/previews/coming-soon-lab.webp" alt="即将到来预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏即将到来" aria-pressed="false" title="收藏"><i class="bi bi-envelope"></i></button></div><div class="project-content"><h3>即将到来</h3><p>输入邮箱登记一个本地提醒。</p><div class="project-tags"><span>表单</span><span>订阅</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/comingsoonlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="auth-switch-lab" data-category="web" data-keywords="登录 注册 表单 切换 账号">
-          <div class="project-media"><img src="word/previews/auth-switch-lab.webp" alt="登录注册切换预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏登录注册切换" aria-pressed="false" title="收藏"><i class="bi bi-person-lock"></i></button></div><div class="project-content"><h3>登录注册切换</h3><p>切换登录和注册两种表单状态。</p><div class="project-tags"><span>表单</span><span>账号</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/authswitchlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="promo-lab" data-category="interactive" data-keywords="优惠码 折扣 校验 商店 输入">
-          <div class="project-media"><img src="word/previews/promo-lab.webp" alt="优惠码校验预览" loading="lazy"><span class="project-category">工具</span><button class="project-favorite" type="button" aria-label="收藏优惠码校验" aria-pressed="false" title="收藏"><i class="bi bi-ticket-perforated"></i></button></div><div class="project-content"><h3>优惠码校验</h3><p>输入演示优惠码，查看折扣反馈。</p><div class="project-tags"><span>优惠</span><span>校验</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/promolab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="one-color-lab" data-category="web" data-keywords="单色 UI 明度 主题 颜色">
-          <div class="project-media"><img src="word/previews/one-color-lab.webp" alt="单色界面预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏单色界面" aria-pressed="false" title="收藏"><i class="bi bi-circle-half"></i></button></div><div class="project-content"><h3>单色界面</h3><p>拖动明度滑杆，调整整页单色主题。</p><div class="project-tags"><span>主题</span><span>颜色</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/onecolorlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="tooltip-lab" data-category="interactive" data-keywords="提示 气泡 hover 说明 按钮">
-          <div class="project-media"><img src="word/previews/tooltip-lab.webp" alt="提示气泡预览" loading="lazy"><span class="project-category">互动</span><button class="project-favorite" type="button" aria-label="收藏提示气泡" aria-pressed="false" title="收藏"><i class="bi bi-info-circle"></i></button></div><div class="project-content"><h3>提示气泡</h3><p>移动到不同按钮查看解释提示。</p><div class="project-tags"><span>Tooltip</span><span>说明</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/tooltiplab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="stream-lab" data-category="web" data-keywords="音乐 流媒体 播放列表 音频">
-          <div class="project-media"><img src="word/previews/stream-lab.webp" alt="音乐流媒体预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏音乐流媒体" aria-pressed="false" title="收藏"><i class="bi bi-music-note-list"></i></button></div><div class="project-content"><h3>音乐流媒体</h3><p>切换本地播放列表中的一首环境音。</p><div class="project-tags"><span>音乐</span><span>播放列表</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/streamlab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="creative-portfolio-lab" data-category="web" data-keywords="创意作品 主题 标签 作品集">
-          <div class="project-media"><img src="word/previews/creative-portfolio-lab.webp" alt="创意作品页预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏创意作品页" aria-pressed="false" title="收藏"><i class="bi bi-grid"></i></button></div><div class="project-content"><h3>创意作品页</h3><p>切换作品类型和视觉主题。</p><div class="project-tags"><span>作品集</span><span>主题</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/creativeportfoliolab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="laptop-ui-lab" data-category="web" data-keywords="笔记本 窗口 UI 桌面 模拟">
-          <div class="project-media"><img src="word/previews/laptop-ui-lab.webp" alt="笔记本界面预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏笔记本界面" aria-pressed="false" title="收藏"><i class="bi bi-laptop"></i></button></div><div class="project-content"><h3>笔记本界面</h3><p>点击窗口按钮切换界面状态。</p><div class="project-tags"><span>UI</span><span>窗口</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/laptopuilab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="headphones-lab" data-category="web" data-keywords="耳机 产品 颜色 音量 选择器">
-          <div class="project-media"><img src="word/previews/headphones-lab.webp" alt="耳机产品卡预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏耳机产品卡" aria-pressed="false" title="收藏"><i class="bi bi-headphones"></i></button></div><div class="project-content"><h3>耳机产品卡</h3><p>调整颜色与音量，观察产品卡参数。</p><div class="project-tags"><span>产品</span><span>参数</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/headphoneslab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="cloud-hosting-lab" data-category="web" data-keywords="云服务 存储 流量 价格 配额">
-          <div class="project-media"><img src="word/previews/cloud-hosting-lab.webp" alt="云服务面板预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏云服务面板" aria-pressed="false" title="收藏"><i class="bi bi-cloud"></i></button></div><div class="project-content"><h3>云服务面板</h3><p>调整存储和流量配额，查看估算价格。</p><div class="project-tags"><span>云服务</span><span>估算</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/cloudhostinglab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="magazine-lab" data-category="web" data-keywords="杂志 版式 专题 内容 切换">
-          <div class="project-media"><img src="word/previews/magazine-lab.webp" alt="杂志版式预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏杂志版式" aria-pressed="false" title="收藏"><i class="bi bi-book"></i></button></div><div class="project-content"><h3>杂志版式</h3><p>切换一个本地专题版面。</p><div class="project-tags"><span>版式</span><span>专题</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/magazinelab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="parallax-web-lab" data-category="web" data-keywords="长页 视差 章节 进度 层次">
-          <div class="project-media"><img src="word/previews/parallax-web-lab.webp" alt="长页视差预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏长页视差" aria-pressed="false" title="收藏"><i class="bi bi-layers"></i></button></div><div class="project-content"><h3>长页视差</h3><p>拖动进度浏览三个视差章节。</p><div class="project-tags"><span>视差</span><span>章节</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/parallaxweblab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="hulu-lab" data-category="web" data-keywords="流媒体 电影 剧集 筛选 首页">
-          <div class="project-media"><img src="word/previews/hulu-lab.webp" alt="流媒体首页预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏流媒体首页" aria-pressed="false" title="收藏"><i class="bi bi-tv"></i></button></div><div class="project-content"><h3>流媒体首页</h3><p>筛选电影与剧集卡片。</p><div class="project-tags"><span>影视</span><span>筛选</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/hululab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="cascade-lab" data-category="web" data-keywords="层叠 CSS 主题 组件 规则">
-          <div class="project-media"><img src="word/previews/cascade-lab.webp" alt="层叠样式台预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏层叠样式台" aria-pressed="false" title="收藏"><i class="bi bi-stack"></i></button></div><div class="project-content"><h3>层叠样式台</h3><p>切换组件主题，观察层叠规则结果。</p><div class="project-tags"><span>CSS</span><span>组件</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/cascadelab/index.html">打开</a></div></div>
-        </article>
-        <article class="service-item project-card project-card--microlab" data-project-id="container-query-lab" data-category="web" data-keywords="容器查询 响应式 宽度 组件 CSS">
-          <div class="project-media"><img src="word/previews/container-query-lab.webp" alt="容器响应台预览" loading="lazy"><span class="project-category">网页</span><button class="project-favorite" type="button" aria-label="收藏容器响应台" aria-pressed="false" title="收藏"><i class="bi bi-aspect-ratio"></i></button></div><div class="project-content"><h3>容器响应台</h3><p>拖动宽度，观察组件在容器内响应。</p><div class="project-tags"><span>响应式</span><span>容器查询</span></div><div class="project-actions"><button class="btn btn-secondary project-detail" type="button">详情</button><a class="btn" href="word/Lin/containerquerylab/index.html">打开</a></div></div>
-        </article>
         <article class="service-item project-card project-card--skillmap" data-project-id="skill-roadmap" data-featured="true" data-featured-order="5" data-category="interactive" data-keywords="技能 路线图 项目 流程图 拖拽 节点 互动 javascript 响应式 本地保存">
           <div class="project-media">
-            <img src="word/Lin/skillmap/preview.svg" alt="小林技能路线图互动界面" loading="lazy">
+            <img src="word/Lin/skillmap/preview.svg" alt="小林技能路线图互动界面" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-category"><i class="bi bi-diagram-3"></i> 互动</span>
             <button class="project-favorite" type="button" aria-label="收藏技能路线图" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
           </div>
@@ -580,6 +173,7 @@
             <p>拖拽组合技能、项目和成长目标，查看个人创作能力的完整脉络。</p>
             <div class="project-tags"><span>拖拽流程图</span><span>本地保存</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=skill-roadmap"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="word/Lin/skillmap/index.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
             </div>
@@ -587,7 +181,7 @@
         </article>
         <article class="service-item project-card" data-project-id="minesweeper" data-featured="true" data-featured-order="2" data-category="game" data-keywords="扫雷 游戏 javascript 逻辑">
           <div class="project-media">
-            <img src="Lin/site/222.jpg" alt="扫雷游戏的地雷图标" loading="lazy">
+            <img src="Lin/site/222.jpg" alt="扫雷游戏的地雷图标" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-category"><i class="bi bi-controller"></i> 游戏</span>
             <button class="project-favorite" type="button" aria-label="收藏休闲扫雷" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
           </div>
@@ -596,30 +190,15 @@
             <p>经典规则与多档难度结合的浏览器扫雷游戏。</p>
             <div class="project-tags"><span>JavaScript</span><span>游戏逻辑</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=minesweeper"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="word/games/sweeper/sweeper.html"><i class="bi bi-play-fill"></i> 体验</a>
             </div>
           </div>
         </article>
-        <article class="service-item project-card" data-project-id="login" data-category="web" data-keywords="登录 网页 表单 响应式">
-          <div class="project-media">
-            <img src="word/Lin/login/1234.jpg" alt="星空森林登录页背景" loading="lazy">
-            <span class="project-category"><i class="bi bi-window"></i> 网页</span>
-            <button class="project-favorite" type="button" aria-label="收藏登录页面" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
-          </div>
-          <div class="project-content">
-            <h3>沉浸式登录页</h3>
-            <p>以星空森林为视觉主题的响应式登录体验。</p>
-            <div class="project-tags"><span>表单</span><span>响应式</span></div>
-            <div class="project-actions">
-              <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
-              <a class="btn" href="word/Lin/login/denglu.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
-            </div>
-          </div>
-        </article>
         <article class="service-item project-card" data-project-id="fun-lab" data-featured="true" data-featured-order="6" data-category="interactive" data-keywords="互动 爱心 音乐 动画 趣味">
           <div class="project-media">
-            <img src="Lin/site/666.jpg" alt="小林趣味互动页面预览" loading="lazy">
+            <img src="Lin/site/666.webp" alt="小林趣味互动页面预览" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-category"><i class="bi bi-stars"></i> 互动</span>
             <button class="project-favorite" type="button" aria-label="收藏趣味互动实验室" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
           </div>
@@ -628,6 +207,7 @@
             <p>集合爱心动画、音乐与多种小互动的创意入口。</p>
             <div class="project-tags"><span>动画</span><span>多媒体</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=fun-lab"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="word/Lin/funlab/选项界面.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
             </div>
@@ -635,7 +215,7 @@
         </article>
         <article class="service-item project-card project-card--cat" data-project-id="cat-tracker" data-featured="true" data-featured-order="1" data-category="interactive" data-keywords="小猫 指针跟随 鼠标 触控 canvas 动画 互动">
           <div class="project-media">
-            <img src="Lin/cat/frame_front.webp" alt="会跟随指针转头的小猫" loading="lazy">
+            <img src="Lin/cat/frame_front.webp" alt="会跟随指针转头的小猫" width="640" height="400" loading="lazy" decoding="async">
             <span class="project-category"><i class="bi bi-cursor-fill"></i> 互动</span>
             <button class="project-favorite" type="button" aria-label="收藏指针跟随小猫" aria-pressed="false" title="收藏"><i class="bi bi-heart"></i></button>
           </div>
@@ -644,16 +224,18 @@
             <p>移动鼠标或手指，小猫会自然转头追随屏幕上的小鱼。</p>
             <div class="project-tags"><span>Canvas</span><span>指针交互</span></div>
             <div class="project-actions">
+              <a class="btn btn-secondary project-case-link" href="pages/project-detail.html?id=cat-tracker"><i class="bi bi-journal-text"></i> 案例</a>
               <button type="button" class="btn btn-secondary project-detail"><i class="bi bi-info-circle"></i> 详情</button>
               <a class="btn" href="Lin/cat/miao.html"><i class="bi bi-box-arrow-up-right"></i> 打开</a>
             </div>
           </div>
         </article>
       </div>
-      <div class="portfolio-expand">
-        <button type="button" class="btn btn-secondary portfolio-expand-toggle" id="portfolioExpandToggle" aria-controls="portfolioGrid" aria-expanded="false">
-          <i class="bi bi-chevron-down" aria-hidden="true"></i> 展开全部作品
-        </button>
+      <div class="portfolio-catalog-actions">
+        <a class="btn portfolio-catalog-link" href="pages/projects.html">
+          <i class="bi bi-grid-3x3-gap" aria-hidden="true"></i> 查看全部作品
+          <span class="portfolio-catalog-link__count">108 个项目</span>
+        </a>
       </div>
       <div class="portfolio-empty" id="portfolioEmpty" hidden>
         <i class="bi bi-search" aria-hidden="true"></i>
@@ -662,30 +244,50 @@
       </div>
 
       <div class="stat-panel">
-        <div class="stat-item"><span class="stat-number" data-countup="108">0</span><span class="stat-label">作品项目</span></div>
-        <div class="stat-item"><span class="stat-number" data-countup="12">0</span><span class="stat-label">游戏作品</span></div>
-        <div class="stat-item"><span class="stat-number" data-countup="3">0</span><span class="stat-label">作品分类</span></div>
-        <div class="stat-item"><span class="stat-number" data-countup="100" data-countup-suffix="%">0%</span><span class="stat-label">静态部署</span></div>
+        <div class="stat-item"><span class="stat-number" data-countup="108">108</span><span class="stat-label">作品项目</span></div>
+        <div class="stat-item"><span class="stat-number" data-countup="12">12</span><span class="stat-label">游戏作品</span></div>
+        <div class="stat-item"><span class="stat-number" data-countup="3">3</span><span class="stat-label">作品分类</span></div>
+        <div class="stat-item"><span class="stat-number" data-countup="100" data-countup-suffix="%">100%</span><span class="stat-label">静态部署</span></div>
+      </div>
+    </section>
+
+    <section id="updates" class="card updates-section" data-aos="fade-up">
+      <div class="updates-heading">
+        <div>
+          <p class="section-kicker">CHANGELOG / 2026</p>
+          <h2 data-typewriter>最近更新</h2>
+        </div>
+        <div class="updates-heading-meta">
+          <span class="updates-latest"><i class="bi bi-arrow-clockwise" aria-hidden="true"></i> 最近更新：2026.08.23</span>
+          <span class="updates-status"><i class="bi bi-arrow-up-right"></i> 持续维护中</span>
+        </div>
+      </div>
+      <div class="updates-list">
+        <article class="update-item"><time datetime="2026-08-23">2026.08.23</time><div><h3>作品目录升级</h3><p>新增作品搜索、分类统计、排序、收藏筛选和项目清单生成机制。</p></div><span class="update-tag">FEATURE</span></article>
+        <article class="update-item"><time datetime="2026-08-22">2026.08.22</time><div><h3>精选案例页上线</h3><p>为六个精选项目补充项目背景、实现重点和技术栈说明。</p></div><span class="update-tag">CONTENT</span></article>
+        <article class="update-item"><time datetime="2026-08-20">2026.08.20</time><div><h3>网站结构整理</h3><p>个人主页、全部作品和其他独立网页完成分目录管理。</p></div><span class="update-tag">REFACTOR</span></article>
       </div>
     </section>
 
     <section id="contact" class="card" data-aos="fade-up">
     <h2 data-typewriter>联系我们</h2>
-    <p>如果您有任何问题或需要帮助，请随时联系我。我很乐意为您提供服务。</p>
+    <p>如果您有任何问题或需要帮助，请随时联系我。我很乐意为您提供服务。提交后会打开您设备上的邮件应用，网站不会保存表单内容；请勿填写密码等敏感信息。</p>
     <div class="contact-layout">
       <div>
         <h3 style="color:var(--theme);margin-bottom:20px;">联系方式</h3>
         <div style="margin-bottom:15px"><i class="bi bi-envelope" style="color:var(--theme);margin-right:10px;"></i><strong>邮箱：</strong>wlin3692@163.com<button class="copy-contact" type="button" data-copy="wlin3692@163.com" data-label="邮箱" title="复制邮箱"><i class="bi bi-copy"></i></button></div>
-        <div style="margin-bottom:15px"><i class="bi bi-telephone" style="color:var(--theme);margin-right:10px;"></i><strong>电话：</strong>18244733692<button class="copy-contact" type="button" data-copy="18244733692" data-label="电话" title="复制电话"><i class="bi bi-copy"></i></button></div>
+        <div style="margin-bottom:15px"><i class="bi bi-telephone" style="color:var(--theme);margin-right:10px;"></i><strong>电话：</strong>182****3692<button class="copy-contact" type="button" data-copy="18244733692" data-label="电话" title="复制电话"><i class="bi bi-copy"></i></button></div>
         <div style="margin-bottom:15px"><i class="bi bi-geo-alt" style="color:var(--theme);margin-right:10px;"></i><strong>地址：</strong>中国·湖南</div>
         <div><i class="bi bi-clock" style="color:var(--theme);margin-right:10px;"></i><strong>工作时间：</strong>周一至周五 9:00-18:00</div>
       </div>
       <div class="contact-form">
         <h3 style="color:var(--theme);margin-bottom:20px;">发送消息</h3>
-        <form id="contactForm">
+        <form id="contactForm" aria-describedby="contactFormNote">
           <div class="form-group"><label for="contactName">姓名</label><input id="contactName" type="text" name="name" autocomplete="name" required></div>
           <div class="form-group"><label for="contactEmail">邮箱</label><input id="contactEmail" type="email" name="email" autocomplete="email" required></div>
-          <div class="form-group"><label for="contactMessage">留言</label><textarea id="contactMessage" name="message" required></textarea></div>
+          <div class="form-group"><label for="contactMessage">留言</label><textarea id="contactMessage" name="message" maxlength="2000" required></textarea></div>
+          <p class="form-note" id="contactFormNote">此表单通过 mailto 调用本机邮件客户端，不会直接上传到网站服务器。</p>
+          <p class="form-status" id="contactFormStatus" role="status" aria-live="polite" hidden></p>
           <button type="submit" class="btn" style="width:100%;"><i class="bi bi-envelope-arrow-up"></i> 打开邮件发送</button>
         </form>
       </div>
@@ -695,13 +297,16 @@
   <section id="guestbook" class="card" data-aos="fade-up">
     <div class="guestbook-heading">
       <div>
-        <h2 data-typewriter>留言板</h2>
-        <p>记录每一次真诚的相遇。</p>
+        <h2 data-typewriter>本地留言板</h2>
+        <p>留言仅保存在当前浏览器，不会上传到服务器。</p>
       </div>
-      <span class="guestbook-count" id="guestbookCount">0 条</span>
+      <div class="guestbook-heading-actions">
+        <span class="guestbook-count" id="guestbookCount">0 条</span>
+        <button class="guestbook-clear" id="guestbookClear" type="button" hidden>清空本机留言</button>
+      </div>
     </div>
     <div class="guestbook-layout">
-      <form id="guestbookForm" class="guestbook-form">
+      <form id="guestbookForm" class="guestbook-form" aria-describedby="guestbookNote">
         <div class="form-group">
           <label for="guestbookName">昵称</label>
           <input id="guestbookName" name="name" type="text" maxlength="20" autocomplete="nickname" required>
@@ -712,18 +317,19 @@
           <small class="message-counter" id="guestbookCounter">0 / 200</small>
         </div>
         <button type="submit" class="btn guestbook-submit"><i class="bi bi-chat-heart"></i> 发布留言</button>
+        <p class="form-note" id="guestbookNote">留言只保存在当前浏览器，不会上传；请勿输入联系方式、密码或其他敏感信息。</p>
       </form>
       <div class="guestbook-list" id="guestbookList" aria-live="polite"></div>
     </div>
   </section>
 </main> 
 
-  <button type="button" class="portfolio-collapse-fab" id="portfolioCollapseFloating" aria-controls="portfolioGrid" aria-expanded="true" title="收起全部作品" hidden>
-    <i class="bi bi-arrows-collapse" aria-hidden="true"></i>
-    <span>一键收起</span>
-  </button>
-
-  <div id="siteBottom"></div>
+  <div id="siteBottom">
+    <footer class="static-site-footer">
+      <p><strong>小林工作室</strong> · 专业 · 创新 · 品质</p>
+      <p><a href="status.html">网站状态</a> · <a href="report.html">问题反馈</a> · <a href="mailto:wlin3692@163.com">发送邮件</a> · 小林的个人网页</p>
+    </footer>
+  </div>
 
   <script src="Lin/site/vendor/aos/aos.js"></script>
   <script src="Lin/site/app.js"></script>

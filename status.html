@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="查看小林个人网站作品入口的运行状态。">
+  <meta name="robots" content="noindex,follow">
+  <meta name="referrer" content="strict-origin-when-cross-origin">
+  <meta name="theme-color" content="#0f3b78">
+  <title>网站状态 · 小林的个人网站</title>
+  <link rel="icon" href="Lin/site/dragon-shield-icon-256.png" type="image/png">
+  <link rel="stylesheet" href="Lin/site/vendor/bootstrap-icons/bootstrap-icons.css">
+  <link rel="stylesheet" href="Lin/site/site.css">
+  <link rel="stylesheet" href="Lin/site/utility-pages.css">
+  <link rel="stylesheet" href="Lin/site/page-transitions.css">
+  <script src="Lin/site/theme.js"></script>
+  <script src="Lin/site/page-transitions.js"></script>
+</head>
+<body class="utility-page status-page">
+  <a class="skip-link" href="#main-content">跳到主要内容</a>
+  <nav aria-label="辅助页面导航"><div class="nav-container utility-nav">
+    <a href="index.html" class="logo"><img class="site-brand-icon" data-full-src="Lin/site/dragon-shield-icon.webp" src="Lin/site/dragon-shield-icon-256.png" alt="" width="34" height="34">小林的个人网站</a>
+    <div class="utility-nav__links"><a href="index.html">首页</a><a href="pages/projects.html">全部作品</a><a href="report.html">问题反馈</a></div>
+    <button class="theme-toggle" id="themeToggle" type="button" aria-label="切换主题"></button>
+  </div></nav>
+  <main id="main-content" class="utility-main" tabindex="-1">
+    <section class="utility-hero" aria-labelledby="statusTitle">
+      <p class="section-kicker">SYSTEM STATUS</p>
+      <div class="utility-hero__heading"><div><h1 id="statusTitle">作品运行状态</h1><p>查看作品入口的可访问情况。检测仅在你主动触发时运行，不会在打开页面后消耗大量请求。</p></div><a class="btn btn-secondary" href="pages/projects.html"><i class="bi bi-grid-3x3-gap"></i> 浏览作品</a></div>
+    </section>
+    <section class="status-overview" aria-label="网站概览">
+      <article class="status-overview__item"><i class="bi bi-check-circle-fill"></i><div><strong id="statusOverall">页面资源已加载</strong><span>状态页准备就绪</span></div></article>
+      <article class="status-overview__item"><i class="bi bi-collection"></i><div><strong id="statusProjectCount">--</strong><span>已收录作品</span></div></article>
+      <article class="status-overview__item"><i class="bi bi-shield-check"></i><div><strong>按需检测</strong><span>仅检测当前显示项目</span></div></article>
+    </section>
+    <section class="utility-surface status-workspace" aria-labelledby="statusWorkspaceTitle">
+      <div class="surface-heading"><div><h2 id="statusWorkspaceTitle">项目入口</h2><p id="statusSummary" aria-live="polite">正在读取项目清单…</p></div><div class="status-actions"><button class="btn btn-secondary" id="statusCheck" type="button"><i class="bi bi-arrow-clockwise"></i> 检测当前项目</button><a class="icon-action" href="report.html" title="反馈问题" aria-label="反馈问题"><i class="bi bi-flag"></i></a></div></div>
+      <div class="status-toolbar"><label class="utility-search"><i class="bi bi-search" aria-hidden="true"></i><input id="statusSearch" type="search" placeholder="搜索作品…" aria-label="搜索作品"></label><div class="status-filter" role="group" aria-label="按类型筛选"><button class="active" type="button" data-status-filter="all" aria-pressed="true">全部</button><button type="button" data-status-filter="game" aria-pressed="false">游戏</button><button type="button" data-status-filter="web" aria-pressed="false">网页</button><button type="button" data-status-filter="interactive" aria-pressed="false">互动</button></div></div>
+      <div id="statusGrid" class="status-grid" aria-live="polite"></div>
+      <div class="status-empty" id="statusEmpty" hidden><i class="bi bi-search"></i><strong>没有匹配的作品</strong><span>换一个关键词或类型试试。</span></div>
+      <button class="load-more" id="statusMore" type="button" hidden>显示更多作品</button>
+    </section>
+  </main>
+  <footer class="utility-footer"><p><a href="index.html">小林的个人网站</a><span aria-hidden="true">·</span><a href="report.html">问题反馈</a></p></footer>
+  <script src="Lin/site/utility-pages.js"></script>
+</body>
+</html>

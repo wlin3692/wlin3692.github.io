@@ -1,1 +1,30 @@
-html.page-transition-enabled body{opacity:0;transform:translateY(8px);transition:opacity .24s ease,transform .24s ease;will-change:opacity,transform}html.page-transition-enabled.page-transition-entered body{opacity:1;transform:none;will-change:opacity}html.page-transition-enabled.page-transition-leaving body{opacity:0;transform:translateY(-7px);pointer-events:none;will-change:opacity,transform}@media(prefers-reduced-motion:reduce){html.page-transition-enabled body,html.page-transition-enabled.page-transition-entered body,html.page-transition-enabled.page-transition-leaving body{opacity:1;transform:none;transition:none;will-change:auto}}
+html.page-transition-enabled body {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity .24s ease, transform .24s ease;
+  will-change: opacity, transform;
+}
+
+html.page-transition-enabled.page-transition-entered body {
+  opacity: 1;
+  transform: none;
+  will-change: opacity;
+}
+
+html.page-transition-enabled.page-transition-leaving body {
+  opacity: 0;
+  transform: translateY(-7px);
+  pointer-events: none;
+  will-change: opacity, transform;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html.page-transition-enabled body,
+  html.page-transition-enabled.page-transition-entered body,
+  html.page-transition-enabled.page-transition-leaving body {
+    opacity: 1;
+    transform: none;
+    transition: none;
+    will-change: auto;
+  }
+}
