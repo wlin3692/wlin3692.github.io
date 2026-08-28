@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-# Add a Sitemap URL after the production domain is known.
+Sitemap: https://wlin3692.github.io/sitemap.xml

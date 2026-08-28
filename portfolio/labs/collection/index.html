@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="小林的浏览器交互专题实验合集。">
+  <title>交互专题实验室 · 小林互动作品</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../../index.html#portfolio"><span class="brand-mark">L</span>小林互动作品</a><a class="back-link" href="../../../index.html#portfolio">返回作品集</a></header>
+  <main class="collection">
+    <div class="heading"><div><span class="eyebrow">INTERACTION COLLECTION / MODES</span><h1 id="collectionTitle">交互专题实验室</h1></div><p id="collectionDescription">把相近的交互练习整理成一组可探索的专题。</p></div>
+    <section class="collection-layout">
+      <aside class="mode-list" aria-label="专题模式">
+        <button class="mode-toggle" id="modeToggle" type="button" aria-expanded="false" aria-controls="modeList">
+          <span class="mode-toggle__icon" aria-hidden="true">+</span>
+          <span>切换模式</span>
+        </button>
+        <div class="mode-list__panel" id="modeList"></div>
+      </aside>
+      <section class="preview-shell"><div class="preview-toolbar"><span id="previewTitle">选择一个模式</span><a id="previewLink" href="#" target="_blank" rel="noreferrer">打开原页面</a></div><iframe id="previewFrame" title="实验模式预览" loading="lazy"></iframe></section>
+    </section>
+    <p class="note-line">每个模式保留原始独立页面，专题入口负责统一浏览和切换。</p>
+  </main>
+  <footer>专题入口 · 本地静态页面</footer>
+  <script src="script.js"></script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

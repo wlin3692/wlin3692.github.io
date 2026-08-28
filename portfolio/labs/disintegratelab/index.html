@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#090a0f">
+  <meta name="description" content="把网页元素转换为 Canvas 粒子的互动实验。">
+  <title>元素碎裂实验室 | 小林作品集</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <div class="ambient ambient--one" aria-hidden="true"></div>
+  <div class="ambient ambient--two" aria-hidden="true"></div>
+
+  <header class="topbar">
+    <a class="back-link" href="../../../index.html" aria-label="返回作品集">← <span>返回作品集</span></a>
+    <div class="brand"><span class="brand__dot"></span> CANVAS / PARTICLE LAB</div>
+    <a class="source-link" href="https://github.com/ZachSaucier/Disintegrate" target="_blank" rel="noreferrer">开源基础 ↗</a>
+  </header>
+
+  <main class="layout">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow">INTERACTION EXPERIMENT · 013</p>
+      <h1 id="page-title">元素碎裂<br><span>实验室</span></h1>
+      <p class="lead">让一张网页卡片分解成数千个 Canvas 粒子。选择运动方式与粒子密度，然后亲手按下碎裂按钮。</p>
+      <div class="tech-list" aria-label="技术标签"><span>DOM CAPTURE</span><span>CANVAS 2D</span><span>PARTICLE SYSTEM</span></div>
+    </section>
+
+    <section class="stage-panel" aria-label="碎裂效果预览">
+      <div class="stage-grid" aria-hidden="true"></div>
+      <div class="stage-status"><span id="statusDot"></span><span id="statusText">正在准备粒子画布</span></div>
+
+      <div class="specimen-wrap">
+        <article class="specimen" id="specimen" data-dis-type="simultaneous" data-dis-particle-type="Particle" data-dis-reduction-factor="42">
+          <div class="specimen__number">01</div>
+          <div class="specimen__orbit" aria-hidden="true"><span></span></div>
+          <div class="specimen__content">
+            <p>IDEA FRAGMENT</p>
+            <h2>把复杂的问题<br>拆成会发光的碎片</h2>
+            <div class="specimen__meta"><span>2026.08</span><span>LIN / WEB LAB</span></div>
+          </div>
+        </article>
+        <button class="rebuild-button" id="rebuildButton" type="button" hidden>重新构建元素</button>
+      </div>
+
+      <div class="controls">
+        <fieldset>
+          <legend>碎裂方式</legend>
+          <div class="segmented" id="effectChoices">
+            <button class="is-active" type="button" data-effect="Particle" aria-pressed="true">漂移</button>
+            <button type="button" data-effect="ExplodingParticle" aria-pressed="false">爆散</button>
+            <button type="button" data-effect="CometParticle" aria-pressed="false">流星</button>
+          </div>
+        </fieldset>
+
+        <label class="density-control" for="density">
+          <span>粒子密度 <output id="densityValue">标准</output></span>
+          <input id="density" type="range" min="24" max="70" step="2" value="42">
+        </label>
+
+        <button class="disintegrate-button" id="disintegrateButton" type="button" disabled>
+          <span>启动碎裂</span><span class="button-icon" aria-hidden="true">✦</span>
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>基于 Disintegrate.js · MIT License</span>
+    <span>建议使用桌面浏览器或横屏体验</span>
+  </footer>
+
+  <script src="vendor/html2canvas.min.js"></script>
+  <script src="disintegrate.js"></script>
+  <script src="app.js"></script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

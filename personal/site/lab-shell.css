@@ -1,0 +1,85 @@
+:root {
+  --lab-shell-accent: #16715f;
+  --lab-shell-line: rgba(30, 40, 39, .18);
+  --lab-shell-ink: #1e2827;
+  --lab-shell-muted: #75807c;
+}
+
+body.lab-shell :where(a, button, input, select, textarea):focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--lab-shell-accent) 70%, white);
+  outline-offset: 3px;
+}
+
+body.lab-shell .lab-breadcrumb {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  width: min(1120px, calc(100% - 40px));
+  margin: 18px auto -2px;
+  gap: 8px;
+  color: var(--lab-shell-muted);
+  font: 10px/1.5 ui-monospace, Consolas, monospace;
+  letter-spacing: .04em;
+}
+
+body.lab-shell .lab-breadcrumb a {
+  color: var(--lab-shell-muted);
+  text-decoration: none;
+}
+
+body.lab-shell .lab-breadcrumb a:hover { color: var(--lab-shell-accent); }
+body.lab-shell .lab-breadcrumb span[aria-current="page"] { color: var(--lab-shell-ink); }
+
+body.lab-shell .lab-shell-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 34px;
+  padding: 6px 11px;
+  border: 1px solid var(--lab-shell-line);
+  color: var(--lab-shell-muted);
+  font-size: 12px;
+  line-height: 1;
+  text-decoration: none;
+  transition: border-color .2s ease, color .2s ease, background-color .2s ease;
+}
+
+body.lab-shell .lab-shell-back:hover {
+  border-color: var(--lab-shell-accent);
+  color: var(--lab-shell-accent);
+  background: color-mix(in srgb, var(--lab-shell-accent) 8%, transparent);
+}
+
+body.lab-shell .lab-shell-utility {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  z-index: 100;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 34px;
+  padding: 6px 10px;
+  border: 1px solid var(--lab-shell-line);
+  background: color-mix(in srgb, white 86%, transparent);
+  color: var(--lab-shell-muted);
+  box-shadow: 0 8px 24px rgba(25, 40, 35, .12);
+  backdrop-filter: blur(10px);
+  font: 10px/1 ui-monospace, Consolas, monospace;
+  letter-spacing: .08em;
+}
+
+body.lab-shell .lab-shell-utility a {
+  color: var(--lab-shell-accent);
+  text-decoration: none;
+  font-family: inherit;
+  letter-spacing: 0;
+}
+
+body.lab-shell .lab-shell-utility a:hover { text-decoration: underline; }
+
+@media (max-width: 650px) {
+  body.lab-shell .lab-breadcrumb { width: calc(100% - 32px); margin-top: 12px; }
+  body.lab-shell .lab-shell-utility { right: 10px; bottom: 10px; }
+  body.lab-shell .lab-shell-back { min-height: 32px; padding-inline: 9px; }
+}

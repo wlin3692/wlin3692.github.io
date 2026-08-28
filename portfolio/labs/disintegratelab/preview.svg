@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 500" role="img" aria-labelledby="title desc">
+  <title id="title">元素碎裂实验室预览</title>
+  <desc id="desc">紫色卡片向右分解为荧光粒子</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#090a0f"/><stop offset="1" stop-color="#15111f"/></linearGradient>
+    <linearGradient id="card" x1="0" x2="1" y1="0" y2="1"><stop stop-color="#8b66f5"/><stop offset="1" stop-color="#35205f"/></linearGradient>
+  </defs>
+  <rect width="800" height="500" fill="url(#bg)"/>
+  <g opacity=".12" stroke="#fff"><path d="M0 70h800M0 140h800M0 210h800M0 280h800M0 350h800M0 420h800"/><path d="M80 0v500M160 0v500M240 0v500M320 0v500M400 0v500M480 0v500M560 0v500M640 0v500M720 0v500"/></g>
+  <text x="58" y="68" fill="#d6ff4b" font-family="Arial,sans-serif" font-size="14" letter-spacing="3">PARTICLE LAB · 013</text>
+  <rect x="82" y="115" width="410" height="270" rx="5" fill="url(#card)" stroke="#bcaaf8"/>
+  <circle cx="432" cy="162" r="70" fill="none" stroke="#fff" opacity=".25"/><circle cx="432" cy="162" r="45" fill="none" stroke="#fff" opacity=".2"/>
+  <circle cx="386" cy="209" r="7" fill="#d6ff4b"/>
+  <text x="118" y="268" fill="#d6ff4b" font-family="Arial,sans-serif" font-size="12" letter-spacing="2">IDEA FRAGMENT</text>
+  <text x="118" y="309" fill="#fff" font-family="Arial,sans-serif" font-size="27" font-weight="700">把复杂的问题</text><text x="118" y="347" fill="#fff" font-family="Arial,sans-serif" font-size="27" font-weight="700">拆成会发光的碎片</text>
+  <g fill="#d6ff4b"><circle cx="518" cy="135" r="4"/><circle cx="548" cy="164" r="6"/><circle cx="578" cy="124" r="3"/><circle cx="607" cy="195" r="5"/><circle cx="636" cy="147" r="3"/><circle cx="675" cy="222" r="5"/><circle cx="706" cy="172" r="3"/></g>
+  <g fill="#8b66f5"><circle cx="530" cy="278" r="7"/><circle cx="568" cy="248" r="4"/><circle cx="603" cy="298" r="6"/><circle cx="650" cy="270" r="4"/><circle cx="694" cy="318" r="6"/></g>
+</svg>

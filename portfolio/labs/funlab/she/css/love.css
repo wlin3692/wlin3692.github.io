@@ -1,0 +1,78 @@
+* { box-sizing: border-box; }
+html, body { width: 100%; min-height: 100%; }
+body {
+  min-height: 100vh;
+  min-height: 100svh;
+  margin: 0;
+  overflow: hidden;
+  background: #ffe6ec;
+}
+.container { position: relative; width: 100%; height: 100vh; height: 100svh; }
+.body_left {
+  position: absolute;
+  left: clamp(8px, 3vw, 36px);
+  bottom: clamp(30px, 10vh, 110px);
+  z-index: 2;
+  width: clamp(110px, 24vw, 300px);
+  aspect-ratio: 1;
+}
+.body_left img { display: block; width: 100%; height: 100%; object-fit: contain; }
+.container .love {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 520px;
+  height: 440px;
+  transform: translate(-48%, -55%);
+  transform-origin: center;
+}
+.love .block {
+  position: absolute;
+  right: 0;
+  visibility: hidden;
+}
+.love .block div {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  box-sizing: border-box;
+  background: url("../images/heart.png") center / contain no-repeat;
+}
+.footer {
+  position: fixed;
+  right: 0;
+  bottom: 22px;
+  left: 0;
+  z-index: 3;
+  pointer-events: none;
+}
+.footer .border-top,
+.footer .border-bottom {
+  width: 0;
+  border-top: 3px solid #7f1d3c;
+  animation: border-grow 12s linear both;
+}
+.footer .border-bottom {
+  float: right;
+  border-color: #ef476f;
+  animation-delay: 12s;
+  animation-duration: 7s;
+}
+@keyframes border-grow { to { width: 100%; } }
+@media (max-width: 760px) {
+  .container .love { transform: translate(-50%, -54%) scale(.72); }
+  .body_left { bottom: 28px; }
+}
+@media (max-width: 520px) {
+  .container .love { transform: translate(-50%, -54%) scale(.54); }
+  .body_left { left: 4px; bottom: 18px; width: 100px; }
+  .footer { bottom: 10px; }
+}
+@media (max-height: 560px) and (orientation: landscape) {
+  .container .love { transform: translate(-48%, -50%) scale(.68); }
+  .body_left { width: 100px; bottom: 8px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .footer .border-top,
+  .footer .border-bottom { width: 100%; animation: none; }
+}

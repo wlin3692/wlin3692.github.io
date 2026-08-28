@@ -1,0 +1,1064 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="小林的趣味互动收藏室">
+  <title>心动收藏室</title>
+  <style>
+    :root {
+      --font: "Microsoft YaHei", "PingFang SC", "Noto Sans SC", system-ui, sans-serif;
+      --bg: #fff7fa;
+      --text: #3f2430;
+      --text-secondary: #765261;
+      --heading: #8f214d;
+      --accent-1: #be185d;
+      --accent-2: #a15c00;
+      --accent-3: #bf3156;
+      --accent-4: #4263a8;
+      --accent-5: #147d75;
+      --accent-6: #8d3fb0;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --shadow: 0 8px 32px rgba(92, 35, 57, 0.08);
+      --shadow-hover: 0 24px 56px rgba(92, 35, 57, 0.18);
+      --radius: 18px;
+      --transition: 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--font);
+      min-height: 100vh;
+      min-height: 100svh;
+      margin: 0;
+      padding: 100px 24px 48px;
+      overflow-x: hidden;
+      background: var(--bg);
+      color: var(--text);
+      position: relative;
+      cursor: default;
+    }
+
+    /* ========== 返回按钮 ========== */
+    .scene-back {
+      position: fixed;
+      top: 22px;
+      left: 22px;
+      z-index: 100;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: rgba(109, 31, 63, 0.85);
+      color: #fff;
+      font-size: 20px;
+      text-decoration: none;
+      transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+      box-shadow: 0 4px 20px rgba(109, 31, 63, 0.3);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .scene-back:hover {
+      transform: scale(1.12) rotate(-6deg);
+      background: rgba(109, 31, 63, 0.95);
+      box-shadow: 0 8px 28px rgba(109, 31, 63, 0.45);
+    }
+
+    /* ========== 三层景深背景心形（带漂浮） ========== */
+    .heart-field {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .bg-heart {
+      position: absolute;
+      color: rgba(190, 24, 93, 0.12);
+      transform: rotate(-45deg);
+      will-change: transform;
+      animation: float 10s infinite ease-in-out;
+    }
+
+    .bg-heart::before,
+    .bg-heart::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid currentColor;
+    }
+
+    .bg-heart::before {
+      border-bottom-color: transparent;
+    }
+
+    .bg-heart::after {
+      border-left-color: transparent;
+    }
+
+    @keyframes float {
+      0%, 100% { translate: 0 0; opacity: 0.6; }
+      25% { translate: 0 -18px; opacity: 0.9; }
+      50% { translate: 0 -36px; opacity: 0.5; }
+      75% { translate: 0 -12px; opacity: 0.8; }
+    }
+
+    .heart-far {
+      width: 28px;
+      height: 28px;
+      opacity: 0.06;
+    }
+    .heart-far::before,
+    .heart-far::after {
+      width: 28px;
+      height: 28px;
+    }
+    .heart-far::before { top: -16px; left: -2px; }
+    .heart-far::after { top: -2px; left: 12px; }
+
+    .heart-mid {
+      width: 20px;
+      height: 20px;
+      opacity: 0.1;
+    }
+    .heart-mid::before,
+    .heart-mid::after {
+      width: 20px;
+      height: 20px;
+    }
+    .heart-mid::before { top: -12px; left: -2px; }
+    .heart-mid::after { top: -2px; left: 8px; }
+
+    .heart-near {
+      width: 14px;
+      height: 14px;
+      opacity: 0.18;
+    }
+    .heart-near::before,
+    .heart-near::after {
+      width: 14px;
+      height: 14px;
+    }
+    .heart-near::before { top: -9px; left: -1px; }
+    .heart-near::after { top: -1px; left: 6px; }
+
+    /* ========== 飘落花瓣雨 ========== */
+    .petal-field {
+      position: fixed;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .petal {
+      position: absolute;
+      top: -15%;
+      width: var(--size);
+      height: var(--size);
+      background: var(--color);
+      border-radius: 150% 0 150% 0;
+      opacity: var(--opacity);
+      transform: rotate(var(--rot));
+      animation: petalFall var(--duration) var(--delay) linear forwards;
+      filter: blur(0.3px);
+    }
+
+    @keyframes petalFall {
+      0% {
+        transform: translateY(0) rotate(var(--rot)) scale(1);
+        opacity: var(--opacity);
+      }
+      20% {
+        transform: translateY(20vh) translateX(calc(var(--sway) * 0.4)) rotate(calc(var(--rot) + 50deg)) scale(0.95);
+      }
+      40% {
+        transform: translateY(40vh) translateX(calc(var(--sway) * -0.3)) rotate(calc(var(--rot) + 100deg)) scale(0.9);
+      }
+      60% {
+        transform: translateY(60vh) translateX(calc(var(--sway) * 0.5)) rotate(calc(var(--rot) + 140deg)) scale(0.85);
+        opacity: calc(var(--opacity) * 0.7);
+      }
+      80% {
+        transform: translateY(80vh) translateX(calc(var(--sway) * -0.2)) rotate(calc(var(--rot) + 170deg)) scale(0.8);
+        opacity: calc(var(--opacity) * 0.4);
+      }
+      100% {
+        transform: translateY(120vh) translateX(calc(var(--sway) * 0.3)) rotate(calc(var(--rot) + 220deg)) scale(0.65);
+        opacity: 0;
+      }
+    }
+
+    /* ========== 页面过渡遮罩 ========== */
+    .transition-overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: radial-gradient(circle at center, rgba(45, 15, 28, 0.96) 0%, rgba(22, 6, 14, 0.98) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 24px;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .transition-overlay.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .transition-svg {
+      width: min(360px, 85%);
+      height: 60px;
+      overflow: visible;
+    }
+
+    .transition-beat,
+    .transition-flat {
+      fill: none;
+      stroke: var(--accent-1);
+      stroke-width: 3;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: opacity 0.4s ease;
+    }
+
+    .transition-beat {
+      opacity: 0;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+    }
+
+    .transition-flat {
+      opacity: 1;
+    }
+
+    .transition-overlay.beating .transition-beat {
+      opacity: 1;
+      animation: drawHeartbeat 1.2s ease-in-out infinite;
+    }
+
+    .transition-overlay.beating .transition-flat {
+      opacity: 0;
+    }
+
+    .transition-text {
+      color: rgba(255, 255, 255, 0.65);
+      font-size: 0.9rem;
+      letter-spacing: 4px;
+      opacity: 0;
+      transform: translateY(8px);
+      transition: all 0.5s ease;
+    }
+
+    .transition-overlay.active .transition-text {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* 退出时内容收缩 */
+    .shell.exiting {
+      transform: scale(0.88) translateY(20px) !important;
+      opacity: 0 !important;
+      filter: blur(6px);
+      transition: all 0.7s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 进入时内容展开 */
+    body.entering .shell {
+      opacity: 0;
+      transform: scale(0.92);
+      filter: blur(4px);
+    }
+
+    body:not(.entering) .shell {
+      transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+    }
+
+    /* ========== 鼠标拖尾爱心 ========== */
+    .heart-trail {
+      position: fixed;
+      pointer-events: none;
+      z-index: 9998;
+      width: 10px;
+      height: 10px;
+      color: var(--trail-color);
+      transform: rotate(-45deg);
+      will-change: transform, opacity;
+      animation: trailFade 0.7s ease-out forwards;
+    }
+
+    .heart-trail::before,
+    .heart-trail::after {
+      content: "";
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 1.5px solid currentColor;
+    }
+
+    .heart-trail::before {
+      top: -6px;
+      left: -1px;
+      border-bottom-color: transparent;
+    }
+
+    .heart-trail::after {
+      top: -1px;
+      left: 5px;
+      border-left-color: transparent;
+    }
+
+    @keyframes trailFade {
+      0% { transform: rotate(-45deg) translateY(0) scale(1); opacity: 0.85; }
+      100% { transform: rotate(-45deg) translateY(-40px) scale(0.2) rotate(180deg); opacity: 0; }
+    }
+
+    /* ========== 点击粒子 ========== */
+    .particle {
+      position: fixed;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--particle-color);
+      pointer-events: none;
+      z-index: 9999;
+      will-change: transform, opacity;
+      animation: particleBurst 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+    }
+
+    @keyframes particleBurst {
+      0% { transform: translate(0, 0) scale(1); opacity: 1; }
+      100% { transform: translate(var(--tx), var(--ty)) scale(0); opacity: 0; }
+    }
+
+    /* ========== 主容器 ========== */
+    .shell {
+      position: relative;
+      z-index: 3;
+      width: min(840px, 100%);
+      margin: 0 auto;
+      transition: transform 0.3s ease-out;
+    }
+
+    /* ========== 标题区（打字机 + 闪烁） ========== */
+    .page-heading {
+      margin-bottom: 52px;
+      text-align: center;
+      opacity: 0;
+      animation: fadeIn 0.6s ease forwards;
+    }
+
+    .page-heading h1 {
+      color: var(--heading);
+      font-size: clamp(2.4rem, 8vw, 3.8rem);
+      letter-spacing: 4px;
+      font-weight: 700;
+      display: inline-block;
+      min-height: 1.2em;
+    }
+
+    .page-heading h1.typing::after {
+      content: "|";
+      animation: blink 0.8s step-end infinite;
+      color: var(--accent-1);
+      margin-left: 4px;
+      font-weight: 300;
+    }
+
+    .page-heading h1.typed::after {
+      content: "|";
+      animation: blink 1.2s step-end infinite;
+      color: var(--accent-1);
+      margin-left: 4px;
+      font-weight: 300;
+      opacity: 0.6;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+
+    .page-heading h1.shimmer {
+      animation: titleShimmer 3s ease-in-out infinite;
+    }
+
+    @keyframes titleShimmer {
+      0%, 92%, 100% {
+        text-shadow: none;
+        opacity: 1;
+        transform: scale(1);
+      }
+      94% {
+        text-shadow: 0 0 20px rgba(190, 24, 93, 0.4), 0 0 40px rgba(190, 24, 93, 0.2);
+        opacity: 0.85;
+        transform: scale(1.02);
+      }
+      96% {
+        text-shadow: 0 0 30px rgba(190, 24, 93, 0.6), 0 0 60px rgba(190, 24, 93, 0.3);
+        opacity: 1;
+        transform: scale(1.01);
+      }
+      98% {
+        text-shadow: 0 0 20px rgba(190, 24, 93, 0.4), 0 0 40px rgba(190, 24, 93, 0.2);
+        opacity: 0.9;
+        transform: scale(1.02);
+      }
+    }
+
+    /* ========== 心跳波形图 ========== */
+    .heartbeat-line {
+      margin: 18px auto 0;
+      width: min(320px, 80%);
+      height: 50px;
+      opacity: 0;
+      transform: scaleX(0.8);
+      transition: all 0.8s ease;
+    }
+
+    .heartbeat-line.show {
+      opacity: 1;
+      transform: scaleX(1);
+    }
+
+    .heartbeat-line svg {
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }
+
+    .heartbeat-line .beat-path {
+      fill: none;
+      stroke: var(--accent-1);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      stroke-dasharray: 600;
+      stroke-dashoffset: 600;
+      animation: drawHeartbeat 2s ease-in-out infinite;
+      filter: drop-shadow(0 0 6px rgba(190, 24, 93, 0.3));
+      transition: opacity 0.4s ease;
+    }
+
+    .heartbeat-line .flat-path {
+      fill: none;
+      stroke: var(--accent-1);
+      stroke-width: 2.5;
+      stroke-linecap: round;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    .heartbeat-line.flat .beat-path {
+      opacity: 0;
+      animation: none;
+    }
+
+    .heartbeat-line.flat .flat-path {
+      opacity: 1;
+    }
+
+    .heartbeat-line.flat .heartbeat-dot {
+      animation: none;
+      opacity: 0;
+    }
+
+    @keyframes drawHeartbeat {
+      0% { stroke-dashoffset: 600; }
+      40% { stroke-dashoffset: 0; }
+      60% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -600; }
+    }
+
+    .heartbeat-dot {
+      fill: var(--accent-1);
+      filter: drop-shadow(0 0 4px rgba(190, 24, 93, 0.6));
+      animation: dotPulse 2s ease-in-out infinite;
+      transition: opacity 0.4s ease;
+    }
+
+    @keyframes dotPulse {
+      0%, 40% { opacity: 0; transform: scale(0); }
+      50% { opacity: 1; transform: scale(1.2); }
+      60% { opacity: 0; transform: scale(0); }
+      100% { opacity: 0; }
+    }
+
+    .page-heading p {
+      margin-top: 14px;
+      color: var(--text-secondary);
+      font-size: clamp(1rem, 3vw, 1.15rem);
+      letter-spacing: 2px;
+      opacity: 0;
+      transform: translateY(12px);
+    }
+
+    .page-heading p.show {
+      animation: fadeInUp 0.8s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      to { opacity: 1; }
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ========== 卡片网格 ========== */
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+      perspective: 1200px;
+    }
+
+    .experience-card {
+      --accent: var(--accent-1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      padding: 34px 18px;
+      min-height: 190px;
+      border-radius: var(--radius);
+      background: var(--card-bg);
+      text-align: center;
+      text-decoration: none;
+      color: var(--text);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      box-shadow: var(--shadow);
+      transition: all var(--transition);
+      overflow: hidden;
+      cursor: pointer;
+      will-change: transform;
+      opacity: 0;
+      transform: translateY(40px) scale(0.92);
+      animation: cardIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      animation-name: cardIn, breathe;
+      animation-duration: 0.7s, 3s;
+      animation-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1), ease-in-out;
+      animation-fill-mode: forwards, none;
+      animation-delay: var(--stagger), var(--breathe-delay);
+      animation-iteration-count: 1, infinite;
+    }
+
+    .experience-card:nth-child(1) { --accent: var(--accent-1); --stagger: 1.2s; --breathe-delay: 0s; }
+    .experience-card:nth-child(2) { --accent: var(--accent-2); --stagger: 1.35s; --breathe-delay: 0.5s; }
+    .experience-card:nth-child(3) { --accent: var(--accent-3); --stagger: 1.5s; --breathe-delay: 1s; }
+    .experience-card:nth-child(4) { --accent: var(--accent-4); --stagger: 1.65s; --breathe-delay: 1.5s; }
+    .experience-card:nth-child(5) { --accent: var(--accent-5); --stagger: 1.8s; --breathe-delay: 2s; }
+    .experience-card:nth-child(6) { --accent: var(--accent-6); --stagger: 1.95s; --breathe-delay: 2.5s; }
+
+    @keyframes cardIn {
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @keyframes breathe {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-6px); }
+    }
+
+    .experience-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--accent);
+      transition: all 0.4s ease;
+      border-radius: var(--radius) var(--radius) 0 0;
+    }
+
+    .experience-card::after {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 0;
+      height: 0;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 10%, transparent) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      transition: all 0.6s ease;
+      pointer-events: none;
+    }
+
+    .experience-card:hover {
+      animation-play-state: paused, paused;
+      transform: translateY(-10px) scale(1.03) !important;
+      box-shadow: var(--shadow-hover);
+      border-color: color-mix(in srgb, var(--accent) 15%, transparent);
+    }
+
+    .experience-card:hover::before {
+      height: 100%;
+      opacity: 0.04;
+    }
+
+    .experience-card:hover::after {
+      width: 250px;
+      height: 250px;
+    }
+
+    .experience-card:active {
+      transform: translateY(-4px) scale(0.98) !important;
+      transition: all 0.1s ease;
+    }
+
+    .experience-card:focus-visible {
+      outline: 3px solid color-mix(in srgb, var(--accent) 50%, #fff);
+      outline-offset: 4px;
+    }
+
+    .card-number {
+      position: absolute;
+      top: 14px;
+      right: 16px;
+      font-size: 0.8rem;
+      font-weight: 800;
+      color: var(--accent);
+      opacity: 0.2;
+      transition: all 0.3s ease;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .experience-card:hover .card-number {
+      opacity: 0.55;
+      transform: scale(1.1);
+    }
+
+    .card-icon {
+      font-size: 54px;
+      line-height: 1;
+      transition: all var(--transition);
+      position: relative;
+      z-index: 1;
+      filter: drop-shadow(0 4px 10px rgba(0,0,0,0.08));
+      display: block;
+    }
+
+    .experience-card:hover .card-icon {
+      transform: scale(1.2) rotate(10deg);
+      filter: drop-shadow(0 10px 20px color-mix(in srgb, var(--accent) 35%, transparent));
+    }
+
+    .card-label {
+      color: var(--accent);
+      font-size: 1.12rem;
+      font-weight: 700;
+      letter-spacing: 0.8px;
+      position: relative;
+      z-index: 1;
+      transition: color 0.3s ease;
+    }
+
+    .experience-card:hover .card-label {
+      color: color-mix(in srgb, var(--accent) 75%, #000);
+    }
+
+    /* ========== 底部 ========== */
+    .footer-note {
+      text-align: center;
+      margin-top: 52px;
+      color: var(--text-secondary);
+      font-size: 0.88rem;
+      opacity: 0;
+      letter-spacing: 1.5px;
+      animation: fadeInUp 1s ease 2.6s forwards;
+    }
+
+    /* ========== 响应式 ========== */
+    @media (max-width: 720px) {
+      body { padding: 90px 16px 36px; }
+      .experience-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+      .experience-card { min-height: 155px; padding: 26px 14px; }
+      .card-icon { font-size: 46px; }
+      .card-label { font-size: 1.05rem; }
+      .heartbeat-line { height: 40px; }
+      .transition-svg { height: 50px; }
+    }
+
+    @media (max-width: 380px) {
+      .experience-grid { grid-template-columns: 1fr; }
+      .experience-card {
+        min-height: 120px;
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 18px;
+        padding: 20px 24px;
+      }
+      .card-icon { font-size: 42px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .bg-heart,
+      .heart-trail,
+      .particle,
+      .experience-card,
+      .page-heading,
+      .page-heading p,
+      .footer-note,
+      .page-heading h1,
+      .heartbeat-line .beat-path,
+      .heartbeat-dot,
+      .petal,
+      .transition-overlay,
+      .shell.exiting,
+      body.entering .shell {
+        animation: none !important;
+        transition: none !important;
+      }
+      .page-heading, .page-heading p, .footer-note, .experience-card, .heartbeat-line {
+        opacity: 1;
+        transform: none;
+      }
+      .experience-card {
+        transform: none !important;
+      }
+      .page-heading h1.shimmer {
+        text-shadow: none;
+      }
+      .heartbeat-line .beat-path {
+        stroke-dashoffset: 0 !important;
+      }
+      .petal {
+        opacity: 0 !important;
+      }
+      .shell.exiting,
+      body.entering .shell {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+      }
+      .transition-overlay {
+        opacity: 0 !important;
+      }
+    }
+  </style>
+  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <a class="scene-back" href="../../../index.html" aria-label="返回主页" title="返回主页">
+    <span aria-hidden="true">&#8592;</span>
+  </a>
+
+  <!-- 三层景深背景 -->
+  <div class="heart-field" id="heartField" aria-hidden="true"></div>
+
+  <!-- 飘落花瓣 -->
+  <div class="petal-field" id="petalField" aria-hidden="true"></div>
+
+  <!-- 页面过渡遮罩 -->
+  <div class="transition-overlay" id="transitionOverlay">
+    <svg class="transition-svg" viewBox="0 0 300 60" preserveAspectRatio="none">
+      <path class="transition-beat" d="M0,30 L40,30 L55,30 L65,10 L75,50 L85,5 L95,55 L105,30 L120,30 L140,30 L155,30 L165,12 L175,48 L185,8 L195,52 L205,30 L220,30 L260,30 L300,30" />
+      <path class="transition-flat" d="M0,30 L300,30" />
+    </svg>
+    <p class="transition-text">心动加载中...</p>
+  </div>
+
+  <main class="shell" id="mainShell">
+    <header class="page-heading">
+      <h1 id="typeTitle"></h1>
+
+      <!-- 心跳波形图 -->
+      <div class="heartbeat-line" id
+="heartbeatLine">
+        <svg viewBox="0 0 300 60" preserveAspectRatio="none">
+          <path class="beat-path" d="M0,30 L40,30 L55,30 L65,10 L75,50 L85,5 L95,55 L105,30 L120,30 L140,30 L155,30 L165,12 L175,48 L185,8 L195,52 L205,30 L220,30 L260,30 L300,30" />
+          <path class="flat-path" d="M0,30 L300,30" />
+          <circle class="heartbeat-dot" cx="300" cy="30" r="3" />
+        </svg>
+      </div>
+
+      <p id="subTitle">把喜欢的瞬间，收藏成六段小故事。</p>
+    </header>
+
+    <nav class="experience-grid" aria-label="互动作品" id="cardGrid">
+      <a class="experience-card" href="shu/shu.html" data-accent="#be185d">
+        <span class="card-number">01</span>
+        <span class="card-icon" aria-hidden="true">🌸</span>
+        <span class="card-label">爱心树</span>
+      </a>
+      <a class="experience-card" href="zhuan/转动爱心.html" data-accent="#a15c00">
+        <span class="card-number">02</span>
+        <span class="card-icon" aria-hidden="true">💞</span>
+        <span class="card-label">光影爱心</span>
+      </a>
+      <a class="experience-card" href="tiao/tiao.html" data-accent="#bf3156">
+        <span class="card-number">03</span>
+        <span class="card-icon" aria-hidden="true">💓</span>
+        <span class="card-label">3D 心跳</span>
+      </a>
+      <a class="experience-card" href="xing/xing.html" data-accent="#4263a8">
+        <span class="card-number">04</span>
+        <span class="card-icon" aria-hidden="true">✨</span>
+        <span class="card-label">流星雨</span>
+      </a>
+      <a class="experience-card" href="../collection/index.html?group=characters" data-accent="#c96c2c">
+        <span class="card-number">05</span>
+        <span class="card-icon" aria-hidden="true">🐱</span>
+        <span class="card-label">可爱猫咪</span>
+      </a>
+      <a class="experience-card" href="she/she.html" data-accent="#8d3fb0">
+        <span class="card-number">06</span>
+        <span class="card-icon" aria-hidden="true">💘</span>
+        <span class="card-label">爱心发射</span>
+      </a>
+    </nav>
+
+    <p class="footer-note">点击任意卡片，开启一段心动之旅 ✨</p>
+  </main>
+
+  <script>
+    const ACCENTS = ['#be185d', '#a15c00', '#bf3156', '#4263a8', '#c96c2c', '#8d3fb0'];
+    const PETAL_COLORS = [
+      'rgba(255, 182, 193, 0.55)',
+      'rgba(255, 192, 203, 0.5)',
+      'rgba(255, 160, 180, 0.45)',
+      'rgba(255, 218, 225, 0.5)',
+      'rgba(255, 105, 180, 0.35)',
+      'rgba(255, 150, 170, 0.4)'
+    ];
+    const TITLE_TEXT = '心动收藏室';
+
+    /* ========== 生成三层背景心形 ========== */
+    const heartField = document.getElementById('heartField');
+    const layers = [
+      { cls: 'heart-far', count: 10, parallax: 0.015 },
+      { cls: 'heart-mid', count: 16, parallax: 0.04 },
+      { cls: 'heart-near', count: 12, parallax: 0.09 }
+    ];
+
+    const allHearts = [];
+
+    layers.forEach((layer, layerIdx) => {
+      for (let i = 0; i < layer.count; i++) {
+        const heart = document.createElement('span');
+        heart.className = `bg-heart ${layer.cls}`;
+        const left = ((i * 47.3 + layerIdx * 23) % 92 + 4);
+        const top = ((i * 61.7 + layerIdx * 31) % 88 + 6);
+        heart.style.left = left + '%';
+        heart.style.top = top + '%';
+        heart.style.animationDelay = (i * -0.6 + layerIdx * -2) + 's';
+        heart.style.animationDuration = (10 + (i % 4) * 2 + layerIdx * 3) + 's';
+        heart.dataset.parallax = layer.parallax;
+        heart.dataset.originX = left;
+        heart.dataset.originY = top;
+        allHearts.push(heart);
+        heartField.appendChild(heart);
+      }
+    });
+
+    /* ========== 飘落花瓣雨 ========== */
+    const petalField = document.getElementById('petalField');
+    let petalInterval = null;
+
+    function createPetal() {
+      const petal = document.createElement('span');
+      petal.className = 'petal';
+      const size = (8 + Math.random() * 14).toFixed(1);
+      const color = PETAL_COLORS[Math.floor(Math.random() * PETAL_COLORS.length)];
+      const left = (Math.random() * 105 - 2.5).toFixed(2);
+      const rot = (Math.random() * 360).toFixed(0);
+      const duration = (7 + Math.random() * 8).toFixed(1);
+      const delay = (Math.random() * 2).toFixed(1);
+      const sway = (30 + Math.random() * 80).toFixed(0);
+      const opacity = (0.3 + Math.random() * 0.4).toFixed(2);
+
+      petal.style.cssText = `
+        --size: ${size}px;
+        --color: ${color};
+        --rot: ${rot}deg;
+        --duration: ${duration}s;
+        --delay: -${delay}s;
+        --sway: ${sway}px;
+        --opacity: ${opacity};
+        left: ${left}%;
+      `;
+
+      petalField.appendChild(petal);
+      setTimeout(() => petal.remove(), (parseFloat(duration) + parseFloat(delay)) * 1000);
+    }
+
+    // 初始生成一批花瓣
+    for (let i = 0; i < 16; i++) {
+      setTimeout(createPetal, i * 300);
+    }
+    // 持续生成
+    petalInterval = setInterval(createPetal, 900);
+
+    /* ========== 打字机效果 ========== */
+    const typeTitle = document.getElementById('typeTitle');
+    const subTitle = document.getElementById('subTitle');
+    const heartbeatLine = document.getElementById('heartbeatLine');
+    let charIdx = 0;
+
+    function typeNextChar() {
+      if (charIdx < TITLE_TEXT.length) {
+        typeTitle.textContent += TITLE_TEXT[charIdx];
+        charIdx++;
+        typeTitle.classList.add('typing');
+        setTimeout(typeNextChar, 110 + Math.random() * 90);
+      } else {
+        typeTitle.classList.remove('typing');
+        typeTitle.classList.add('typed');
+        setTimeout(() => typeTitle.classList.add('shimmer'), 800);
+        setTimeout(() => heartbeatLine.classList.add('show'), 400);
+        setTimeout(() => subTitle.classList.add('show'), 800);
+      }
+    }
+
+    setTimeout(typeNextChar, 400);
+
+    /* ========== 页面进入动画 ========== */
+    if (sessionStorage.getItem('heartTransition') === 'enter') {
+      document.body.classList.add('entering');
+      const overlay = document.getElementById('transitionOverlay');
+      overlay.classList.add('active', 'beating');
+      sessionStorage.removeItem('heartTransition');
+
+      setTimeout(() => {
+        overlay.classList.remove('active');
+        document.body.classList.remove('entering');
+      }, 1200);
+    }
+
+    /* ========== 页面退出过渡 ========== */
+    const transitionOverlay = document.getElementById('transitionOverlay');
+    const mainShell = document.getElementById('mainShell');
+
+    document.querySelectorAll('.experience-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        e.preventDefault();
+        const href = this.href;
+
+        // 1. 波形拉平（心跳停止）
+        heartbeatLine.classList.add('flat');
+
+        // 2. 内容收缩变暗
+        mainShell.classList.add('exiting');
+
+        // 3. 显示遮罩，先显示平线
+        transitionOverlay.classList.add('active');
+
+        // 4. 短暂延迟后，平线变心跳（复苏感）
+        setTimeout(() => {
+          transitionOverlay.classList.add('beating');
+        }, 300);
+
+        // 5. 标记 session，目标页面会播放进入动画
+        sessionStorage.setItem('heartTransition', 'enter');
+
+        // 6. 跳转
+        setTimeout(() => {
+          window.location.href = href;
+        }, 900);
+      });
+    });
+
+    /* ========== 鼠标拖尾 ========== */
+    let lastTrailTime = 0;
+    const trailInterval = 35;
+
+    document.addEventListener('mousemove', (e) => {
+      const now = Date.now();
+      if (now - lastTrailTime < trailInterval) return;
+      lastTrailTime = now;
+
+      const trail = document.createElement('span');
+      trail.className = 'heart-trail';
+      const color = ACCENTS[Math.floor(Math.random() * ACCENTS.length)];
+      trail.style.setProperty('--trail-color', color);
+      trail.style.left = (e.clientX - 5) + 'px';
+      trail.style.top = (e.clientY - 5) + 'px';
+      trail.style.scale = (0.6 + Math.random() * 0.6).toFixed(2);
+
+      document.body.appendChild(trail);
+      setTimeout(() => trail.remove(), 700);
+    });
+
+    /* ========== 点击粒子爆炸 ========== */
+    document.querySelectorAll('.experience-card').forEach(card => {
+      card.addEventListener('click', function(e) {
+        const accent = this.dataset.accent;
+        const centerX = e.clientX;
+        const centerY = e.clientY;
+        const particleCount = 14;
+
+        for (let i = 0; i < particleCount; i++) {
+          const particle = document.createElement('span');
+          particle.className = 'particle';
+          particle.style.setProperty('--particle-color', accent);
+
+          const angle = (Math.PI * 2 * i) / particleCount + (Math.random() - 0.5) * 0.6;
+          const distance = 35 + Math.random() * 65;
+          const tx = Math.cos(angle) * distance;
+          const ty = Math.sin(angle) * distance;
+
+          particle.style.setProperty('--tx', tx + 'px');
+          particle.style.setProperty('--ty', ty + 'px');
+          particle.style.left = centerX + 'px';
+          particle.style.top = centerY + 'px';
+          particle.style.width = (4 + Math.random() * 5) + 'px';
+          particle.style.height = particle.style.width;
+
+          document.body.appendChild(particle);
+          setTimeout(() => particle.remove(), 700);
+        }
+      });
+    });
+
+    /* ========== 视差效果 ========== */
+    let mouseX = 0, mouseY = 0;
+    let targetX = 0, targetY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      targetX = (e.clientX / window.innerWidth - 0.5) * 2;
+      targetY = (e.clientY / window.innerHeight - 0.5) * 2;
+    });
+
+    function updateParallax() {
+      mouseX += (targetX - mouseX) * 0.08;
+      mouseY += (targetY - mouseY) * 0.08;
+
+      allHearts.forEach(heart => {
+        const factor = parseFloat(heart.dataset.parallax);
+        const offsetX = mouseX * factor * 100;
+        const offsetY = mouseY * factor * 100;
+        heart.style.transform = `rotate(-45deg) translate(${offsetX}px, ${offsetY}px)`;
+      });
+
+      mainShell.style.transform = `translate(${mouseX * 4}px, ${mouseY * 3}px)`;
+
+      requestAnimationFrame(updateParallax);
+    }
+
+    updateParallax();
+
+    /* ========== 卡片网格微倾斜 ========== */
+    const cardGrid = document.getElementById('cardGrid');
+    document.addEventListener('mousemove', (e) => {
+      const x = (e.clientX / window.innerWidth - 0.5) * 2;
+      const y = (e.clientY / window.innerHeight - 0.5) * 2;
+      cardGrid.style.transform = `rotateY(${x * 1.5}deg) rotateX(${-y * 1.5}deg)`;
+    });
+  </script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

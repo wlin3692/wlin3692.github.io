@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="支持键盘与触控操作的 Canvas 打砖块小游戏。">
+  <title>霓虹打砖块 · 小林互动作品</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../../index.html#portfolio"><span class="brand-mark"></span>小林互动作品</a><a class="back-link" href="../../../index.html#portfolio">返回作品集</a></header>
+  <main class="arcade">
+    <div class="heading"><div><span class="eyebrow">NEON BREAKOUT · CANVAS ARCADE</span><h1>霓虹打砖块</h1></div><p>让球保持在拍板上方，清除所有砖块进入下一关。</p></div>
+    <section class="game-shell" aria-label="打砖块游戏">
+      <div class="hud"><div><span>得分</span><strong id="score">0</strong></div><div><span>关卡</span><strong id="level">1</strong></div><div><span>生命</span><strong id="lives">3</strong></div><div class="hud-actions"><button id="pauseButton" type="button" aria-label="暂停或继续" title="暂停或继续">Ⅱ</button><button id="resetButton" type="button" aria-label="重新开始" title="重新开始">↻</button></div></div>
+      <div class="canvas-wrap"><canvas id="canvas" width="800" height="600" aria-label="霓虹打砖块游戏画布"></canvas></div>
+      <div class="game-footer"><span id="statusText">点击开始，准备发球</span><button id="startButton" class="start-button" type="button">开始游戏</button></div>
+    </section>
+    <div class="best-line">历史最高分 <strong id="best">0</strong></div>
+  </main>
+  <footer>基于 Traversy Media Breakout Game 改造 · MIT License</footer>
+  <script src="script.js"></script>
+</body>
+</html>

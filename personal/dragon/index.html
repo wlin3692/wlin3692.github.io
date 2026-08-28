@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#dce8df">
+  <title>小龙看这里</title>
+  <style>
+    :root {
+      color-scheme: light;
+      font-family: Arial, "Microsoft YaHei", sans-serif;
+      letter-spacing: 0;
+      --wall: #dce8df;
+      --floor: #eee6dc;
+      --baseboard: #faf5ee;
+      --ink: #26332d;
+      --accent: #6d9477;
+      --floor-line: 68%;
+    }
+    * { box-sizing: border-box; }
+    html, body { width: 100%; height: 100%; margin: 0; overflow: hidden; overscroll-behavior: none; }
+    body { min-height: 100svh; min-height: 100dvh; background: #101820; color: var(--ink); cursor: url("fish-cursor.png?v=2") 6 6, crosshair; touch-action: none; user-select: none; -webkit-user-select: none; }
+    body[data-scene-theme="dusk"] { --wall: #cbd7ce; --floor: #ded1c6; --baseboard: #f3e8de; --accent: #9c6954; }
+    body[data-scene-theme="night"] { --wall: #35453f; --floor: #454044; --baseboard: #b1aaa2; --ink: #f2eee8; --accent: #d58a70; }
+    .scene { position: fixed; inset: 0; isolation: isolate; overflow: hidden; background: #101820 url("scene.webp") center center / cover no-repeat; transition: background-color 900ms ease; }
+    .scene::before, .scene::after { display: none; }
+    .scene-light { position: absolute; inset: 0; z-index: 2; pointer-events: none; background: transparent; }
+    #effects { position: absolute; inset: 0; z-index: 3; display: block; width: 100%; height: 100%; pointer-events: none; }
+    body[data-scene-theme="dusk"] .scene-light,
+    body[data-scene-theme="night"] .scene-light { background: transparent; }
+    .dragon-stage { position: absolute; top: var(--floor-line); left: 50%; z-index: 1; width: min(82vw, 62vh, 600px); aspect-ratio: 1; transform: translate(-50%, -80%); }
+    .dragon-stage::after { position: absolute; right: 18%; bottom: 6%; left: 18%; z-index: 0; height: 4.5%; border-radius: 50%; background: rgb(42 49 46 / 21%); filter: blur(12px); content: ""; pointer-events: none; }
+    #dragon { position: relative; z-index: 1; display: block; width: 100%; height: 100%; filter: drop-shadow(0 1px 1px rgb(42 49 46 / 9%)); transition: filter 900ms ease; }
+    body[data-scene-theme="dusk"] #dragon { filter: saturate(.94) brightness(.94) drop-shadow(0 1px 1px rgb(42 49 46 / 12%)); }
+    body[data-scene-theme="night"] #dragon { filter: saturate(.88) brightness(.87) drop-shadow(0 2px 2px rgb(10 19 17 / 22%)); }
+    #load-status { position: fixed; right: max(14px, env(safe-area-inset-right)); bottom: max(14px, env(safe-area-inset-bottom)); left: max(14px, env(safe-area-inset-left)); z-index: 10; width: min(360px, calc(100vw - 28px)); margin-inline: auto; padding: 10px 12px; border: 1px solid rgb(23 28 26 / 18%); border-radius: 8px; background: rgb(255 255 255 / 88%); color: var(--ink); font: 12px/1.4 Arial, "Microsoft YaHei", sans-serif; box-shadow: 0 8px 28px rgb(38 47 43 / 13%); backdrop-filter: blur(10px); transition: opacity 180ms ease, transform 180ms ease; }
+    #load-status[hidden] { display: none; }
+    .load-top { display: grid; grid-template-columns: 18px minmax(0, 1fr) auto; align-items: center; gap: 8px; margin-bottom: 8px; }
+    .spinner { width: 16px; height: 16px; border: 2px solid rgb(44 56 51 / 18%); border-top-color: var(--accent); border-radius: 50%; animation: spin .8s linear infinite; }
+    #load-percent { color: rgb(29 41 37 / 68%); font-variant-numeric: tabular-nums; }
+    .progress { height: 4px; overflow: hidden; border-radius: 2px; background: rgb(44 56 51 / 12%); }
+    #progress-bar { display: block; width: 0; height: 100%; border-radius: inherit; background: var(--accent); transition: width 160ms ease; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    @media (max-width: 520px) { :root { --floor-line: 65%; } .dragon-stage { width: min(88vw, 56vh); transform: translate(-50%, -80%); } }
+    @media (orientation: landscape) and (max-height: 520px) { :root { --floor-line: 73%; } .dragon-stage { width: min(58vw, 82vh, 500px); } }
+    @media (hover: none), (pointer: coarse) { body { cursor: default; } }
+    @media (prefers-reduced-motion: reduce) { .spinner { animation: none; } .scene, .scene::before, .scene::after, #dragon { transition: none; } #effects { display: none; } }
+  </style>
+</head>
+<body data-scene-theme="day">
+  <main class="scene">
+    <div class="dragon-stage"><canvas id="dragon" width="512" height="512" role="img" aria-label="会跟随指针方向转头的小龙"></canvas></div>
+    <span class="scene-light" aria-hidden="true"></span>
+    <canvas id="effects" aria-hidden="true"></canvas>
+  </main>
+  <div id="load-status" aria-live="polite">
+    <div class="load-top"><span class="spinner" aria-hidden="true"></span><span id="load-label">正在准备小龙</span><span id="load-percent">0%</span></div>
+    <div class="progress" role="progressbar" aria-label="资源加载进度" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><span id="progress-bar"></span></div>
+  </div>
+
+  <script>
+    "use strict";
+    const CELL = 512;
+    const COLS = 16;
+    const ROWS = 13;
+    const FRAME_STEP = 1;
+    const CENTER_CELL = 192;
+    // Contact-sheet calibration: explicit source frames, not a linear angle formula.
+    const ANGLE_KEYS = Object.freeze([
+      // Calibrated to the user-confirmed video order:
+      // Screen-space calibration: nose direction matches the pointer direction.
+      { angle: -180, frame: 144, cell: 144, label: "左" },
+      { angle: -135, frame: 128, cell: 128, label: "左下" },
+      { angle: -90, frame: 120, cell: 120, label: "下" },
+      { angle: -45, frame: 112, cell: 112, label: "右下" },
+      { angle: 0, frame: 104, cell: 104, label: "右" },
+      { angle: 45, frame: 96, cell: 96, label: "右上" },
+      { angle: 90, frame: 32, cell: 32, label: "上" },
+      { angle: 135, frame: 64, cell: 64, label: "左上" },
+      { angle: 180, frame: 144, cell: 144, label: "左" }
+    ]);
+
+    const canvas = document.querySelector("#dragon");
+    const ctx = canvas.getContext("2d", { alpha: true, desynchronized: true });
+    const sprite = new Image();
+    const front = new Image();
+    const status = document.querySelector("#load-status");
+    const label = document.querySelector("#load-label");
+    const percent = document.querySelector("#load-percent");
+    const progressBar = document.querySelector("#progress-bar");
+    const effectsCanvas = document.querySelector("#effects");
+    const effectsCtx = effectsCanvas.getContext("2d", { alpha: true, desynchronized: true });
+    const state = { frontReady: false, ready: false, centered: true, angle: null, cell: 0, targetCell: 0, direction: "中心" };
+    const effects = {
+      width: 0,
+      height: 0,
+      dpr: 1,
+      lastTime: 0,
+      trail: [],
+      bubbles: [],
+      ambient: [],
+      fireflies: [],
+      pointer: { x: 0, y: 0, visible: false, lastBubbleAt: 0 }
+    };
+    let targetCentered = true;
+    let targetAngle = 0;
+    let renderedAngle = null;
+    let animationFrame = 0;
+    let effectsFrame = 0;
+    let touchActive = false;
+
+    function sceneThemeForHour(hour) { return hour >= 5 && hour < 17 ? "day" : hour < 20 ? "dusk" : "night"; }
+    function applySceneTheme() { document.body.dataset.sceneTheme = sceneThemeForHour(new Date().getHours()); }
+    function setProgress(value, text) { const v = Math.round(value); label.textContent = text; percent.textContent = `${v}%`; progressBar.style.width = `${v}%`; }
+    function loadImage(image, source) { return new Promise((resolve, reject) => { image.onload = () => resolve(image); image.onerror = () => reject(new Error(`Failed to load ${source}`)); image.src = source; }); }
+    function wrapDelta(a, b) { let d = a - b; while (d > 180) d -= 360; while (d < -180) d += 360; return Math.abs(d); }
+    function pickPose(angle) { return ANGLE_KEYS.reduce((best, candidate) => wrapDelta(angle, candidate.angle) < wrapDelta(angle, best.angle) ? candidate : best); }
+    function poseForAngle(angle) {
+      const a = Math.max(-180, Math.min(180, angle));
+      const exact = ANGLE_KEYS.find(key => Math.abs(a - key.angle) < .001);
+      if (exact) return { cell: exact.cell, label: exact.label };
+      for (let i = 0; i < ANGLE_KEYS.length - 1; i += 1) {
+        const left = ANGLE_KEYS[i];
+        const right = ANGLE_KEYS[i + 1];
+        if (a >= left.angle && a <= right.angle) {
+          const t = (a - left.angle) / Math.max(1, right.angle - left.angle);
+          const frameGap = Math.abs(right.cell - left.cell);
+          if (frameGap <= 32) {
+            const cell = Math.round(left.cell + (right.cell - left.cell) * t);
+            return { cell, label: pickPose(a).label };
+          }
+          // These source ranges are not adjacent in the original video. Pick one
+          // endpoint, then animate through real frames instead of blending two poses.
+          return { cell: t < .5 ? left.cell : right.cell, label: pickPose(a).label };
+        }
+      }
+      const pose = pickPose(a);
+      return { cell: pose.cell, label: pose.label };
+    }
+    function drawCell(cell, alpha = 1) { const x = (cell % COLS) * CELL; const y = Math.floor(cell / COLS) * CELL; ctx.globalAlpha = alpha; ctx.drawImage(sprite, x, y, CELL, CELL, 0, 0, canvas.width, canvas.height); ctx.globalAlpha = 1; }
+    function render() {
+      if (!state.frontReady) return;
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      if (state.centered || !state.ready) ctx.drawImage(front, 0, 0, CELL, CELL, 0, 0, canvas.width, canvas.height);
+      else drawCell(state.cell);
+    }
+    function applyAngle(angle) {
+      const pose = poseForAngle(angle);
+      state.centered = false;
+      state.angle = angle;
+      state.targetCell = pose.cell;
+      state.direction = pose.label;
+    }
+    function animateTracking() {
+      animationFrame = 0;
+      if (targetCentered) {
+        renderedAngle = null;
+        if (!state.centered) {
+          state.targetCell = CENTER_CELL;
+          if (state.cell !== state.targetCell) {
+            state.cell += Math.sign(state.targetCell - state.cell);
+            render();
+            animationFrame = requestAnimationFrame(animateTracking);
+            return;
+          }
+          state.centered = true; state.angle = null; state.cell = 0; state.targetCell = 0; state.direction = "中心"; render();
+        }
+        return;
+      }
+      if (renderedAngle === null) renderedAngle = targetAngle;
+      // The frame player already provides the visible easing. Applying another
+      // angle interpolation here can cross unrelated calibration sectors.
+      renderedAngle = targetAngle;
+      applyAngle(targetAngle);
+      // Follow the shortest run of real source frames. A full turn still plays
+      // naturally when the pointer moves through the video order, while a small
+      // cursor correction does not force the dragon to complete another circle.
+      if (state.cell !== state.targetCell) {
+        state.cell += Math.sign(state.targetCell - state.cell);
+        render();
+      }
+      if (state.cell !== state.targetCell) animationFrame = requestAnimationFrame(animateTracking);
+    }
+    function scheduleTracking() {
+      if (!animationFrame) animationFrame = requestAnimationFrame(animateTracking);
+    }
+    function makeAmbientParticle() {
+      return {
+        x: Math.random(),
+        y: Math.random(),
+        drift: (Math.random() - .5) * .000018,
+        speed: .000006 + Math.random() * .000014,
+        size: 1 + Math.random() * 1.8,
+        phase: Math.random() * Math.PI * 2
+      };
+    }
+    function resetAmbient() {
+      effects.ambient.length = 0;
+      for (let i = 0; i < 42; i += 1) effects.ambient.push(makeAmbientParticle());
+      effects.fireflies.length = 0;
+      for (let i = 0; i < 18; i += 1) effects.fireflies.push({
+        x: .04 + Math.random() * .92,
+        y: .16 + Math.random() * .72,
+        drift: (Math.random() - .5) * .012,
+        rise: .004 + Math.random() * .009,
+        size: 1.2 + Math.random() * 2.2,
+        phase: Math.random() * Math.PI * 2,
+        hue: Math.random() < .55 ? "163, 240, 214" : "139, 220, 255"
+      });
+    }
+    function resizeEffects() {
+      const box = effectsCanvas.getBoundingClientRect();
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      effects.width = Math.max(1, box.width);
+      effects.height = Math.max(1, box.height);
+      effects.dpr = dpr;
+      effectsCanvas.width = Math.max(1, Math.round(effects.width * dpr));
+      effectsCanvas.height = Math.max(1, Math.round(effects.height * dpr));
+      effectsCtx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+    function addCursorTrail(x, y) {
+      effects.trail.push({ x, y, life: 1, size: 1.4 + Math.random() * 1.8 });
+      if (effects.trail.length > 36) effects.trail.shift();
+    }
+    function addBubble(x, y) {
+      effects.bubbles.push({
+        x: x + (Math.random() - .5) * 8,
+        y: y + (Math.random() - .5) * 8,
+        size: 1.8 + Math.random() * 3.8,
+        life: 1,
+        vx: (Math.random() - .5) * .018,
+        vy: -.018 - Math.random() * .018
+      });
+      if (effects.bubbles.length > 28) effects.bubbles.shift();
+    }
+    function trackCursor(x, y, pointerType) {
+      if (pointerType && pointerType !== "mouse") return;
+      const pointer = effects.pointer;
+      if (!pointer.visible) {
+        pointer.x = x; pointer.y = y; pointer.visible = true; pointer.lastBubbleAt = performance.now();
+        return;
+      }
+      const dx = x - pointer.x;
+      const dy = y - pointer.y;
+      const distance = Math.hypot(dx, dy);
+      if (distance < 3) return;
+      const steps = Math.min(4, Math.max(1, Math.floor(distance / 18)));
+      for (let i = 1; i <= steps; i += 1) {
+        const t = i / steps;
+        addCursorTrail(pointer.x + dx * t, pointer.y + dy * t);
+      }
+      const now = performance.now();
+      if (now - pointer.lastBubbleAt > 46) {
+        addBubble(x, y);
+        pointer.lastBubbleAt = now;
+      }
+      pointer.x = x; pointer.y = y;
+    }
+    function drawAmbient(now, delta) {
+      const theme = document.body.dataset.sceneTheme;
+      const palette = theme === "night"
+        ? { color: "190, 225, 255", alpha: .48, glow: 9 }
+        : theme === "dusk"
+          ? { color: "255, 211, 139", alpha: .55, glow: 11 }
+          : { color: "244, 251, 246", alpha: .2, glow: 0 };
+      effects.ambient.forEach(particle => {
+        particle.x += particle.drift * delta;
+        particle.y -= particle.speed * delta;
+        if (particle.y < -.04) { particle.y = 1.04; particle.x = Math.random(); }
+        if (particle.x < -.04) particle.x = 1.04;
+        if (particle.x > 1.04) particle.x = -.04;
+        const pulse = .55 + Math.sin(now * .0012 + particle.phase) * .45;
+        const alpha = palette.alpha * (.55 + pulse * .45);
+        const x = particle.x * effects.width;
+        const y = particle.y * effects.height;
+        effectsCtx.globalAlpha = alpha;
+        effectsCtx.fillStyle = `rgb(${palette.color})`;
+        if (palette.glow) { effectsCtx.shadowBlur = palette.glow; effectsCtx.shadowColor = `rgba(${palette.color}, .7)`; }
+        effectsCtx.beginPath();
+        effectsCtx.arc(x, y, particle.size * (.8 + pulse * .25), 0, Math.PI * 2);
+        effectsCtx.fill();
+        effectsCtx.shadowBlur = 0;
+      });
+      effectsCtx.globalAlpha = 1;
+    }
+    function drawFireflies(now, delta) {
+      if (document.body.dataset.sceneTheme !== "night") return;
+      effectsCtx.save();
+      effectsCtx.globalCompositeOperation = "lighter";
+      effects.fireflies.forEach(firefly => {
+        firefly.x += firefly.drift * delta / 1000;
+        firefly.y -= firefly.rise * delta / 1000;
+        if (firefly.y < .1) { firefly.y = .88; firefly.x = .04 + Math.random() * .92; }
+        if (firefly.x < .02) firefly.x = .98;
+        if (firefly.x > .98) firefly.x = .02;
+        const pulse = (Math.sin(now * .0018 + firefly.phase) + 1) * .5;
+        const alpha = .14 + pulse * .62;
+        const x = firefly.x * effects.width;
+        const y = firefly.y * effects.height;
+        effectsCtx.globalAlpha = alpha;
+        effectsCtx.fillStyle = `rgb(${firefly.hue})`;
+        effectsCtx.shadowBlur = 10 + pulse * 8;
+        effectsCtx.shadowColor = `rgba(${firefly.hue}, .9)`;
+        effectsCtx.beginPath();
+        effectsCtx.arc(x, y, firefly.size * (.75 + pulse * .45), 0, Math.PI * 2);
+        effectsCtx.fill();
+      });
+      effectsCtx.restore();
+      effectsCtx.globalAlpha = 1;
+      effectsCtx.globalCompositeOperation = "source-over";
+    }
+    function drawCursorEffects(delta) {
+      effectsCtx.globalCompositeOperation = "lighter";
+      for (let i = effects.trail.length - 1; i >= 0; i -= 1) {
+        const point = effects.trail[i];
+        point.life -= delta / 560;
+        if (point.life <= 0) { effects.trail.splice(i, 1); continue; }
+        effectsCtx.globalAlpha = point.life * .5;
+        effectsCtx.fillStyle = "rgb(102, 219, 255)";
+        effectsCtx.shadowBlur = 9;
+        effectsCtx.shadowColor = "rgba(72, 204, 255, .75)";
+        effectsCtx.beginPath();
+        effectsCtx.arc(point.x, point.y, point.size * point.life, 0, Math.PI * 2);
+        effectsCtx.fill();
+      }
+      effectsCtx.shadowBlur = 0;
+      for (let i = effects.bubbles.length - 1; i >= 0; i -= 1) {
+        const bubble = effects.bubbles[i];
+        bubble.life -= delta / 980;
+        bubble.x += bubble.vx * delta;
+        bubble.y += bubble.vy * delta;
+        if (bubble.life <= 0) { effects.bubbles.splice(i, 1); continue; }
+        effectsCtx.globalAlpha = bubble.life * .62;
+        effectsCtx.strokeStyle = "rgb(154, 235, 255)";
+        effectsCtx.lineWidth = 1;
+        effectsCtx.beginPath();
+        effectsCtx.arc(bubble.x, bubble.y, bubble.size * (1.15 - bubble.life * .15), 0, Math.PI * 2);
+        effectsCtx.stroke();
+      }
+      effectsCtx.globalAlpha = 1;
+      effectsCtx.globalCompositeOperation = "source-over";
+    }
+    function animateEffects(now) {
+      effectsFrame = requestAnimationFrame(animateEffects);
+      const delta = Math.min(40, effects.lastTime ? now - effects.lastTime : 16);
+      effects.lastTime = now;
+      effectsCtx.clearRect(0, 0, effects.width, effects.height);
+      drawAmbient(now, delta);
+      drawFireflies(now, delta);
+      drawCursorEffects(delta);
+    }
+    function setTarget(clientX, clientY) {
+      const box = canvas.getBoundingClientRect();
+      const headX = box.left + box.width * .37;
+      const headY = box.top + box.height * .22;
+      const dx = clientX - headX;
+      const dy = clientY - headY;
+      if (Math.hypot(dx, dy) <= Math.max(28, box.width * .09)) {
+        targetCentered = true;
+        scheduleTracking();
+        return;
+      }
+      targetCentered = false;
+      // Screen coordinates are y-down: top=+90, right=0.
+      targetAngle = Math.atan2(-dy, dx) * 180 / Math.PI;
+      scheduleTracking();
+    }
+    function resizeCanvas() { const box = canvas.getBoundingClientRect(); const dpr = Math.min(window.devicePixelRatio || 1, 2); canvas.width = Math.max(1, Math.round(box.width * dpr)); canvas.height = Math.max(1, Math.round(box.height * dpr)); render(); }
+
+    document.addEventListener("pointerdown", event => {
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
+        touchActive = true;
+        setTarget(event.clientX, event.clientY);
+        trackCursor(event.clientX, event.clientY, event.pointerType);
+      }
+    }, { passive: true });
+    document.addEventListener("pointermove", event => {
+      if (event.pointerType === "mouse" || touchActive) {
+        setTarget(event.clientX, event.clientY);
+        trackCursor(event.clientX, event.clientY, event.pointerType);
+      }
+    }, { passive: true });
+    document.addEventListener("pointerup", event => {
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
+        touchActive = false;
+        targetCentered = true;
+        effects.pointer.visible = false;
+        scheduleTracking();
+      }
+    }, { passive: true });
+    document.addEventListener("pointercancel", event => {
+      if (event.pointerType === "touch" || event.pointerType === "pen") {
+        touchActive = false;
+        targetCentered = true;
+        effects.pointer.visible = false;
+        scheduleTracking();
+      }
+    }, { passive: true });
+    document.addEventListener("pointerout", event => { if (event.pointerType === "mouse" && event.relatedTarget === null) { targetCentered = true; effects.pointer.visible = false; scheduleTracking(); } }, { passive: true });
+    window.addEventListener("resize", () => { resizeCanvas(); resizeEffects(); }, { passive: true });
+    window.addEventListener("blur", () => { targetCentered = true; effects.pointer.visible = false; scheduleTracking(); });
+    applySceneTheme();
+    resetAmbient();
+    resizeEffects();
+    if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) effectsFrame = requestAnimationFrame(animateEffects);
+
+    async function start() {
+      try {
+        setProgress(12, "正在加载正面帧");
+        await loadImage(front, "frame_front.webp?v=neck-gap-fix-4");
+        if (front.naturalWidth !== CELL || front.naturalHeight !== CELL) throw new Error("frame_front.webp 尺寸不匹配");
+        state.frontReady = true; resizeCanvas(); render();
+        setProgress(48, "正在加载动作图集");
+        await loadImage(sprite, "sprite-optimized.webp?v=neck-gap-fix-4");
+        if (sprite.naturalWidth !== COLS * CELL || sprite.naturalHeight !== ROWS * CELL) throw new Error("sprite-optimized.webp 尺寸不匹配");
+        state.ready = true; setProgress(100, "加载完成"); render();
+        window.setTimeout(() => { status.hidden = true; }, 340);
+      } catch (error) {
+        label.textContent = "资源加载失败"; percent.textContent = ""; progressBar.style.width = "100%"; console.error(error);
+      }
+    }
+    start();
+  </script>
+</body>
+</html>

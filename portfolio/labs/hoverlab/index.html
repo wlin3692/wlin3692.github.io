@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="基于 WebGL 的图片扭曲切换互动实验。"><title>图像扰动实验室 · 小林互动作品</title><link rel="stylesheet" href="style.css">  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../../index.html#portfolio"><span class="brand-mark">≈</span>小林互动作品</a><a class="back-link" href="../../../index.html#portfolio">返回作品集</a></header>
+  <main class="hover-lab">
+    <div class="heading"><div><span class="eyebrow">WEBGL IMAGE DISTORTION</span><h1>图像扰动实验室</h1></div><p>把指针放到图片上，观察两张画面在流体位移中的切换。</p></div>
+    <div class="toolbar"><div class="segmented" role="group" aria-label="扰动强度"><button class="active" data-intensity="soft" type="button">柔和</button><button data-intensity="strong" type="button">强烈</button></div><span id="status">3 个实验场景 · WebGL</span></div>
+    <section class="gallery" aria-label="图片扰动场景"><article><div class="hover-card" id="sceneOne"></div><div class="card-meta"><strong>城市切片</strong><span>流体 / 01</span></div></article><article><div class="hover-card" id="sceneTwo"></div><div class="card-meta"><strong>冰面回声</strong><span>折射 / 02</span></div></article><article><div class="hover-card" id="sceneThree"></div><div class="card-meta"><strong>色彩波纹</strong><span>液态 / 03</span></div></article></section>
+    <div class="note-line"><span>移动端可滑过图片触发效果</span><span>Three.js + GSAP · 本地构建</span></div>
+  </main>
+  <footer>基于 hover-effect 改造 · MIT License</footer>
+  <script src="three.min.js"></script><script src="gsap.min.js"></script><script src="hover-effect.umd.js"></script><script src="script.js"></script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

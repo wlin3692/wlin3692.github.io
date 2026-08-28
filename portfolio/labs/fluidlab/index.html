@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <meta name="description" content="小林的 WebGL 流体光绘互动实验">
+  <meta name="theme-color" content="#070b0d">
+  <title>流体光绘 | 小林的个人网页</title>
+  <link rel="icon" href="logo.png">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <canvas id="fluidCanvas" aria-label="流体光绘互动区域"></canvas>
+
+  <header class="app-header">
+    <a class="icon-button back-link" href="../../../index.html#portfolio" aria-label="返回作品集" title="返回作品集">&#8592;</a>
+    <div class="brand">
+      <span>FLUID LAB</span>
+      <h1>流体光绘</h1>
+    </div>
+    <nav class="tool-strip" aria-label="流体工具">
+      <button class="icon-button" id="burstButton" type="button" aria-label="随机喷溅" title="随机喷溅"><span aria-hidden="true">&#10022;</span></button>
+      <button class="icon-button" id="pauseButton" type="button" aria-label="暂停流动" title="暂停流动"><span aria-hidden="true">&#8545;</span></button>
+      <button class="icon-button" id="clearButton" type="button" aria-label="清空画布" title="清空画布"><span aria-hidden="true">&#8634;</span></button>
+      <button class="icon-button" id="captureButton" type="button" aria-label="保存图片" title="保存图片"><span aria-hidden="true">&#8659;</span></button>
+      <button class="icon-button" id="settingsButton" type="button" aria-label="打开参数面板" title="参数设置" aria-expanded="false"><span aria-hidden="true">&#9776;</span></button>
+    </nav>
+  </header>
+
+  <aside class="control-panel" id="controlPanel" aria-hidden="true" aria-label="流体参数">
+    <div class="panel-head">
+      <div>
+        <span class="panel-kicker">CONTROL</span>
+        <strong>流体参数</strong>
+      </div>
+      <button class="panel-close" id="panelClose" type="button" aria-label="关闭参数面板" title="关闭">&#215;</button>
+    </div>
+
+    <div class="control-group">
+      <span class="control-label">配色</span>
+      <div class="palette-picker" role="group" aria-label="选择流体配色">
+        <button class="palette active" type="button" data-palette="aurora" aria-label="极光配色" title="极光"><span class="palette--aurora"></span></button>
+        <button class="palette" type="button" data-palette="ocean" aria-label="海洋配色" title="海洋"><span class="palette--ocean"></span></button>
+        <button class="palette" type="button" data-palette="ember" aria-label="熔光配色" title="熔光"><span class="palette--ember"></span></button>
+        <button class="palette" type="button" data-palette="citrus" aria-label="青柠配色" title="青柠"><span class="palette--citrus"></span></button>
+        <button class="palette" type="button" data-palette="rainbow" aria-label="光谱配色" title="光谱"><span class="palette--rainbow"></span></button>
+      </div>
+    </div>
+
+    <label class="range-control">
+      <span><b>力度</b><output id="forceValue">6000</output></span>
+      <input type="range" min="2000" max="12000" step="500" value="6000" data-option="SPLAT_FORCE" data-output="forceValue">
+    </label>
+    <label class="range-control">
+      <span><b>范围</b><output id="radiusValue">0.25</output></span>
+      <input type="range" min="0.05" max="1" step="0.05" value="0.25" data-option="SPLAT_RADIUS" data-output="radiusValue">
+    </label>
+    <label class="range-control">
+      <span><b>旋涡</b><output id="curlValue">30</output></span>
+      <input type="range" min="0" max="50" step="1" value="30" data-option="CURL" data-output="curlValue">
+    </label>
+    <label class="range-control">
+      <span><b>消散</b><output id="fadeValue">1</output></span>
+      <input type="range" min="0.2" max="3" step="0.1" value="1" data-option="DENSITY_DISSIPATION" data-output="fadeValue">
+    </label>
+
+    <label class="select-control">
+      <span>画质</span>
+      <select id="qualitySelect" aria-label="选择画质">
+        <option value="low">流畅</option>
+        <option value="medium" selected>均衡</option>
+        <option value="high">精细</option>
+      </select>
+    </label>
+
+    <div class="toggle-list">
+      <label><span>光晕</span><input type="checkbox" data-toggle="BLOOM" checked></label>
+      <label><span>光束</span><input type="checkbox" data-toggle="SUNRAYS" checked></label>
+      <label><span>流动变色</span><input type="checkbox" data-toggle="COLORFUL" checked></label>
+    </div>
+  </aside>
+
+  <div class="pause-status" id="pauseStatus" role="status" aria-live="polite" hidden>已暂停</div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <footer class="source-note">
+    <span>基于 Pavel Dobryakov 的开源项目改造</span>
+    <span><a href="https://github.com/PavelDoGreat/WebGL-Fluid-Simulation" target="_blank" rel="noopener noreferrer">源代码</a> · <a href="LICENSE">MIT License</a></span>
+  </footer>
+
+  <script src="script.js"></script>
+  <script src="ui.js"></script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

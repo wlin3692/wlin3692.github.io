@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="description" content="在连线模式和控制台模式之间切换，实时探索粒子数量、速度、形状与指针交互。"><title>粒子实验室 · 小林互动作品</title><link rel="stylesheet" href="style.css">  <link rel="stylesheet" href="../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <header class="topbar"><a class="brand" href="../../../index.html#portfolio"><span class="brand-mark">P</span>小林互动作品</a><a class="back-link" href="../../../index.html#portfolio">返回作品集</a></header>
+  <main class="particle-lab">
+    <div class="heading"><div><span class="eyebrow">PARTICLE LAB / CANVAS EXPERIMENT</span><h1>粒子实验室</h1></div><p>在连线与控制台之间切换，观察参数如何改变一块动态粒子空间。</p></div>
+    <nav class="mode-tabs" aria-label="粒子实验模式">
+      <button class="mode-tab active" type="button" data-mode="link" aria-selected="true"><span>01</span> 连线模式</button>
+      <button class="mode-tab" type="button" data-mode="console" aria-selected="false"><span>02</span> 控制台模式</button>
+    </nav>
+    <section class="field-shell"><div id="particleField" class="particle-field"><div class="field-copy"><span id="fieldKicker">LIVE CONNECTIONS</span><strong id="fieldStatus">080 PARTICLES</strong><small id="fieldHint">移动指针，让粒子在轨迹周围形成连接</small></div></div></section>
+    <section class="controls" aria-label="粒子设置">
+      <label><span>粒子数量 <output id="countValue">80</output></span><input id="countInput" type="range" min="20" max="180" value="80"></label>
+      <label><span>移动速度 <output id="speedValue">3</output></span><input id="speedInput" type="range" min="1" max="8" value="3"></label>
+      <label class="link-setting"><span>连线透明度 <output id="opacityValue">0.45</output></span><input id="opacityInput" type="range" min="10" max="90" value="45"></label>
+      <label><span>形状</span><select id="shapeInput"><option value="circle">圆点</option><option value="triangle">三角</option><option value="edge">方形</option><option value="star">星形</option></select></label>
+      <label class="console-setting"><span>指针模式</span><select id="modeInput"><option value="grab">连线</option><option value="repulse">排斥</option><option value="bubble">放大</option><option value="push">添加粒子</option></select></label>
+      <div class="color-row"><span>主题色</span><div><button class="color active" data-color="#66e3c4" style="--color:#66e3c4" aria-label="薄荷青"></button><button class="color" data-color="#ff7181" style="--color:#ff7181" aria-label="珊瑚红"></button><button class="color" data-color="#ffd166" style="--color:#ffd166" aria-label="暖金"></button><button class="color" data-color="#7aa2ff" style="--color:#7aa2ff" aria-label="电光蓝"></button></div></div>
+      <button id="refreshButton" type="button">重新生成</button>
+    </section>
+    <div class="note-line"><span>Particles.js · 单引擎双模式</span><span id="modeNote">指针会吸引附近粒子并建立连线</span></div>
+  </main>
+  <footer>基于 particles.js 改造 · MIT License</footer>
+  <script src="particles.min.js"></script><script src="script.js"></script>
+  <script src="../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>

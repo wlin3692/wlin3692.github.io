@@ -1,6 +1,6 @@
 {
-  "generatedAt": "2026-08-24T13:35:03.415Z",
-  "count": 108,
+  "generatedAt": "2026-08-28T15:50:36.669Z",
+  "count": 34,
   "projects": [
     {
       "id": "dino-runner",
@@ -20,9 +20,10 @@
       ],
       "featured": true,
       "featuredOrder": 3,
+      "tier": "featured",
       "added": 1,
-      "image": "../word/games/dinogame/imgs/dino-run-0.png",
-      "preview": "../word/games/dinogame/index.html"
+      "image": "../portfolio/games/dinogame/imgs/dino-run-0.png",
+      "preview": "../portfolio/games/dinogame/index.html"
     },
     {
       "id": "number-2048",
@@ -42,9 +43,10 @@
       ],
       "featured": true,
       "featuredOrder": 4,
+      "tier": "featured",
       "added": 2,
-      "image": "../word/games/game2048/meta/apple-touch-icon.png",
-      "preview": "../word/games/game2048/index.html"
+      "image": "../portfolio/games/game2048/meta/apple-touch-icon.png",
+      "preview": "../portfolio/games/game2048/index.html"
     },
     {
       "id": "block-tetris",
@@ -65,9 +67,10 @@
       ],
       "featured": false,
       "featuredOrder": 999,
+      "tier": "archive",
       "added": 3,
-      "image": "../word/games/gametetris/preview.png",
-      "preview": "../word/games/gametetris/index.html"
+      "image": "../portfolio/games/gametetris/preview.png",
+      "preview": "../portfolio/games/gametetris/index.html"
     },
     {
       "id": "neon-pacman",
@@ -87,33 +90,33 @@
       ],
       "featured": false,
       "featuredOrder": 999,
+      "tier": "archive",
       "added": 4,
-      "image": "../word/games/pacman/preview.svg",
-      "preview": "../word/games/pacman/index.html"
+      "image": "../portfolio/games/pacman/preview.svg",
+      "preview": "../portfolio/games/pacman/index.html"
     },
     {
-      "id": "fluid-light-lab",
-      "title": "流体光绘实验室",
-      "description": "用鼠标或手指搅动彩色流体，自定义光效与参数并保存生成画面。",
+      "id": "visual-collection",
+      "title": "视觉动效实验室",
+      "description": "把流体、粒子、图像扰动、碎裂、立体字和 SVG 动画集中展示。",
       "category": "interactive",
       "keywords": [
-        "流体",
-        "光绘",
-        "webgl",
-        "canvas",
-        "互动",
-        "鼠标",
-        "触控",
-        "多点触控",
-        "生成艺术",
-        "参数调节",
-        "截图"
+        "fluid-light-lab",
+        "particle-lab",
+        "image-distortion-lab",
+        "disintegrate-lab",
+        "ztext-lab",
+        "animated-svg-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
+      "tier": "collection",
       "added": 5,
-      "image": "../word/Lin/fluidlab/preview.webp",
-      "preview": "../word/Lin/fluidlab/index.html"
+      "image": "../portfolio/labs/fluidlab/preview.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=visual"
     },
     {
       "id": "typing-lab",
@@ -134,9 +137,10 @@
       ],
       "featured": false,
       "featuredOrder": 999,
+      "tier": "recommended",
       "added": 6,
-      "image": "../word/Lin/typinglab/preview.svg",
-      "preview": "../word/Lin/typinglab/index.html"
+      "image": "../portfolio/labs/typinglab/preview.svg",
+      "preview": "../portfolio/labs/typinglab/index.html"
     },
     {
       "id": "neon-breakout",
@@ -157,124 +161,10 @@
       ],
       "featured": false,
       "featuredOrder": 999,
+      "tier": "recommended",
       "added": 7,
-      "image": "../word/games/breakout/preview.svg",
-      "preview": "../word/games/breakout/index.html"
-    },
-    {
-      "id": "ztext-lab",
-      "title": "立体字实验室",
-      "description": "实时调节文字厚度、层数和渐隐效果，让立体字随指针产生空间旋转。",
-      "category": "interactive",
-      "keywords": [
-        "立体字",
-        "3d",
-        "typography",
-        "ztext",
-        "文字",
-        "鼠标",
-        "指针",
-        "联动",
-        "厚度",
-        "层数",
-        "互动"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 8,
-      "image": "../word/Lin/ztextlab/preview.svg",
-      "preview": "../word/Lin/ztextlab/index.html"
-    },
-    {
-      "id": "particle-nest-lab",
-      "title": "粒子连线实验室",
-      "description": "拖动指针观察粒子连接，实时调节数量、透明度和主题颜色。",
-      "category": "interactive",
-      "keywords": [
-        "粒子",
-        "连线",
-        "canvas",
-        "nest",
-        "鼠标",
-        "互动",
-        "密度",
-        "颜色",
-        "透明度",
-        "生成艺术"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 9,
-      "image": "../word/Lin/nestlab/preview.svg",
-      "preview": "../word/Lin/nestlab/index.html"
-    },
-    {
-      "id": "particle-field-lab",
-      "title": "粒子场控制台",
-      "description": "调节粒子数量、速度、形状和指针模式，生成不同的动态粒子空间。",
-      "category": "interactive",
-      "keywords": [
-        "粒子场",
-        "particles.js",
-        "canvas",
-        "配置器",
-        "形状",
-        "速度",
-        "密度",
-        "交互",
-        "生成艺术"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 10,
-      "image": "../word/Lin/particlelab/preview.svg",
-      "preview": "../word/Lin/particlelab/index.html"
-    },
-    {
-      "id": "image-distortion-lab",
-      "title": "图像扰动实验室",
-      "description": "在三组图片之间体验 WebGL 流体扭曲切换，支持柔和和强烈两种模式。",
-      "category": "interactive",
-      "keywords": [
-        "WebGL",
-        "图片",
-        "扭曲",
-        "hover",
-        "effect",
-        "three.js",
-        "gsap",
-        "鼠标",
-        "触控",
-        "图像切换"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 11,
-      "image": "../word/Lin/hoverlab/preview.svg",
-      "preview": "../word/Lin/hoverlab/index.html"
-    },
-    {
-      "id": "disintegrate-lab",
-      "title": "元素碎裂实验室",
-      "description": "",
-      "category": "interactive",
-      "keywords": [
-        "元素",
-        "碎裂",
-        "粒子",
-        "canvas",
-        "dom",
-        "html2canvas",
-        "动画",
-        "互动",
-        "爆散",
-        "流星"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 12,
-      "image": "../word/Lin/disintegratelab/preview.svg",
-      "preview": "../word/Lin/disintegratelab/index.html"
+      "image": "../portfolio/games/breakout/preview.svg",
+      "preview": "../portfolio/games/breakout/index.html"
     },
     {
       "id": "design-comparison-lab",
@@ -294,9 +184,10 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 13,
-      "image": "../word/Lin/comparisonlab/assets/after.svg",
-      "preview": "../word/Lin/comparisonlab/index.html"
+      "tier": "recommended",
+      "added": 8,
+      "image": "../portfolio/labs/comparisonlab/assets/after.svg",
+      "preview": "../portfolio/labs/comparisonlab/index.html"
     },
     {
       "id": "cinema-seat-planner",
@@ -316,296 +207,181 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 14,
-      "image": "../word/Lin/seatplanner/preview.svg",
-      "preview": "../word/Lin/seatplanner/index.html"
+      "tier": "recommended",
+      "added": 9,
+      "image": "../portfolio/labs/seatplanner/preview.svg",
+      "preview": "../portfolio/labs/seatplanner/index.html"
     },
     {
-      "id": "focus-player",
-      "title": "专注播放台",
-      "description": "",
+      "id": "audio-collection",
+      "title": "声音控制台",
+      "description": "从即时音效、专注播放到语音朗读，体验浏览器声音交互与控制反馈。",
       "category": "interactive",
       "keywords": [
-        "专注",
-        "播放器",
-        "Web",
-        "Audio",
-        "音乐",
-        "音轨",
-        "合成",
-        "声音",
-        "进度",
-        "音量",
-        "离线"
+        "focus-player",
+        "soundboard-lab",
+        "speech-lab",
+        "语音",
+        "朗读",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 15,
-      "image": "../word/Lin/focusplayer/preview.svg",
-      "preview": "../word/Lin/focusplayer/index.html"
+      "tier": "collection",
+      "added": 10,
+      "image": "../portfolio/labs/focusplayer/preview.svg",
+      "preview": "../portfolio/labs/collection/index.html?group=audio"
     },
     {
-      "id": "password-lab",
-      "title": "密钥生成器",
-      "description": "在浏览器本地生成随机密钥，支持长度与复制操作。",
+      "id": "security-collection",
+      "title": "安全工具箱",
+      "description": "把密钥生成与密码强度检查放进一个轻量的本地安全工具台。",
       "category": "interactive",
       "keywords": [
-        "密码",
-        "密钥",
-        "生成器",
-        "随机",
+        "password-lab",
+        "strength-lab",
+        "专题",
+        "合集",
+        "交互"
+      ],
+      "featured": false,
+      "featuredOrder": 999,
+      "tier": "collection",
+      "added": 11,
+      "image": "../portfolio/previews/password-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=security"
+    },
+    {
+      "id": "engineering-collection",
+      "title": "安全与工程实验室",
+      "description": "包含日志分析、HTTP 安全、JWT、国密、攻防演示、网络拓扑与性能监控七个本地工具。",
+      "category": "interactive",
+      "keywords": [
+        "网络安全",
+        "日志分析",
+        "HTTP",
         "安全",
-        "字符",
-        "工具"
+        "JWT",
+        "Base64",
+        "国密",
+        "SM3",
+        "Web",
+        "攻防",
+        "网络拓扑",
+        "性能监控",
+        "工程实验室",
+        "本地工具",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 16,
-      "image": "../word/previews/password-lab.webp",
-      "preview": "../word/Lin/passwordlab/index.html"
+      "tier": "collection",
+      "added": 12,
+      "image": "../portfolio/labs/securitylab/preview.svg",
+      "preview": "../portfolio/labs/collection/index.html?group=engineering"
     },
     {
-      "id": "notes-lab",
-      "title": "便签空间",
-      "description": "快速记录临时想法，内容保存在本机并支持删除。",
+      "id": "workspace-collection",
+      "title": "个人工作台",
+      "description": "用便签、任务、排序和拖放整理一天的想法与行动。",
       "category": "interactive",
       "keywords": [
+        "notes-lab",
+        "task-lab",
+        "sort-lab",
+        "drag-lab",
         "便签",
-        "笔记",
-        "本地保存",
-        "文字",
-        "记录",
-        "工具"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 17,
-      "image": "../word/previews/notes-lab.webp",
-      "preview": "../word/Lin/noteslab/index.html"
-    },
-    {
-      "id": "quiz-lab",
-      "title": "灵感小测",
-      "description": "三道轻量问题，测试你从细节中观察和判断的能力。",
-      "category": "game",
-      "keywords": [
-        "问答",
-        "测验",
-        "观察力",
-        "游戏",
-        "选择",
-        "计分"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 18,
-      "image": "../word/previews/quiz-lab.webp",
-      "preview": "../word/Lin/quizlab/index.html"
-    },
-    {
-      "id": "task-lab",
-      "title": "轻量任务板",
-      "description": "添加、完成和删除今日任务，实时查看完成比例。",
-      "category": "interactive",
-      "keywords": [
         "任务",
-        "清单",
-        "待办",
-        "本地保存",
-        "计划",
-        "工具"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 19,
-      "image": "../word/previews/task-lab.webp",
-      "preview": "../word/Lin/tasklab/index.html"
-    },
-    {
-      "id": "insect-lab",
-      "title": "捕光小游戏",
-      "description": "30 秒内点击移动光点，挑战自己的反应速度。",
-      "category": "game",
-      "keywords": [
-        "点击",
-        "反应",
-        "游戏",
-        "光点",
-        "计时",
-        "触控"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 20,
-      "image": "../word/previews/insect-lab.webp",
-      "preview": "../word/Lin/insectlab/index.html"
-    },
-    {
-      "id": "slider-lab",
-      "title": "触感滑台",
-      "description": "拖动一条线，观察空间、角度和颜色的即时变化。",
-      "category": "interactive",
-      "keywords": [
-        "滑杆",
-        "触控",
-        "参数",
-        "颜色",
-        "动画",
-        "视觉"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 21,
-      "image": "../word/previews/slider-lab.webp",
-      "preview": "../word/Lin/sliderlab/index.html"
-    },
-    {
-      "id": "range-lab",
-      "title": "参数刻度台",
-      "description": "拖动密度和速度，观察一组数据柱状图如何变化。",
-      "category": "interactive",
-      "keywords": [
-        "参数",
-        "范围",
-        "条形图",
-        "数据",
-        "可视化",
-        "控制台"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 22,
-      "image": "../word/previews/range-lab.webp",
-      "preview": "../word/Lin/rangelab/index.html"
-    },
-    {
-      "id": "currency-lab",
-      "title": "汇率换算台",
-      "description": "用内置演示汇率快速估算旅行和日常预算。",
-      "category": "interactive",
-      "keywords": [
-        "汇率",
-        "货币",
-        "换算",
-        "预算",
-        "离线",
-        "工具"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 23,
-      "image": "../word/previews/currency-lab.webp",
-      "preview": "../word/Lin/currencylab/index.html"
-    },
-    {
-      "id": "expense-lab",
-      "title": "开销记账板",
-      "description": "记录每一笔日常支出，实时汇总本页预算。",
-      "category": "interactive",
-      "keywords": [
-        "记账",
-        "开销",
-        "预算",
-        "金额",
-        "本地保存",
-        "工具"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 24,
-      "image": "../word/previews/expense-lab.webp",
-      "preview": "../word/Lin/expenselab/index.html"
-    },
-    {
-      "id": "memory-lab",
-      "title": "记忆翻牌",
-      "description": "翻开相同的星球图案，用更少步数完成配对。",
-      "category": "game",
-      "keywords": [
-        "记忆",
-        "翻牌",
-        "配对",
-        "游戏",
-        "触控"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 25,
-      "image": "../word/previews/memory-lab.webp",
-      "preview": "../word/Lin/memorylab/index.html"
-    },
-    {
-      "id": "relax-lab",
-      "title": "呼吸节奏",
-      "description": "跟随圆环完成吸气、停留、呼气的节奏练习。",
-      "category": "interactive",
-      "keywords": [
-        "呼吸",
-        "放松",
-        "计时",
-        "动画",
-        "练习"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 26,
-      "image": "../word/previews/relax-lab.webp",
-      "preview": "../word/Lin/relaxlab/index.html"
-    },
-    {
-      "id": "sort-lab",
-      "title": "顺序整理器",
-      "description": "用上移和下移按钮整理工作步骤与优先级。",
-      "category": "interactive",
-      "keywords": [
         "排序",
-        "清单",
-        "优先级",
-        "流程",
-        "任务"
+        "拖放",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 27,
-      "image": "../word/previews/sort-lab.webp",
-      "preview": "../word/Lin/sortlab/index.html"
+      "tier": "collection",
+      "added": 13,
+      "image": "../portfolio/previews/notes-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=workspace"
     },
     {
-      "id": "guess-lab",
-      "title": "数字猜谜",
-      "description": "在 1 到 100 中猜出答案，用提示一步步逼近。",
-      "category": "game",
-      "keywords": [
-        "数字",
-        "猜谜",
-        "游戏",
-        "逻辑",
-        "提示"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 28,
-      "image": "../word/previews/guess-lab.webp",
-      "preview": "../word/Lin/guesslab/index.html"
-    },
-    {
-      "id": "health-lab",
-      "title": "状态面板",
-      "description": "输入基础数据，生成一张温和的个人状态观察卡。",
+      "id": "games-collection",
+      "title": "浏览器小游戏合集",
+      "description": "把轻量规则游戏整理成一组可快速体验的小游戏模式。",
       "category": "interactive",
       "keywords": [
-        "健康",
-        "BMI",
-        "身高",
-        "体重",
-        "仪表盘",
-        "数据"
+        "quiz-lab",
+        "insect-lab",
+        "memory-lab",
+        "guess-lab",
+        "hangman-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 29,
-      "image": "../word/previews/health-lab.webp",
-      "preview": "../word/Lin/healthlab/index.html"
+      "tier": "collection",
+      "added": 14,
+      "image": "../portfolio/previews/quiz-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=games"
+    },
+    {
+      "id": "controls-collection",
+      "title": "参数控制与数据反馈",
+      "description": "观察滑杆、参数和数据状态如何驱动界面反馈。",
+      "category": "interactive",
+      "keywords": [
+        "slider-lab",
+        "vertical-slider-lab",
+        "range-lab",
+        "range-special-lab",
+        "good-cheap-fast-lab",
+        "glass-dashboard-lab",
+        "container-query-lab",
+        "array-method-lab",
+        "专题",
+        "合集",
+        "交互"
+      ],
+      "featured": false,
+      "featuredOrder": 999,
+      "tier": "collection",
+      "added": 15,
+      "image": "../portfolio/previews/slider-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=controls"
+    },
+    {
+      "id": "life-collection",
+      "title": "生活与专注工具台",
+      "description": "集中展示记录、提醒、换算、倒计时和专注练习等日常工具。",
+      "category": "interactive",
+      "keywords": [
+        "currency-lab",
+        "expense-lab",
+        "water-lab",
+        "health-lab",
+        "relax-lab",
+        "countdown-lab",
+        "clock-lab",
+        "new-year-lab",
+        "倒计时",
+        "时间",
+        "专题",
+        "合集",
+        "交互"
+      ],
+      "featured": false,
+      "featuredOrder": 999,
+      "tier": "collection",
+      "added": 16,
+      "image": "../portfolio/previews/currency-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=life"
     },
     {
       "id": "chat-lab",
@@ -622,214 +398,86 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 30,
-      "image": "../word/previews/chat-lab.webp",
-      "preview": "../word/Lin/chatlab/index.html"
+      "tier": "archive",
+      "added": 17,
+      "image": "../portfolio/previews/chat-lab.webp",
+      "preview": "../portfolio/labs/chatlab/index.html"
     },
     {
-      "id": "terminal-desk",
-      "title": "作品终端",
-      "description": "用 help、list、about 探索一个安全的终端风格作品导航。",
+      "id": "navigation-collection",
+      "title": "导航与页面状态",
+      "description": "把命令导航、页面筛选、弹窗和状态变化放进同一个交互专题。",
       "category": "interactive",
       "keywords": [
-        "终端",
-        "命令",
-        "行界面",
-        "作品集",
+        "nav-lab",
+        "anim-nav-lab",
+        "sticky-lab",
+        "netflix-lab",
+        "tab-lab",
+        "menu-modal-lab",
+        "split-lab",
+        "search-lab",
+        "terminal-desk",
+        "命令行",
         "导航",
-        "模拟"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 31,
-      "image": "../word/previews/terminal-desk.webp",
-      "preview": "../word/Lin/terminaldesk/index.html"
-    },
-    {
-      "id": "soundboard-lab",
-      "title": "节奏音板",
-      "description": "点击不同音板即时生成音色，体验按钮反馈和节奏组合。",
-      "category": "interactive",
-      "keywords": [
-        "音板",
-        "声音",
-        "Web",
-        "Audio",
-        "按钮",
-        "音效",
-        "互动"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 32,
-      "image": "../word/previews/soundboard-lab.webp",
-      "preview": "../word/Lin/soundboardlab/index.html"
-    },
-    {
-      "id": "feedback-lab",
-      "title": "反馈收集器",
-      "description": "选择星级并留下最重要的一句话，练习一页式反馈流程。",
-      "category": "interactive",
-      "keywords": [
-        "反馈",
-        "星级",
-        "表单",
-        "评价",
-        "界面",
-        "本地"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 33,
-      "image": "../word/previews/feedback-lab.webp",
-      "preview": "../word/Lin/feedbacklab/index.html"
-    },
-    {
-      "id": "toast-lab",
-      "title": "提示消息实验室",
-      "description": "测试完成、提醒、注意和错误四种 Toast 状态的出现节奏。",
-      "category": "interactive",
-      "keywords": [
-        "Toast",
-        "提示",
-        "通知",
-        "状态",
-        "反馈",
-        "动画"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 34,
-      "image": "../word/previews/toast-lab.webp",
-      "preview": "../word/Lin/toastlab/index.html"
-    },
-    {
-      "id": "countdown-lab",
-      "title": "专注倒计时",
-      "description": "设置一个短时段，观察进度条完成一次专注循环。",
-      "category": "interactive",
-      "keywords": [
-        "倒计时",
-        "专注",
-        "番茄钟",
-        "计时器",
-        "进度"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 35,
-      "image": "../word/previews/countdown-lab.webp",
-      "preview": "../word/Lin/countdownlab/index.html"
-    },
-    {
-      "id": "nav-lab",
-      "title": "旋转导航",
-      "description": "打开一个圆形入口菜单，体验方向和动效的变化。",
-      "category": "interactive",
-      "keywords": [
-        "导航",
-        "旋转",
-        "菜单",
-        "动画",
-        "入口"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 36,
-      "image": "../word/previews/nav-lab.webp",
-      "preview": "../word/Lin/navlab/index.html"
-    },
-    {
-      "id": "search-lab",
-      "title": "隐藏搜索",
-      "description": "需要时展开搜索框，即时过滤页面上的内容词条。",
-      "category": "interactive",
-      "keywords": [
-        "搜索",
-        "过滤",
-        "筛选",
-        "隐藏",
-        "输入框",
+        "专题",
+        "合集",
         "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 37,
-      "image": "../word/previews/search-lab.webp",
-      "preview": "../word/Lin/searchlab/index.html"
+      "tier": "collection",
+      "added": 18,
+      "image": "../portfolio/previews/nav-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=navigation"
     },
     {
-      "id": "blur-load-lab",
-      "title": "模糊加载",
-      "description": "点击切换从模糊占位到清晰内容的状态动画。",
-      "category": "web",
-      "keywords": [
-        "模糊",
-        "加载",
-        "占位",
-        "状态",
-        "过渡"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 38,
-      "image": "../word/previews/blur-load-lab.webp",
-      "preview": "../word/Lin/blurloadlab/index.html"
-    },
-    {
-      "id": "scroll-lab",
-      "title": "滚动出现",
-      "description": "向下阅读时，让四张内容卡片逐块进入视野。",
-      "category": "web",
-      "keywords": [
-        "滚动",
-        "出现",
-        "页面",
-        "动画",
-        "叙事"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 39,
-      "image": "../word/previews/scroll-lab.webp",
-      "preview": "../word/Lin/scrolllab/index.html"
-    },
-    {
-      "id": "split-lab",
-      "title": "双面入口",
-      "description": "在探索互动和整理工具之间做一个轻量选择。",
-      "category": "web",
-      "keywords": [
-        "双面",
-        "选择",
-        "入口",
-        "探索",
-        "工具",
-        "页面"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 40,
-      "image": "../word/previews/split-lab.webp",
-      "preview": "../word/Lin/splitlab/index.html"
-    },
-    {
-      "id": "wave-lab",
-      "title": "波形表单",
-      "description": "输入称呼，让表单下方的波纹随着文字长度反馈。",
+      "id": "flow-collection",
+      "title": "内容加载与滚动实验室",
+      "description": "观察内容如何在加载、滚动和连续阅读中逐步进入视野。",
       "category": "interactive",
       "keywords": [
-        "表单",
-        "波纹",
-        "输入",
-        "反馈",
-        "动画"
+        "blur-load-lab",
+        "scroll-lab",
+        "infinite-scroll-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 41,
-      "image": "../word/previews/wave-lab.webp",
-      "preview": "../word/Lin/wavelab/index.html"
+      "tier": "collection",
+      "added": 19,
+      "image": "../portfolio/previews/blur-load-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=flow"
+    },
+    {
+      "id": "forms-collection",
+      "title": "表单与反馈组件",
+      "description": "从输入、校验到提示状态，集中体验常见界面反馈模式。",
+      "category": "interactive",
+      "keywords": [
+        "wave-lab",
+        "feedback-lab",
+        "verify-lab",
+        "form-validator-lab",
+        "auth-switch-lab",
+        "login-lab",
+        "coming-soon-lab",
+        "promo-lab",
+        "toast-lab",
+        "loader-lab",
+        "tooltip-lab",
+        "专题",
+        "合集",
+        "交互"
+      ],
+      "featured": false,
+      "featuredOrder": 999,
+      "tier": "collection",
+      "added": 20,
+      "image": "../portfolio/previews/wave-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=forms"
     },
     {
       "id": "faq-lab",
@@ -846,203 +494,74 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 42,
-      "image": "../word/previews/faq-lab.webp",
-      "preview": "../word/Lin/faqlab/index.html"
+      "tier": "archive",
+      "added": 21,
+      "image": "../portfolio/previews/faq-lab.webp",
+      "preview": "../portfolio/labs/faqlab/index.html"
     },
     {
-      "id": "pick-lab",
-      "title": "随机选择器",
-      "description": "输入选项，让随机结果帮你结束一次犹豫。",
+      "id": "random-collection",
+      "title": "随机生成实验室",
+      "description": "用随机结果生成选择、笑话和视觉灵感，结束一次犹豫。",
       "category": "interactive",
       "keywords": [
-        "随机",
-        "选择",
-        "决策",
-        "选项",
-        "工具"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 43,
-      "image": "../word/previews/pick-lab.webp",
-      "preview": "../word/Lin/picklab/index.html"
-    },
-    {
-      "id": "anim-nav-lab",
-      "title": "动画导航",
-      "description": "点击展开菜单，让不同入口按照顺序出现。",
-      "category": "interactive",
-      "keywords": [
-        "导航",
-        "动画",
-        "菜单",
-        "入口",
-        "stagger",
+        "pick-lab",
+        "dad-joke-lab",
+        "imagegen-lab",
+        "专题",
+        "合集",
         "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 44,
-      "image": "../word/previews/anim-nav-lab.webp",
-      "preview": "../word/Lin/animnavlab/index.html"
+      "tier": "collection",
+      "added": 22,
+      "image": "../portfolio/previews/pick-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=random"
     },
     {
-      "id": "water-lab",
-      "title": "喝水提醒",
-      "description": "每点击一次记录一杯水，用进度条看见今日习惯。",
+      "id": "content-collection",
+      "title": "内容、影视与音乐",
+      "description": "集中展示片单、流媒体、歌词和内容卡片浏览体验。",
       "category": "interactive",
       "keywords": [
-        "喝水",
-        "习惯",
-        "记录",
-        "进度",
-        "本地保存",
-        "健康"
+        "movie-lab",
+        "stream-lab",
+        "hulu-lab",
+        "lyrics-lab",
+        "testimonial-lab",
+        "meal-finder-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 45,
-      "image": "../word/previews/water-lab.webp",
-      "preview": "../word/Lin/waterlab/index.html"
+      "tier": "collection",
+      "added": 23,
+      "image": "../portfolio/previews/movie-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=content"
     },
     {
-      "id": "clock-lab",
-      "title": "主题时钟",
-      "description": "读取本地时间，根据时段切换页面色温和工作提示。",
+      "id": "discovery-collection",
+      "title": "筛选与资料浏览实验室",
+      "description": "集中体验搜索、筛选、资料卡和图鉴式列表浏览。",
       "category": "interactive",
       "keywords": [
-        "时钟",
-        "时间",
-        "主题",
-        "色温",
-        "本地"
+        "github-profile-lab",
+        "filter-lab",
+        "portfolio-grid-lab",
+        "pokedex-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 46,
-      "image": "../word/previews/clock-lab.webp",
-      "preview": "../word/Lin/clocklab/index.html"
-    },
-    {
-      "id": "drag-lab",
-      "title": "拖放排序",
-      "description": "拖动流程卡片，或点击两张卡片交换顺序。",
-      "category": "interactive",
-      "keywords": [
-        "拖放",
-        "排序",
-        "手势",
-        "卡片",
-        "触控"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 47,
-      "image": "../word/previews/drag-lab.webp",
-      "preview": "../word/Lin/draglab/index.html"
-    },
-    {
-      "id": "loader-lab",
-      "title": "加载器工坊",
-      "description": "切换加载中、同步中和完成三种等待状态。",
-      "category": "interactive",
-      "keywords": [
-        "加载器",
-        "等待",
-        "状态",
-        "旋转",
-        "动画"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 48,
-      "image": "../word/previews/loader-lab.webp",
-      "preview": "../word/Lin/loaderlab/index.html"
-    },
-    {
-      "id": "dad-joke-lab",
-      "title": "冷笑话抽签",
-      "description": "点击生成一条本地准备的冷笑话。",
-      "category": "interactive",
-      "keywords": [
-        "冷笑话",
-        "随机",
-        "文案"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 49,
-      "image": "../word/previews/dad-joke-lab.webp",
-      "preview": "../word/Lin/dadjokelab/index.html"
-    },
-    {
-      "id": "movie-lab",
-      "title": "电影片单",
-      "description": "在本地片单中筛选一部今晚想看的电影。",
-      "category": "interactive",
-      "keywords": [
-        "电影",
-        "片单",
-        "筛选",
-        "观影"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 50,
-      "image": "../word/previews/movie-lab.webp",
-      "preview": "../word/Lin/movielab/index.html"
-    },
-    {
-      "id": "sticky-lab",
-      "title": "吸附导航",
-      "description": "滚动或点击按钮，观察导航栏在页面中的位置变化。",
-      "category": "web",
-      "keywords": [
-        "吸附",
-        "导航",
-        "滚动",
-        "状态"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 51,
-      "image": "../word/previews/sticky-lab.webp",
-      "preview": "../word/Lin/stickylab/index.html"
-    },
-    {
-      "id": "vertical-slider-lab",
-      "title": "双向滑台",
-      "description": "拖动一条滑杆，在上下两种视觉状态之间切换。",
-      "category": "interactive",
-      "keywords": [
-        "垂直",
-        "滑台",
-        "位置",
-        "方向"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 52,
-      "image": "../word/previews/vertical-slider-lab.webp",
-      "preview": "../word/Lin/verticalsliderlab/index.html"
-    },
-    {
-      "id": "github-profile-lab",
-      "title": "个人资料卡",
-      "description": "用关键词筛选一组本地开发者资料卡。",
-      "category": "web",
-      "keywords": [
-        "用户",
-        "资料",
-        "筛选",
-        "开发者"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 53,
-      "image": "../word/previews/github-profile-lab.webp",
-      "preview": "../word/Lin/githublab/index.html"
+      "tier": "collection",
+      "added": 24,
+      "image": "../portfolio/previews/github-profile-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=discovery"
     },
     {
       "id": "heart-lab",
@@ -1057,791 +576,81 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 54,
-      "image": "../word/previews/heart-lab.webp",
-      "preview": "../word/Lin/heartlab/index.html"
+      "tier": "archive",
+      "added": 25,
+      "image": "../portfolio/previews/heart-lab.webp",
+      "preview": "../portfolio/labs/heartlab/index.html"
     },
     {
-      "id": "good-cheap-fast-lab",
-      "title": "选择平衡器",
-      "description": "在好、快、省之间调整你的项目优先级。",
+      "id": "media-collection",
+      "title": "图片、画廊与媒体交互",
+      "description": "整理图片聚焦、画廊、颜色和本地媒体控制等视觉交互。",
       "category": "interactive",
       "keywords": [
-        "好",
-        "快",
-        "省",
-        "平衡",
-        "选择",
-        "项目"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 55,
-      "image": "../word/previews/good-cheap-fast-lab.webp",
-      "preview": "../word/Lin/goodcheapfastlab/index.html"
-    },
-    {
-      "id": "carousel-lab",
-      "title": "横向轮播",
-      "description": "用按钮查看一组本地视觉卡片。",
-      "category": "web",
-      "keywords": [
-        "轮播",
-        "图片",
-        "卡片",
-        "切换"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 56,
-      "image": "../word/previews/carousel-lab.webp",
-      "preview": "../word/Lin/carousellab/index.html"
-    },
-    {
-      "id": "hoverboard-lab",
-      "title": "悬浮色板",
-      "description": "移动到色块上，生成一片颜色灵感。",
-      "category": "interactive",
-      "keywords": [
-        "悬浮",
-        "色板",
-        "颜色",
-        "鼠标"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 57,
-      "image": "../word/previews/hoverboard-lab.webp",
-      "preview": "../word/Lin/hoverboardlab/index.html"
-    },
-    {
-      "id": "pokedex-lab",
-      "title": "小型图鉴",
-      "description": "点击条目查看本地图鉴详情。",
-      "category": "interactive",
-      "keywords": [
-        "图鉴",
-        "条目",
-        "详情",
-        "搜索"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 58,
-      "image": "../word/previews/pokedex-lab.webp",
-      "preview": "../word/Lin/pokedexlab/index.html"
-    },
-    {
-      "id": "tab-lab",
-      "title": "移动标签栏",
-      "description": "切换三个内容标签，观察信息区域的变化。",
-      "category": "web",
-      "keywords": [
-        "标签栏",
-        "移动端",
-        "内容",
-        "切换"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 59,
-      "image": "../word/previews/tab-lab.webp",
-      "preview": "../word/Lin/tablab/index.html"
-    },
-    {
-      "id": "strength-lab",
-      "title": "密钥强度",
-      "description": "输入一段文本，实时估算它的强度。",
-      "category": "interactive",
-      "keywords": [
-        "密码",
-        "强度",
-        "输入",
-        "背景",
-        "安全"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 60,
-      "image": "../word/previews/strength-lab.webp",
-      "preview": "../word/Lin/strengthlab/index.html"
-    },
-    {
-      "id": "boxes-lab",
-      "title": "立体盒子",
-      "description": "拖动滑杆调整空间盒子的旋转角度。",
-      "category": "interactive",
-      "keywords": [
-        "3D",
-        "盒子",
-        "旋转",
-        "空间",
-        "CSS"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 61,
-      "image": "../word/previews/boxes-lab.webp",
-      "preview": "../word/Lin/boxeslab/index.html"
-    },
-    {
-      "id": "verify-lab",
-      "title": "验证码输入",
-      "description": "逐格输入验证码，完成一次表单确认。",
-      "category": "interactive",
-      "keywords": [
-        "验证码",
-        "输入",
-        "表单",
-        "验证"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 62,
-      "image": "../word/previews/verify-lab.webp",
-      "preview": "../word/Lin/verifylab/index.html"
-    },
-    {
-      "id": "filter-lab",
-      "title": "实时用户筛选",
-      "description": "输入关键词，过滤本地用户列表。",
-      "category": "interactive",
-      "keywords": [
-        "用户",
-        "筛选",
-        "过滤",
-        "列表"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 63,
-      "image": "../word/previews/filter-lab.webp",
-      "preview": "../word/Lin/filterlab/index.html"
-    },
-    {
-      "id": "range-special-lab",
-      "title": "刻度范围",
-      "description": "拖动范围参数，查看数值和进度反馈。",
-      "category": "interactive",
-      "keywords": [
-        "范围",
-        "参数",
-        "进度",
-        "滑杆"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 64,
-      "image": "../word/previews/range-special-lab.webp",
-      "preview": "../word/Lin/rangespeciallab/index.html"
-    },
-    {
-      "id": "netflix-lab",
-      "title": "移动导航",
-      "description": "打开和关闭一层移动端导航。",
-      "category": "web",
-      "keywords": [
-        "移动导航",
-        "电影",
-        "菜单",
-        "移动端"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 65,
-      "image": "../word/previews/netflix-lab.webp",
-      "preview": "../word/Lin/netflixlab/index.html"
-    },
-    {
-      "id": "testimonial-lab",
-      "title": "评价切换",
-      "description": "切换三条本地评价，练习内容轮播。",
-      "category": "web",
-      "keywords": [
-        "评价",
-        "轮播",
-        "用户反馈",
-        "内容切换"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 66,
-      "image": "../word/previews/testimonial-lab.webp",
-      "preview": "../word/Lin/testimoniallab/index.html"
-    },
-    {
-      "id": "imagegen-lab",
-      "title": "色彩图像生成器",
-      "description": "点击生成一张本地渐变色视觉卡。",
-      "category": "interactive",
-      "keywords": [
-        "随机",
-        "图片",
-        "渐变",
-        "生成",
-        "视觉"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 67,
-      "image": "../word/previews/imagegen-lab.webp",
-      "preview": "../word/Lin/imagegenlab/index.html"
-    },
-    {
-      "id": "video-background-lab",
-      "title": "视频背景状态",
-      "description": "切换播放、暂停和静音三种背景状态。",
-      "category": "web",
-      "keywords": [
-        "视频背景",
-        "播放",
-        "暂停",
-        "静音",
-        "状态"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 68,
-      "image": "../word/previews/video-background-lab.webp",
-      "preview": "../word/Lin/videobackgroundlab/index.html"
-    },
-    {
-      "id": "portfolio-grid-lab",
-      "title": "作品网格",
-      "description": "按类别筛选一个小型作品网格。",
-      "category": "web",
-      "keywords": [
-        "作品网格",
-        "筛选",
-        "作品集",
-        "类别"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 69,
-      "image": "../word/previews/portfolio-grid-lab.webp",
-      "preview": "../word/Lin/portfoliogridlab/index.html"
-    },
-    {
-      "id": "glass-dashboard-lab",
-      "title": "玻璃仪表盘",
-      "description": "调整指标，观察仪表盘卡片的变化。",
-      "category": "web",
-      "keywords": [
-        "玻璃",
-        "仪表盘",
-        "指标",
-        "数据",
-        "UI"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 70,
-      "image": "../word/previews/glass-dashboard-lab.webp",
-      "preview": "../word/Lin/glassdashboardlab/index.html"
-    },
-    {
-      "id": "parallax-svg-lab",
-      "title": "视差层",
-      "description": "拖动指针，让几层几何形状产生视差。",
-      "category": "interactive",
-      "keywords": [
-        "视差",
-        "SVG",
-        "几何",
-        "鼠标",
-        "层次"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 71,
-      "image": "../word/previews/parallax-svg-lab.webp",
-      "preview": "../word/Lin/parallaxsvglab/index.html"
-    },
-    {
-      "id": "product-3d-lab",
-      "title": "产品旋转卡",
-      "description": "拖动角度查看一个简化产品卡。",
-      "category": "interactive",
-      "keywords": [
-        "3D",
-        "产品",
-        "卡片",
-        "旋转",
-        "角度"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 72,
-      "image": "../word/previews/product-3d-lab.webp",
-      "preview": "../word/Lin/product3dlab/index.html"
-    },
-    {
-      "id": "form-validator-lab",
-      "title": "表单验证",
-      "description": "输入邮箱和密码，观察即时验证提示。",
-      "category": "interactive",
-      "keywords": [
-        "表单",
-        "验证",
-        "邮箱",
-        "密码",
-        "输入"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 73,
-      "image": "../word/previews/form-validator-lab.webp",
-      "preview": "../word/Lin/formvalidatorlab/index.html"
-    },
-    {
-      "id": "video-player-lab",
-      "title": "本地视频控制台",
-      "description": "用进度和播放按钮模拟自定义视频播放器。",
-      "category": "interactive",
-      "keywords": [
-        "视频",
-        "播放器",
-        "进度",
-        "控制",
-        "音量"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 74,
-      "image": "../word/previews/video-player-lab.webp",
-      "preview": "../word/Lin/videoplayerlab/index.html"
-    },
-    {
-      "id": "array-method-lab",
-      "title": "数组方法台",
-      "description": "选择 map、filter、reduce 查看数据结果。",
-      "category": "interactive",
-      "keywords": [
-        "数组",
-        "map",
-        "filter",
-        "reduce",
-        "JavaScript",
-        "数据"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 75,
-      "image": "../word/previews/array-method-lab.webp",
-      "preview": "../word/Lin/arraymethodlab/index.html"
-    },
-    {
-      "id": "menu-modal-lab",
-      "title": "菜单弹窗",
-      "description": "打开一个菜单弹窗并关闭它。",
-      "category": "web",
-      "keywords": [
-        "菜单",
-        "弹窗",
-        "模态框",
-        "关闭",
+        "carousel-lab",
+        "fullscreen-lab",
+        "lightbox-lab",
+        "hoverboard-lab",
+        "one-color-lab",
+        "video-background-lab",
+        "video-player-lab",
+        "专题",
+        "合集",
         "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 76,
-      "image": "../word/previews/menu-modal-lab.webp",
-      "preview": "../word/Lin/menumodallab/index.html"
+      "tier": "collection",
+      "added": 26,
+      "image": "../portfolio/previews/carousel-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=media"
     },
     {
-      "id": "hangman-lab",
-      "title": "单词猜谜",
-      "description": "猜出隐藏单词中的字母。",
-      "category": "game",
-      "keywords": [
-        "猜词",
-        "吊人",
-        "游戏",
-        "字母",
-        "逻辑"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 77,
-      "image": "../word/previews/hangman-lab.webp",
-      "preview": "../word/Lin/hangmanlab/index.html"
-    },
-    {
-      "id": "meal-finder-lab",
-      "title": "今日菜单",
-      "description": "从本地菜单中随机找到一道菜。",
+      "id": "parallax-collection",
+      "title": "视差与动画",
+      "description": "用一个专题入口比较 SVG、首页和长页面中的视差表达。",
       "category": "interactive",
       "keywords": [
-        "菜单",
-        "食物",
-        "随机",
-        "推荐",
-        "生活"
+        "parallax-svg-lab",
+        "parallax-landing-lab",
+        "parallax-web-lab",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 78,
-      "image": "../word/previews/meal-finder-lab.webp",
-      "preview": "../word/Lin/mealfinderlab/index.html"
+      "tier": "collection",
+      "added": 27,
+      "image": "../portfolio/previews/parallax-svg-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=parallax"
     },
     {
-      "id": "infinite-scroll-lab",
-      "title": "无限文章流",
-      "description": "点击加载更多本地文章片段。",
-      "category": "web",
-      "keywords": [
-        "无限滚动",
-        "文章",
-        "加载",
-        "内容",
-        "列表"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 79,
-      "image": "../word/previews/infinite-scroll-lab.webp",
-      "preview": "../word/Lin/infinitescrolllab/index.html"
-    },
-    {
-      "id": "speech-lab",
-      "title": "文字朗读台",
-      "description": "输入文字并调用浏览器语音朗读。",
+      "id": "product-collection",
+      "title": "产品界面与后台控制台",
+      "description": "把产品选择、3D 空间、后台指标和品牌界面整理为一组界面模式。",
       "category": "interactive",
       "keywords": [
-        "语音",
-        "朗读",
-        "文本",
-        "Web",
-        "Speech",
-        "输入"
+        "sneaker-lab",
+        "headphones-lab",
+        "product-3d-lab",
+        "laptop-ui-lab",
+        "cloud-hosting-lab",
+        "agency-lab",
+        "creative-portfolio-lab",
+        "boxes-lab",
+        "3D",
+        "CSS",
+        "专题",
+        "合集",
+        "交互"
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 80,
-      "image": "../word/previews/speech-lab.webp",
-      "preview": "../word/Lin/speechlab/index.html"
-    },
-    {
-      "id": "lyrics-lab",
-      "title": "歌词滚动",
-      "description": "点击下一句，让歌词逐行出现。",
-      "category": "interactive",
-      "keywords": [
-        "歌词",
-        "滚动",
-        "音乐",
-        "文本",
-        "句子"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 81,
-      "image": "../word/previews/lyrics-lab.webp",
-      "preview": "../word/Lin/lyricslab/index.html"
-    },
-    {
-      "id": "new-year-lab",
-      "title": "新年倒计时",
-      "description": "输入秒数启动一段倒计时。",
-      "category": "web",
-      "keywords": [
-        "新年",
-        "倒计时",
-        "时间",
-        "计时器"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 82,
-      "image": "../word/previews/new-year-lab.webp",
-      "preview": "../word/Lin/newyearlab/index.html"
-    },
-    {
-      "id": "agency-lab",
-      "title": "创意机构入口",
-      "description": "切换品牌语气和服务标签。",
-      "category": "web",
-      "keywords": [
-        "创意机构",
-        "服务",
-        "品牌",
-        "语气",
-        "标签"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 83,
-      "image": "../word/previews/agency-lab.webp",
-      "preview": "../word/Lin/agencylab/index.html"
-    },
-    {
-      "id": "animated-svg-lab",
-      "title": "SVG 动画台",
-      "description": "点击按钮让本地 SVG 图形旋转。",
-      "category": "interactive",
-      "keywords": [
-        "SVG",
-        "动画",
-        "旋转",
-        "图形",
-        "向量"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 84,
-      "image": "../word/previews/animated-svg-lab.webp",
-      "preview": "../word/Lin/animatedsvglab/index.html"
-    },
-    {
-      "id": "parallax-landing-lab",
-      "title": "视差首页",
-      "description": "拖动进度体验前后景层次。",
-      "category": "web",
-      "keywords": [
-        "视差",
-        "首页",
-        "进度",
-        "层次",
-        "滑杆"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 85,
-      "image": "../word/previews/parallax-landing-lab.webp",
-      "preview": "../word/Lin/parallaxlandinglab/index.html"
-    },
-    {
-      "id": "fullscreen-lab",
-      "title": "全屏画廊",
-      "description": "点击卡片进入大图模式，再次关闭。",
-      "category": "web",
-      "keywords": [
-        "全屏",
-        "画廊",
-        "图片",
-        "聚焦",
-        "模态"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 86,
-      "image": "../word/previews/fullscreen-lab.webp",
-      "preview": "../word/Lin/fullscreenlab/index.html"
-    },
-    {
-      "id": "lightbox-lab",
-      "title": "图片灯箱",
-      "description": "点击缩略卡片打开聚焦视图。",
-      "category": "web",
-      "keywords": [
-        "图片",
-        "灯箱",
-        "聚焦",
-        "缩略图",
-        "模态"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 87,
-      "image": "../word/previews/lightbox-lab.webp",
-      "preview": "../word/Lin/lightboxlab/index.html"
-    },
-    {
-      "id": "sneaker-lab",
-      "title": "鞋款选择器",
-      "description": "切换三种配色和尺码。",
-      "category": "web",
-      "keywords": [
-        "鞋款",
-        "产品",
-        "颜色",
-        "尺码",
-        "商店"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 88,
-      "image": "../word/previews/sneaker-lab.webp",
-      "preview": "../word/Lin/sneakerlab/index.html"
-    },
-    {
-      "id": "coming-soon-lab",
-      "title": "即将到来",
-      "description": "输入邮箱登记一个本地提醒。",
-      "category": "web",
-      "keywords": [
-        "即将到来",
-        "邮箱",
-        "订阅",
-        "表单",
-        "提醒"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 89,
-      "image": "../word/previews/coming-soon-lab.webp",
-      "preview": "../word/Lin/comingsoonlab/index.html"
-    },
-    {
-      "id": "auth-switch-lab",
-      "title": "登录注册切换",
-      "description": "切换登录和注册两种表单状态。",
-      "category": "web",
-      "keywords": [
-        "登录",
-        "注册",
-        "表单",
-        "切换",
-        "账号"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 90,
-      "image": "../word/previews/auth-switch-lab.webp",
-      "preview": "../word/Lin/authswitchlab/index.html"
-    },
-    {
-      "id": "promo-lab",
-      "title": "优惠码校验",
-      "description": "输入演示优惠码，查看折扣反馈。",
-      "category": "interactive",
-      "keywords": [
-        "优惠码",
-        "折扣",
-        "校验",
-        "商店",
-        "输入"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 91,
-      "image": "../word/previews/promo-lab.webp",
-      "preview": "../word/Lin/promolab/index.html"
-    },
-    {
-      "id": "one-color-lab",
-      "title": "单色界面",
-      "description": "拖动明度滑杆，调整整页单色主题。",
-      "category": "web",
-      "keywords": [
-        "单色",
-        "UI",
-        "明度",
-        "主题",
-        "颜色"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 92,
-      "image": "../word/previews/one-color-lab.webp",
-      "preview": "../word/Lin/onecolorlab/index.html"
-    },
-    {
-      "id": "tooltip-lab",
-      "title": "提示气泡",
-      "description": "移动到不同按钮查看解释提示。",
-      "category": "interactive",
-      "keywords": [
-        "提示",
-        "气泡",
-        "hover",
-        "说明",
-        "按钮"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 93,
-      "image": "../word/previews/tooltip-lab.webp",
-      "preview": "../word/Lin/tooltiplab/index.html"
-    },
-    {
-      "id": "stream-lab",
-      "title": "音乐流媒体",
-      "description": "切换本地播放列表中的一首环境音。",
-      "category": "web",
-      "keywords": [
-        "音乐",
-        "流媒体",
-        "播放列表",
-        "音频"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 94,
-      "image": "../word/previews/stream-lab.webp",
-      "preview": "../word/Lin/streamlab/index.html"
-    },
-    {
-      "id": "creative-portfolio-lab",
-      "title": "创意作品页",
-      "description": "切换作品类型和视觉主题。",
-      "category": "web",
-      "keywords": [
-        "创意作品",
-        "主题",
-        "标签",
-        "作品集"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 95,
-      "image": "../word/previews/creative-portfolio-lab.webp",
-      "preview": "../word/Lin/creativeportfoliolab/index.html"
-    },
-    {
-      "id": "laptop-ui-lab",
-      "title": "笔记本界面",
-      "description": "点击窗口按钮切换界面状态。",
-      "category": "web",
-      "keywords": [
-        "笔记本",
-        "窗口",
-        "UI",
-        "桌面",
-        "模拟"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 96,
-      "image": "../word/previews/laptop-ui-lab.webp",
-      "preview": "../word/Lin/laptopuilab/index.html"
-    },
-    {
-      "id": "headphones-lab",
-      "title": "耳机产品卡",
-      "description": "调整颜色与音量，观察产品卡参数。",
-      "category": "web",
-      "keywords": [
-        "耳机",
-        "产品",
-        "颜色",
-        "音量",
-        "选择器"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 97,
-      "image": "../word/previews/headphones-lab.webp",
-      "preview": "../word/Lin/headphoneslab/index.html"
-    },
-    {
-      "id": "cloud-hosting-lab",
-      "title": "云服务面板",
-      "description": "调整存储和流量配额，查看估算价格。",
-      "category": "web",
-      "keywords": [
-        "云服务",
-        "存储",
-        "流量",
-        "价格",
-        "配额"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 98,
-      "image": "../word/previews/cloud-hosting-lab.webp",
-      "preview": "../word/Lin/cloudhostinglab/index.html"
+      "tier": "collection",
+      "added": 28,
+      "image": "../portfolio/previews/sneaker-lab.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=product"
     },
     {
       "id": "magazine-lab",
@@ -1857,45 +666,10 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 99,
-      "image": "../word/previews/magazine-lab.webp",
-      "preview": "../word/Lin/magazinelab/index.html"
-    },
-    {
-      "id": "parallax-web-lab",
-      "title": "长页视差",
-      "description": "拖动进度浏览三个视差章节。",
-      "category": "web",
-      "keywords": [
-        "长页",
-        "视差",
-        "章节",
-        "进度",
-        "层次"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 100,
-      "image": "../word/previews/parallax-web-lab.webp",
-      "preview": "../word/Lin/parallaxweblab/index.html"
-    },
-    {
-      "id": "hulu-lab",
-      "title": "流媒体首页",
-      "description": "筛选电影与剧集卡片。",
-      "category": "web",
-      "keywords": [
-        "流媒体",
-        "电影",
-        "剧集",
-        "筛选",
-        "首页"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 101,
-      "image": "../word/previews/hulu-lab.webp",
-      "preview": "../word/Lin/hululab/index.html"
+      "tier": "archive",
+      "added": 29,
+      "image": "../portfolio/previews/magazine-lab.webp",
+      "preview": "../portfolio/labs/magazinelab/index.html"
     },
     {
       "id": "cascade-lab",
@@ -1911,32 +685,15 @@
       ],
       "featured": false,
       "featuredOrder": 999,
-      "added": 102,
-      "image": "../word/previews/cascade-lab.webp",
-      "preview": "../word/Lin/cascadelab/index.html"
-    },
-    {
-      "id": "container-query-lab",
-      "title": "容器响应台",
-      "description": "拖动宽度，观察组件在容器内响应。",
-      "category": "web",
-      "keywords": [
-        "容器查询",
-        "响应式",
-        "宽度",
-        "组件",
-        "CSS"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 103,
-      "image": "../word/previews/container-query-lab.webp",
-      "preview": "../word/Lin/containerquerylab/index.html"
+      "tier": "archive",
+      "added": 30,
+      "image": "../portfolio/previews/cascade-lab.webp",
+      "preview": "../portfolio/labs/cascadelab/index.html"
     },
     {
       "id": "skill-roadmap",
       "title": "技能与项目路线图",
-      "description": "拖拽组合技能、项目和成长目标，查看个人创作能力的完整脉络。",
+      "description": "把网络安全、前端交互、嵌入式实践和代表项目连接成一张可编辑的成长路线图。",
       "category": "interactive",
       "keywords": [
         "技能",
@@ -1948,13 +705,16 @@
         "互动",
         "javascript",
         "响应式",
-        "本地保存"
+        "本地保存",
+        "网络安全",
+        "前端"
       ],
       "featured": true,
       "featuredOrder": 5,
-      "added": 104,
-      "image": "../word/Lin/skillmap/preview.svg",
-      "preview": "../word/Lin/skillmap/index.html"
+      "tier": "featured",
+      "added": 31,
+      "image": "../portfolio/labs/skillmap/preview.svg",
+      "preview": "../portfolio/labs/skillmap/index.html"
     },
     {
       "id": "minesweeper",
@@ -1969,26 +729,10 @@
       ],
       "featured": true,
       "featuredOrder": 2,
-      "added": 105,
-      "image": "../Lin/site/222.jpg",
-      "preview": "../word/games/sweeper/sweeper.html"
-    },
-    {
-      "id": "login",
-      "title": "沉浸式登录页",
-      "description": "以星空森林为视觉主题的响应式登录体验。",
-      "category": "web",
-      "keywords": [
-        "登录",
-        "网页",
-        "表单",
-        "响应式"
-      ],
-      "featured": false,
-      "featuredOrder": 999,
-      "added": 106,
-      "image": "../word/Lin/login/1234.jpg",
-      "preview": "../word/Lin/login/denglu.html"
+      "tier": "featured",
+      "added": 32,
+      "image": "../personal/site/222.jpg",
+      "preview": "../portfolio/games/sweeper/sweeper.html"
     },
     {
       "id": "fun-lab",
@@ -2004,17 +748,20 @@
       ],
       "featured": true,
       "featuredOrder": 6,
-      "added": 107,
-      "image": "../Lin/site/666.webp",
-      "preview": "../word/Lin/funlab/选项界面.html"
+      "tier": "featured",
+      "added": 33,
+      "image": "../personal/site/666.webp",
+      "preview": "../portfolio/labs/funlab/选项界面.html"
     },
     {
-      "id": "cat-tracker",
-      "title": "指针跟随小猫",
-      "description": "移动鼠标或手指，小猫会自然转头追随屏幕上的小鱼。",
+      "id": "character-tracker-collection",
+      "title": "指针跟随角色实验室",
+      "description": "切换小猫和小龙，体验角色朝向、精灵动画与指针跟随反馈。",
       "category": "interactive",
       "keywords": [
         "小猫",
+        "小龙",
+        "角色",
         "指针跟随",
         "鼠标",
         "触控",
@@ -2024,9 +771,10 @@
       ],
       "featured": true,
       "featuredOrder": 1,
-      "added": 108,
-      "image": "../Lin/cat/frame_front.webp",
-      "preview": "../Lin/cat/miao.html"
+      "tier": "featured",
+      "added": 34,
+      "image": "../personal/cat/frame_front.webp",
+      "preview": "../portfolio/labs/collection/index.html?group=characters"
     }
   ]
 }

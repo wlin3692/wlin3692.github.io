@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="由代码实时生成的爱心粒子光影">
+  <title>光影爱心</title>
+  <link rel="stylesheet" href="../common.css">
+  <style>
+    * { box-sizing: border-box; }
+    html, body { width: 100%; min-height: 100%; }
+    body { min-height: 100vh; min-height: 100svh; margin: 0; overflow: hidden; background: #05070d; font-family: "Microsoft YaHei", system-ui, sans-serif; }
+    .particle-scene { position: fixed; inset: 0; overflow: hidden; isolation: isolate; }
+    .particle-scene::after { content: ""; position: absolute; inset: 0; z-index: 1; background: linear-gradient(180deg, transparent 58%, rgba(3, 5, 12, .5) 100%); pointer-events: none; }
+    #particleHeartCanvas { display: block; width: 100%; height: 100%; touch-action: none; }
+    .caption { position: absolute; right: 20px; bottom: max(30px, env(safe-area-inset-bottom)); left: 20px; z-index: 2; margin: 0 auto; color: rgba(239, 246, 255, .9); font-size: clamp(.95rem, 3.8vw, 1.2rem); font-weight: 500; letter-spacing: 0; text-align: center; text-shadow: 0 2px 16px rgba(0, 0, 0, .8); pointer-events: none; }
+  </style>
+  <link rel="stylesheet" href="../../../../personal/site/lab-shell.css">
+</head>
+<body>
+  <main class="particle-scene">
+    <canvas id="particleHeartCanvas" aria-label="粉色粒子汇聚成爱心的动态场景"></canvas>
+    <p class="caption">想念沿着光，一圈一圈回到你身边。</p>
+  </main>
+  <audio id="music1" loop preload="metadata" data-scene-audio aria-label="背景音乐">
+    <source src="123123123.mp3" type="audio/mpeg">
+  </audio>
+  <script src="particle-heart.js"></script>
+  <script src="../common.js"></script>
+  <script src="../../../../personal/site/lab-shell.js" defer></script>
+</body>
+</html>
